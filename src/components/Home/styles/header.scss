@@ -1,0 +1,31 @@
+:local(.header) {
+  position: relative;
+  width: 100%;
+  background: #00bb9c;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 1.2em;
+
+  .a_link {
+    position: absolute;
+    display: block;
+    top: 0;
+    color: #6c6c6c;
+    right: 5%;
+    width: 38px;
+    height: 40px;
+    z-index: 100;
+    font-size: 0.9em;
+    font-weight: normal;
+
+    .a_img {
+      width: 100%;
+      margin-bottom: 3px;
+      vertical-align: middle;
+      outline: none;
+      height: auto;
+    }
+  }
+}
