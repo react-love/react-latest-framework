@@ -1,47 +1,31 @@
-var http = require('http');
 var express = require('express');
+var webpack = require('webpack');
+var webpackConfig = require('./webpack/dev.config');
 var app = express();
+var path = require('path')
 var port = 3000;
+var open = require('open')
+
+const compiler = webpack(webpackConfig);
 
 app.use(require('morgan')('short'));
 
-(function initWebpack() {
-  var webpack = require('webpack');
-  var webpackConfig = require('./webpack/dev.config');
-  var compiler = webpack(webpackConfig);
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath
+}));
 
-  app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    quiet: false,
-    lazy: true,
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: true
-    },
-    stats: {
-      colors: true
-    },
-    publicPath: webpackConfig.output.publicPath
-  }));
+app.use(require('webpack-hot-middleware')(compiler));
 
-  app.use(require('webpack-hot-middleware')(compiler, {
-    log: console.log,
-    path: '/__webpack_hmr',
-    heartbeat: 10 * 1000
-  }));
-
-  app.use(express.static(__dirname + '/'));
-})();
-
-app.get('/', function root(req, res) {
-  res.sendFile(__dirname + '/index.html');
+app.get('*', function(req, res) {
+  res.sendFile(path.join( __dirname, './index.html'));
 });
 
-if (require.main === module) {
-  var server = http.createServer(app);
-  server.listen(process.env.PORT || port, function onListen() {
-    var address = server.address();
-    console.log('Listening on: %j', address);
-    console.log(' -> that probably means: http://localhost:%d', address.port);
-  });
-}
+app.listen(port, function(err){
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(`open port ${port}`)
+    open(`http://localhost:${port}`)
+  }
+})

@@ -4,6 +4,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+/*scss*/
+require('./styles/nav.scss')
+
 /*const*/
 import * as con from 'utils/const';
 
@@ -39,35 +42,20 @@ export class Nav extends Component {
     }
 
     render() {
-        let style_div = {
-            width: '100%', background: '#fff', padding: '5px 0', overflow: 'hidden'
-        }
-        let style_ul = {
-            width: '90%', margin: '0 auto', overflow: 'hidden', padding: 0
-        }
-        let style_li = {
-            width: '33%', float: 'left', listStyle: 'none', textAlign: 'center', paddingBottom: 10 + 'px', paddingTop: 5 + 'px'
-        }
-        let style_img = {
-            width: '35%', height: 'auto', margin: '0 auto', display: 'block', marginBottom: 3 + 'px'
-        }
-        let style_span = {
-            color: '#3c3c3c', fontSize: 0.8 + 'em'
-        }
 
         let navDetails = this.props.navList;
         let navComponent = navDetails.navMain.map(function(elem, index) {
             return (
-                <li key={index} style={style_li}>
-                    <img src={Nav.navImage[index+1]} style={style_img} />
-                    <span style={style_span}>{elem.text}</span>
+                <li key={index} className="style_li">
+                    <img src={Nav.navImage[index+1]} className="style_img" />
+                    <span className="style_span">{elem.text}</span>
                 </li>
             )
         });
 
         return (
-            <div style={style_div}>
-                <ul style={style_ul}>
+            <div className="style_div">
+                <ul className="style_ul">
                     {navComponent}
                 </ul>
             </div>

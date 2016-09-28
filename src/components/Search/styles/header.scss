@@ -1,0 +1,55 @@
+.style_body {
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background: #fff;
+  width: 100%;
+  text-align: center;
+  .style_main {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    .style_a {
+      width: 25px;
+      height: 25px;
+      display: block;
+      z-index: 9999;
+      left: 10px;
+      position: absolute;
+      text-decoration: none;
+      .style_a_img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .style_div_content {
+      width: 70%;
+      display: inline-block;
+      position: relative;
+      .style_div_img {
+        position: absolute;
+        left: 2px;
+        width: 25px;
+        height: auto;
+        top: 2px;
+      }
+      .style_div_input {
+        width: 100%;
+        border: 1px solid #efefef;
+        background: #efefef;
+        padding: 7px 25px 5px 25px;
+        border-radius: 25px;
+        outline: none;
+      }
+    }
+    .style_right_a {
+      position: absolute;
+      right: 15px;
+      margin-top: 5px;
+      font-size: 1.1em;
+      color: #3c3c3c;
+      text-decoration: none;
+    }
+  }
+}
