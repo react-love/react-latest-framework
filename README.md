@@ -8,10 +8,11 @@
 =========================
 
 ####安装教程
-1、下载该案列源码  
-2、windows系统中，在安装好ruby和node环境的基础上，ios系统不做设置  
+1、方法1：下载该案列源码  
+2、方法2： git命令行输入git clone https://github.com/hyy1115/react-redux-book.git，将源码拷贝到本地git仓库
+3、windows系统中，在安装好ruby和node环境的基础上，ios系统不做设置  
 进入网站根目录运行npm install命令  
-3、npm start运行，若不报错则会自动打开浏览器  
+4、npm start运行，若不报错则会自动打开浏览器  
 
 ===========================================
 
