@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 
 module.exports = {
-  devtool: 'source-map',
+  /*devtool: 'source-map',*/
   entry: [
     'webpack-hot-middleware/client?reload=false',
     './src/index'
@@ -29,7 +29,15 @@ module.exports = {
 
   resolve: {
     extensions: ['', '.jsx', '.js', '.json'],
-    modulesDirectories: ['node_modules', 'src']
+    modulesDirectories: ['node_modules', 'src'],
+    alias: {
+      actions: __dirname + `/src/actions`,
+      components: __dirname + `/src/components`,
+      containers: __dirname + `/src/containers`,
+      reducers: __dirname + `/src/reducers`,
+      store: __dirname + `/src/store`,
+      utils: __dirname + `/src/utils`
+    }
   },
 
   module: {

@@ -1,6 +1,6 @@
 var express = require('express');
 var webpack = require('webpack');
-var webpackConfig = require('./webpack/dev.config');
+var webpackConfig = require('./dev.config.js');
 var app = express();
 var path = require('path')
 var port = 3000;
@@ -12,7 +12,11 @@ app.use(require('morgan')('short'));
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
-  publicPath: webpackConfig.output.publicPath
+  publicPath: webpackConfig.output.publicPath,
+  headers: { "X-Custom-Header": "yes" },
+  stats: {
+    colors: true
+  }
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));

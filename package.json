@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node server.js",
+    "start": "set NODE_ENV=production && node server.js",
     "lint": "eslint src",
-    "build": "webpack/dev.config.js",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build",
+    "build": "webpack --progress --verbose --colors --display-error-details --config dev.config.js",
+    "dev": "node server.js",
     "test": "karma start"
   },
   "repository": {
