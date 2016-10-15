@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 /*style*/
-require('./styles/header.scss')
+require('./styles/header.less')
 
 /*files*/
 const search = require('./files/search.svg');

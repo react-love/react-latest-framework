@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 /*scss*/
-require('./styles/nav.scss')
+require('./styles/nav.less')
 
 /*const*/
 import * as con from 'utils/const';

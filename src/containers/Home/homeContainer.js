@@ -2,7 +2,6 @@
  * Created by Administrator on 2016/7/1.
  */
 import React, { Component } from 'react';
-import DocumentMeta from 'react-document-meta';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -13,17 +12,6 @@ import * as navActions from 'actions/nav';
 import { Header } from 'components/Home/header';
 import { Nav } from 'components/Home/nav';
 import { Special } from 'components/Home/Special';
-
-const meta = {
-    title: 'redux',
-    meta: {
-        charset: 'utf-8',
-        description: 'redux-react实战模板',
-        name: {
-            keywords: 'redux, react, webpack',
-        },
-    },
-};
 
 @connect(
     state => state,
@@ -36,9 +24,7 @@ export class HomeContainer extends Component {
     }
 
     componentWillMount() {
-        if (this.props.nav) {
-            this.props.receiveNav();
-         }
+        this.props.getNav();
     }
 
     componentDidMount() {
@@ -49,7 +35,6 @@ export class HomeContainer extends Component {
 
         return(
             <div>
-                <DocumentMeta {...meta} />
                 <Header />
                 <Nav
                     navList={this.props.nav}

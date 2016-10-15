@@ -1,10 +1,25 @@
 /**
  * Created by Administrator on 2016/7/2.
  */
-export const RECEIVE_NAV = 'RECEVIE_NAV';
+import { getData, postData } from 'utils/fetchData'
+export const RECEIVE_NAV = 'RECEIVE_NAV';
 
-export function receiveNav() {
+const receiveNav = (response) => {
     return {
         type: RECEIVE_NAV,
+        navMain: response.data
+    }
+}
+
+export const getNav = () => {
+    return async (dispatch) => {
+        try {
+            await getData(`/test`)
+                .then(response => {
+                    dispatch(receiveNav(response))
+                })
+        } catch (error) {
+            console.log('error: ', error)
+        }
     }
 }

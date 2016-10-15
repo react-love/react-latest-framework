@@ -1,11 +1,13 @@
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
+var precss = require('precss');
 
 module.exports = {
   /*devtool: 'source-map',*/
   entry: [
-    'webpack-hot-middleware/client?reload=false',
+    'webpack-hot-middleware/client?path=__webpack_hmr&reload=true&noInfo=false&quiet=false',
+    'babel-polyfill',
     './src/index'
   ],
   output: {
@@ -21,10 +23,7 @@ module.exports = {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery'
-    })
+    new webpack.NoErrorsPlugin()
   ],
 
   resolve: {
@@ -46,8 +45,11 @@ module.exports = {
       loaders: ['react-hot', 'babel-loader'],
       exclude: /node_modules/
     }, {
-      test:   /\.scss$/,
-      loader: 'style!css!sass'
+      test:   /\.less$/,
+      loader: "style-loader!css-loader!less!postcss-loader"
+    },  {
+      test:   /\.css/,
+      loader: "style-loader!css-loader!postcss-loader"
     }, {
       test: /\.png$/,
       loader: 'file?name=[md5:hash:base64:10].[ext]'
@@ -68,7 +70,7 @@ module.exports = {
       loader: 'url?limit=10000&mimetype=image/svg+xml'
     }],
   },
-  postcss: [
-    autoprefixer({ browsers: ['last 2 versions'] })
-  ]
+  postcss: function () {
+    return [require('autoprefixer'), require('precss')];
+  }
 };

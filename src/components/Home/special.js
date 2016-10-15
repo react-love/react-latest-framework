@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-require('./styles/special.scss')
+require('./styles/special.less')
 
 /*const*/
 import * as con from 'utils/const';

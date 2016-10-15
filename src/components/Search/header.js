@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-require('./styles/header.scss')
+require('./styles/header.less')
 
 const back = require('./files/back_search.png');
 const search = require('./files/search_1.png');
