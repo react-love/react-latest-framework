@@ -1,4 +1,4 @@
-###超强大的redux-react案列，热更新、LESS、Router、async（终极异步）、本地node服务器...，需要的都有！！
+###超强大的redux-react案列，热更新、ES6/7、LESS、Router、async（终极异步）、本地node服务器...
 ==========================================
 
 ####作者：二月  
@@ -12,8 +12,7 @@
 2、方法2： git命令行输入git clone https://github.com/hyy1115/react-redux-book.git，将源码拷贝到本地git仓库  
 3、windows系统中，在安装好ruby和node环境的基础上，ios系统不做设置  
 进入网站根目录运行npm install命令  
-4、npm start运行，若不报错则会自动打开浏览器  
-5、最最最重要的功能，本地node服务器，免去了单独配置一个mockserver的需要，在server.js文件里面设置后端的api接口，注意遵循restful规范  
+4、npm start运行，若不报错则会自动打开浏览器   
 
 ===========================================
 
@@ -23,6 +22,7 @@
 3、实现了热更新，实时监测js和less的变化。  
 4、用axios封装了数据访问层，并且用终极异步解决方案async、await做异步处理。   
 5、配置了jsx语法中写if..else...的功能，不过测试中还有点问题，但是三元表达式还是可以用的。  
+6、最最最重要的功能，本地node服务器，免去了单独配置一个mockserver的需要，在server.js文件里面设置后端的api接口，注意遵循restful规范   
 
 
 ===================================================
@@ -34,6 +34,7 @@
 4、reducers：自定义的reducer，负责state状态的更新传递  
 5、store：state的总控制中心，所有state归他管  
 6、utils：自定义的一些插件和常量  
+7、data: 后端返回的json数据  
 
 ####单向数据流简介  
 1、打开一个网页，输入localhost:3000  
