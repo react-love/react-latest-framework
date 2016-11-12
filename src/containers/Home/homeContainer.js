@@ -28,7 +28,7 @@ export class HomeContainer extends Component {
     }
 
     componentDidMount() {
-        console.log("渲染完成打印");
+
     }
 
     render() {

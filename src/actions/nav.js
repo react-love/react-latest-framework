@@ -2,11 +2,10 @@
  * Created by Administrator on 2016/7/2.
  */
 import { getData, postData } from 'utils/fetchData'
-export const RECEIVE_NAV = 'RECEIVE_NAV';
 
 const receiveNav = (response) => {
     return {
-        type: RECEIVE_NAV,
+        type: 'RECEIVE_NAV',
         navMain: response.data
     }
 }
@@ -14,7 +13,7 @@ const receiveNav = (response) => {
 export const getNav = () => {
     return async (dispatch) => {
         try {
-            await getData(`/test`)
+            await getData(`/book/navigation`)
                 .then(response => {
                     dispatch(receiveNav(response))
                 })

@@ -56,3 +56,4 @@ ios
 .editorconfig
 .babelrc
 npm-debug.log
+build/

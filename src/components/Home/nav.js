@@ -42,16 +42,19 @@ export class Nav extends Component {
     }
 
     render() {
-
         let navDetails = this.props.navList;
-        let navComponent = navDetails.navMain.map(function(elem, index) {
-            return (
-                <li key={index} className="style_li">
-                    <img src={Nav.navImage[index+1]} className="style_img" />
-                    <span className="style_span">{elem.text}</span>
-                </li>
-            )
-        });
+        if (!navDetails.navMain) {
+            return false
+        } else {
+            var navComponent = navDetails.navMain.map(function(elem, index) {
+                return (
+                    <li key={index} className="style_li">
+                        <img src={Nav.navImage[index+1]} className="style_img" />
+                        <span className="style_span">{elem.text}</span>
+                    </li>
+                )
+            });
+        }
 
         return (
             <div className="style_div">

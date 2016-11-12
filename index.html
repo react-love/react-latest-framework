@@ -1,15 +1,21 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN" dropeffect="none" class="js  is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox touchevents mobile">
 <head>
-  <meta charset="utf-8">
-  <title>redux-react</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv=”Content-Type” content=”text/html; charset="utf-8">
+  <title>react-redux-webpack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no">
+
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
-
-<body style="padding: 0; margin: 0; background: #f4eff5">
+<body>
 <div id="root"></div>
 </body>
-<script src="./dist/bundle.js"></script>
+<script>
+  document.body.addEventListener('touchstart', function () { });
+</script>
+<script src="/build/mobile.bundle.js"></script>
 </html>
