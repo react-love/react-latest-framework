@@ -4,7 +4,7 @@ var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
 module.exports = {
-  /*devtool: 'source-map',*/
+  // devtool: 'cheap-module-source-map',
   entry: [
     'webpack-hot-middleware/client?path=http://localhost:3007/__webpack_hmr&reload=true&noInfo=false&quiet=false',
     'babel-polyfill',
@@ -43,7 +43,12 @@ module.exports = {
     loaders: [{
       test: /\.js$/,
       loaders: ['react-hot', 'babel-loader'],
-      exclude: /node_modules/
+      exclude: /node_modules/,
+      env: {
+        development: {
+          presets: ["react-hmre"]
+        }
+      }
     }, {
       test:   /\.less$/,
       loader: "style-loader!css-loader!less!postcss-loader"

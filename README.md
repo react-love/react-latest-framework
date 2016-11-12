@@ -7,7 +7,9 @@ Difficulties can contact me directly by mail
 
 =========================
 
-####Installation Tutorial
+
+==========================
+####Installation教程
 1, Method 1: 下载源代码到本地  
 
 2, Method 2: 或者本地运行shell命令  

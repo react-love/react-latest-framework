@@ -7,6 +7,7 @@ var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
 module.exports = {
+    // devtool: 'source-map',
     entry: [
         'babel-polyfill',
         './src/index'
@@ -20,7 +21,14 @@ module.exports = {
 
     plugins: [
         new webpack.DefinePlugin({
-            __DEVELOPMENT__: false
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
         })
     ],
 
@@ -40,7 +48,7 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.js$/,
-            loaders: ['react-hot', 'babel-loader'],
+            loaders: ['babel-loader'],
             exclude: /node_modules/
         }, {
             test:   /\.less$/,

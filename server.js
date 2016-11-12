@@ -15,6 +15,7 @@ const compiler = webpack(webpackConfig);
 
 app.use(require('morgan')('short'));
 
+//跨域解决方案
 app.use(cors())
 
 app.use(webpackDevMiddleware(compiler, {

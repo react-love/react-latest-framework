@@ -14,10 +14,5 @@
     "transform-async-to-generator",
     "transform-do-expressions",
     "syntax-do-expressions"
-  ],
-  "env": {
-    "development": {
-      "presets": ["react-hmre"]
-    }
-  }
+  ]
 }
