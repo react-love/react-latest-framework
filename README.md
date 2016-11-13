@@ -16,7 +16,9 @@ Difficulties can contact me directly by mail
 1, Method 1: 下载源代码到本地  
 
 2, Method 2: 或者本地运行shell命令  
- git clone https://github.com/hyy1115/react-redux-book.git  
+```
+ https://github.com/hyy1115/react-redux-webpack.git
+```
  
 3, 安装依赖包
 ```
