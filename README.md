@@ -19,7 +19,7 @@ Difficulties can contact me directly by mail
 
 2, Method 2: 或者本地运行shell命令  
 ```
- https://github.com/hyy1115/react-redux-webpack.git
+ git clone https://github.com/hyy1115/react-redux-webpack.git
 ```
  
 3, 安装依赖包
