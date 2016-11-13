@@ -11,6 +11,8 @@ Difficulties can contact me directly by mail
 
 该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。
 
+与github上其他开源不同的是，这份代码采用了合理的redux架构，适合个人或者团队开发。
+
 ==========================
 ####Installation教程
 1, Method 1: 下载源代码到本地  
