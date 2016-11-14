@@ -24,7 +24,9 @@ export class HomeContainer extends Component {
     }
 
     componentWillMount() {
-        this.props.getNav();
+        if (this.props.nav.navMain.length === 0) {
+            this.props.getNav();
+        }
     }
 
     componentDidMount() {
