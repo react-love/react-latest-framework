@@ -11,7 +11,9 @@ Difficulties can contact me directly by mail
 
 该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。
 
-与github上其他开源不同的是，这份代码采用了合理的redux架构，适合个人或者团队开发。
+与github上其他开源不同的是，这份代码采用了合理的redux架构，适合个人或者团队开发。  
+
+有遇到issue的开发者可以反馈给我，有其他插件使用不明白的也可以反馈。
 
 ==========================
 ####Installation教程
@@ -96,9 +98,10 @@ render() {
             {
                 do {
                     if (true) {
-                        
+                    //这里不需要return方法，直接用dom结构表示
+                        <div>111</div>
                     } else {
-                    
+                        <div>2222</div>
                     }
                 }
             }
@@ -130,7 +133,7 @@ browserHistory有个问题要注意，当刷新网页到时候，会找不到真
 
 JSX：JSX语法不再只是支持三元表达式，还支持if（）else（），强大到没话可说。
 
-异步用fetch还是axios：fetch到方案我也用过，具体看http://sutouying.cn，axios是我目前使用到插件，具体看http://www.fagougou.com，
+异步用fetch还是axios：fetch到方案我也用过，具体看http://sutouying.cn  ，axios是我目前使用到插件，具体看http://www.fagougou.com  ，
 这2个方案可操作性都差不多，在使用babel编译到条件下，没有明显区别，都可以使用。
 
 async还是promise：不用纠结这个问题，我们知道fetch通常和promise结合使用，而用axios，我更喜欢使用async，有时候也会用到promise。
