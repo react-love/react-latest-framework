@@ -5,7 +5,8 @@
 email：1130216245@qq.com  
 Difficulties can contact me directly by mail  
 
-！！！！请暂停clone和下载源码，我要做组件管理优化，把组件抽象化出来。。。稍等。。。。！！！！
+2016-11-16更新：  
+header组件抽象化，可复用。
 
 =========================
 

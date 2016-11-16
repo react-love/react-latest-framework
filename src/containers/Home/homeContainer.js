@@ -13,6 +13,9 @@ import { Header } from 'components/Home/header';
 import { Nav } from 'components/Home/nav';
 import { Special } from 'components/Home/Special';
 
+/*files*/
+const search = require('./files/search.svg');
+
 @connect(
     state => state,
     dispatch => bindActionCreators(navActions, dispatch)
@@ -37,7 +40,11 @@ export class HomeContainer extends Component {
 
         return(
             <div>
-                <Header />
+                <Header
+                    title="高校二手书城"
+                    imgUrl={search}
+                    linkTo="/search"
+                />
                 <Nav
                     navList={this.props.nav}
                 />

@@ -11,7 +11,7 @@ require('./styles/nav.less')
 import * as con from 'utils/const';
 
 /*files*/
-const search = require('./files/search.svg');
+const search = require('./../../containers/Home/files/search.svg');
 const nav_1 = require('./files/nsyjr.png');
 const nav_2 = require('./files/nlswx.png');
 const nav_3 = require('./files/nflwx.png');
