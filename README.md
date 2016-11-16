@@ -3,7 +3,10 @@
 
 ####作者：二月  
 email：1130216245@qq.com  
-Difficulties can contact me directly by mail  
+
+知乎：https://www.zhihu.com/people/er-yue-shi-xiong  
+
+csdn：http://blog.csdn.net/hyy1115  
 
 2016-11-16更新：  
 header组件抽象化，可复用。
@@ -123,6 +126,21 @@ app.get('/book/navigation', function (req, res) {
 ```
 
 ===================================================
+
+####常用的排查bug方法  
+1、react和这么多的插件搭配使用，开发过程中不可避免会遇到很多的bug，有一些甚至无法从chrome找到答案，那么我们遇到这些问题的时候该怎么办呢？  
+
+2、第一步，打开chrome调试工具，如果你喜欢火狐或者微信调试之类的，我建议能用chrome的尽量用chrome，chrome开发者工具的console和netWork调试界面是
+开发react最经常用到的。有的人也会用chrome上的react调试插件，每次打开我都觉得很麻烦，所以本源码用的是logger插件，直接在console看到每个页面和事件触发的action。  
+
+3、如果chrome工具找不出bug的话，npm命令的控制台也可以看到详细的报错信息，大部分报错的情况是某个插件没有install，或者某个参数未定义。参数未定义的情况出现在异步ajax，
+state初始为空，初次渲染页面必然会导致某个参数为空，那么只需要在组件里面做个简单的判断即可，防止把空参数传递进来，也有其他的解决办法，比如我在header组件里面用到的判断。
+
+4、webpack配置错误，也会导致热更新失败，或者打包失败，不了解webpack机制的还需要多多研究webpack的用法。
+
+
+
+=====================================================
 
 ####版本更新说明
 从第一次发布react-redux版本到现在，已经做了好几次重大修复，抛弃了一些方案，也增加了一些方案。
