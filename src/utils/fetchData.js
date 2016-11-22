@@ -4,8 +4,7 @@
 import axios from 'axios'
 
 //封装好的get和post接口
-axios.defaults.baseURL = 'http://localhost:3007';
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.baseURL = BASE_URL;
 
 export const getData = (url, param) => {
     return (

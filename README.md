@@ -9,7 +9,11 @@ email：1130216245@qq.com
 csdn：http://blog.csdn.net/hyy1115  
 
 2016-11-22更新：  
-修复react-hot-loader找不到react/lib部分模块的bug。将react和react-dom使用15.3.0或者以下版本
+
+修复react-hot-loader找不到react/lib部分模块的bug。将react和react-dom使用15.3.0或者以下版本  
+
+期待已久的功能！！！新增了node服务器，在我的另外一个开源项目node-express-server，解决了api跨域和cookie跨域不能保存的问题。如果使用这份前端代码，请同时下载我的node服务器开源项目做测试。
+[node-express-server](https://github.com/hyy1115/node-express-server)
 
 =========================
 
@@ -30,18 +34,30 @@ csdn：http://blog.csdn.net/hyy1115
  git clone https://github.com/hyy1115/react-redux-webpack.git
 ```
  
-3, 安装依赖包
+3, 安装依赖包，注意react的版本号，因为最新版的react有一些bug还没有解决，可能会跟旧版的其他插件造成冲突，解决方案可以看相关社区的issue。
 ```
 npm install
 ```
 
-4, 运行demo
+4, 运行demo。
    ```
     npm start
    ```
 
-5, 发布,参考http://blgxbook.win/  
-  网页打开的很慢，需要稍等片刻，发布的纯静态页面，没有接node服务器。
+5, 将会开启3007端口，这个时候要注意，不是在浏览器访问3007端口，而是访问
+```
+http://localhost:9009
+
+9009是node服务器的端口号，你最好先运行我发布的node开源项目，然后再和你的node合并解决方案。  
+
+为什么是访问服务器端口而不是前端开启的端口呢？
+
+这里涉及到跨域问题，跨域的本质就不说了，说说我的解决办法，我把index.html放在服务器端，每次请求服务器端口地址的时候，都将会返回一个html，这个html
+中的script标签会链接3007端口的mobile.bundle.js，这样就很巧妙的解决了跨域的问题，同时还能保证前端代码热更新可用。
+```
+
+6, 发布,参考http://blgxbook.win/  
+  网页打开的很慢，需要稍等片刻，发布的纯静态页面，没有接node服务器，需要自己下载node-express-server部署。
 ```
 npm run build
 ```
@@ -116,14 +132,9 @@ render() {
 }
 ```
 
-6，最重要的功能，本地节点服务器，省去了单独配置mockserver，server.js文件里面的后端api接口，注意遵循restful规范,请注意，server文件不能使用import导入，只能使用require，如果你需要import，请自行添加解析器。
-```
-var navigation = require(`./data/navigation.json`)
+6，最重要的功能，跟node服务器端成功实现了交互，注意遵循restful规范。
 
-app.get('/book/navigation', function (req, res) {
-  res.json(navigation)
-})
-```
+[node-express-server](https://github.com/hyy1115/node-express-server)
 
 ===================================================
 

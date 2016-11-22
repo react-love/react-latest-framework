@@ -6,20 +6,21 @@ var precss = require('precss');
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?path=http://localhost:3007/__webpack_hmr&reload=true&noInfo=false&quiet=false',
     'babel-polyfill',
     './src/index'
   ],
   output: {
     filename: 'mobile.bundle.js',
     path: path.join(__dirname, 'build'),
-    publicPath: '/build/',
+    publicPath: 'http://localhost:3007/build/',
     chunkFilename: '[id].[hash].bundle.js'
   },
 
   plugins: [
     new webpack.DefinePlugin({
-      __DEVELOPMENT__: true
+      __DEVELOPMENT__: true,
+      BASE_URL: JSON.stringify('http://localhost:9009'),
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),

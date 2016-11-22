@@ -9,14 +9,9 @@ var path = require('path')
 var port = 3007;
 var open = require('open')
 
-var navigation = require(`./data/navigation.json`)
-
 const compiler = webpack(webpackConfig);
 
 app.use(require('morgan')('short'));
-
-//跨域解决方案
-app.use(cors())
 
 app.use(webpackDevMiddleware(compiler, {
   historyApiFallback: true,
@@ -31,21 +26,6 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 
 app.use(express.static(__dirname + '/build/'))
-
-app.get('/book/navigation', function (req, res) {
-  res.json(navigation)
-})
-//请在这里添加你自己的测试接口
-
-
-
-/*
-* 注意，该方法必须 放在get和post等请求等最后，因为该方法是用来处理刷新浏览器找不到路径的问题。
-* 如果你个人的get方法写到了该方法的下面，那么就无法执行你的方法。
-* */
-app.get('*', function(req, res) {
-  res.sendFile(path.join( __dirname, './index.html'));
-});
 
 app.listen(port, function(err){
   if (err) {
