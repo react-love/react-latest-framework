@@ -1,12 +1,10 @@
 {
   "presets": [
     "stage-0",
-    "es2015",
+    "latest",
     "react",
     "stage-1",
-    "es2016",
     "stage-2",
-    "es2017",
     "stage-3"
   ],
   "plugins": [

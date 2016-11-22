@@ -8,8 +8,8 @@ email：1130216245@qq.com
 
 csdn：http://blog.csdn.net/hyy1115  
 
-2016-11-16更新：  
-header组件抽象化，可复用。
+2016-11-22更新：  
+修复react-hot-loader找不到react/lib部分模块的bug。将react和react-dom使用15.3.0或者以下版本
 
 =========================
 

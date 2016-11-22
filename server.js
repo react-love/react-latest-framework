@@ -19,6 +19,7 @@ app.use(require('morgan')('short'));
 app.use(cors())
 
 app.use(webpackDevMiddleware(compiler, {
+  historyApiFallback: true,
   noInfo: true,
   publicPath: webpackConfig.output.publicPath,
   headers: { "X-Custom-Header": "yes" },

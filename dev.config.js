@@ -4,9 +4,9 @@ var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
 module.exports = {
-  // devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-hot-middleware/client?path=http://localhost:3007/__webpack_hmr&reload=true&noInfo=false&quiet=false',
+    'webpack-hot-middleware/client',
     'babel-polyfill',
     './src/index'
   ],
@@ -44,6 +44,7 @@ module.exports = {
       test: /\.js$/,
       loaders: ['react-hot', 'babel-loader'],
       exclude: /node_modules/,
+      include: path.join(__dirname, 'src'),
       env: {
         development: {
           presets: ["react-hmre"]
