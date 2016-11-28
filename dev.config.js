@@ -4,12 +4,14 @@ var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
-  entry: [
-    'webpack-hot-middleware/client?path=http://localhost:3007/__webpack_hmr&reload=true&noInfo=false&quiet=false',
-    'babel-polyfill',
-    './src/index'
-  ],
+  devtool: false,
+  entry: {
+    app: ['webpack-hot-middleware/client?path=http://localhost:3007/__webpack_hmr&reload=true&noInfo=false&quiet=false',
+      'babel-polyfill',
+      './src/index'
+    ],
+    vendors: ['react', 'redux', 'react-redux']
+  },
   output: {
     filename: 'mobile.bundle.js',
     path: path.join(__dirname, 'build'),
@@ -19,18 +21,25 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
-      __DEVELOPMENT__: true,
+      'process.env':{
+        'NODE_ENV': JSON.stringify('development')
+      },
       BASE_URL: JSON.stringify('http://localhost:9009'),
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendors'],
+      filename: 'vendor.bundle.js'
+    })
   ],
 
   resolve: {
     extensions: ['', '.jsx', '.js', '.json'],
     modulesDirectories: ['node_modules', 'src'],
     alias: {
+      'react/lib/ReactMount': 'react-dom/lib/ReactMount',
       actions: __dirname + `/src/actions`,
       components: __dirname + `/src/components`,
       containers: __dirname + `/src/containers`,

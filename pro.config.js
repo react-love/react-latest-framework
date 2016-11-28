@@ -7,11 +7,14 @@ var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
 module.exports = {
-    // devtool: 'source-map',
-    entry: [
-        'babel-polyfill',
-        './src/index'
-    ],
+    devtool: false,
+    entry: {
+        app: [
+            'babel-polyfill',
+            './src/index'
+        ],
+        vendors: ['react', 'redux', 'react-redux']
+    },
     output: {
         filename: 'mobile.bundle.js',
         path: path.join(__dirname, 'build'),
@@ -21,7 +24,7 @@ module.exports = {
 
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': {
+            'process.env':{
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
@@ -29,6 +32,10 @@ module.exports = {
             compress: {
                 warnings: false
             }
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['vendors'],
+            filename: 'vendor.bundle.js'
         })
     ],
 
@@ -36,6 +43,7 @@ module.exports = {
         extensions: ['', '.jsx', '.js', '.json'],
         modulesDirectories: ['node_modules', 'src'],
         alias: {
+            'react/lib/ReactMount': 'react-dom/lib/ReactMount',
             actions: __dirname + `/src/actions`,
             components: __dirname + `/src/components`,
             containers: __dirname + `/src/containers`,

@@ -46,7 +46,7 @@ export class Nav extends Component {
         if (!navDetails.navMain) {
             return false
         } else {
-            var navComponent = navDetails.navMain.map(function(elem, index) {
+            var navComponent = navDetails.navMain.map((elem, index) => {
                 return (
                     <li key={index} className="style_li">
                         <img src={Nav.navImage[index+1]} className="style_img" />

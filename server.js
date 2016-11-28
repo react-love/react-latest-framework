@@ -1,5 +1,6 @@
 var express = require('express');
 var cors = require('cors')
+var compression = require('compression');
 var webpack = require('webpack');
 var webpackConfig = require('./dev.config.js');
 var webpackDevMiddleware = require("webpack-dev-middleware");
@@ -7,7 +8,7 @@ var webpackHotMiddleware = require('webpack-hot-middleware');
 var app = express();
 var path = require('path')
 var port = 3007;
-var open = require('open')
+// var open = require('open')
 
 const compiler = webpack(webpackConfig);
 
@@ -24,13 +25,13 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 app.use(webpackHotMiddleware(compiler));
-
+app.use(compression());
 app.use(express.static(__dirname + '/build/'))
 
 app.listen(port, function(err){
   if (err) {
-    console.log(err)
+    console.log('err : ', err)
   } else {
-    open(`http://localhost:${port}`)
+    console.log(`http://localhost:${port}`)
   }
 })
