@@ -3,7 +3,7 @@
  */
 import axios from 'axios'
 
-//封装好的get和post接口
+//封装好的get和post接口，调用方法情况action文件
 axios.defaults.baseURL = BASE_URL;
 
 export const getData = (url, param) => {

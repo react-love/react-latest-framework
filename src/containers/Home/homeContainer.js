@@ -4,6 +4,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import classNames from 'classnames'
+
+//关于import什么时候用{}，什么时候不用大括号，通过那个插件或者组件是否包含default来判断，如果包含，则不需要{}
 
 /*actions*/
 import * as navActions from 'actions/nav';
@@ -34,30 +37,55 @@ export class HomeContainer extends Component {
         //构造函数用法
         //常用来绑定自定义函数，切记不要在这里或者组件的任何位置setState，state全部在reducer初始化，相信对开发的后期很有帮助
         //例子：this.myfunction = this.myfunction.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentWillMount() {
-        if (this.props.nav.navMain.length === 0) {
+        const { navMain } = this.props.nav //这个叫做es6的解构赋值
+        if (navMain.length === 0) {
             this.props.getNav();
         }
     }
 
-    componentDidMount() {
-
+    handleClick() {
+        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
+        this.props.history.push('/')
     }
 
     render() {
-
+        const { navMain } = this.props.nav
+        //自定义样式
+        let DIVClass = classNames({
+            'main-body': false //true表示显示，false表示不显示该样式，可以根据state来判断是否显示
+        })
+        //还可以通过自定义样式传递给组件
+        let bgClass = {background: '#00bb9c'} //定义一个背景色的变量
         return(
-            <div>
+            <div className={DIVClass}>
                 <Header
-                    title="高校二手书城"
+                    title="react-redux架构"
                     imgUrl={search}
                     linkTo="/search"
+                    bgColor={bgClass}
+                    // {...this.props}当你需要在container调用子组件内部的属性，需要加上该语句，比如组件内部的ref
                 />
-                <Nav
-                    navList={this.props.nav}
-                />
+                <div className="style_div">
+                    <ul className="style_ul">
+                    {
+                        navMain.length > 0 ?
+                            navMain.map((elem, index) => {
+                                return (
+                                    <Nav
+                                        key={index}
+                                        title={elem.text}
+                                        index={index}
+                                        handleClick={() => this.handleClick()}
+                                    />
+                                )
+                            }) : ''
+                    }
+                    </ul>
+                </div>
                 <Special />
             </div>
         );

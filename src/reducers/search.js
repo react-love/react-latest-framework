@@ -45,10 +45,9 @@ let initData = {
 export function search(state = initData, action) {
     switch (action.type) {
         case 'RECEIVE_HOT_SEARCH':
-            let result = {
-                ...state,
+            return {
+                ...state
             }
-            return result;
 
         default:
             return state;

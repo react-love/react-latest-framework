@@ -9,10 +9,10 @@ require('./styles/header.less')
 const back = require('./files/back_search.png');
 const search = require('./files/search_1.png');
 
+//该组件没有做无状态优化处理，根据其他几个组件的优化方式，可以自行思考
 export class Header extends Component {
 
     render() {
-
         return (
             <div className="style_body">
                 <div className="style_main">

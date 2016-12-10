@@ -5,7 +5,7 @@ var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
-
+// 打包发布的时候执行的是该文件，全部静态资源会打包到build文件夹
 module.exports = {
     devtool: false,
     entry: {

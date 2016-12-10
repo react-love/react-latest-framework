@@ -2,12 +2,8 @@
  * Created by Administrator on 2016/7/2.
  */
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 require('./styles/special.less')
-
-/*const*/
-import * as con from 'utils/const';
 
 /*files*/
 const zht_1 = require('./files/zht1.jpg');

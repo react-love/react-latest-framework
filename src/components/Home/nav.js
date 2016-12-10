@@ -2,8 +2,6 @@
  * Created by Administrator on 2016/7/1.
  */
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-
 /*scss*/
 require('./styles/nav.less')
 
@@ -11,7 +9,6 @@ require('./styles/nav.less')
 import * as con from 'utils/const';
 
 /*files*/
-const search = require('./../../containers/Home/files/search.svg');
 const nav_1 = require('./files/nsyjr.png');
 const nav_2 = require('./files/nlswx.png');
 const nav_3 = require('./files/nflwx.png');
@@ -24,11 +21,7 @@ const nav_9 = require('./files/nother.png');
 
 
 export class Nav extends Component {
-
-    static propTypes = {
-        navList: React.PropTypes.object
-    }
-
+    // 自定义图片路径数组
     static navImage = {
         [con.NAV_IMAGE_1]: nav_1,
         [con.NAV_IMAGE_2]: nav_2,
@@ -42,26 +35,14 @@ export class Nav extends Component {
     }
 
     render() {
-        let navDetails = this.props.navList;
-        if (!navDetails.navMain) {
-            return false
-        } else {
-            var navComponent = navDetails.navMain.map((elem, index) => {
-                return (
-                    <li key={index} className="style_li">
-                        <img src={Nav.navImage[index+1]} className="style_img" />
-                        <span className="style_span">{elem.text}</span>
-                    </li>
-                )
-            });
-        }
-
+        const { title, img, index, handleClick } = this.props
+        // 如果是服务器传递过来的图标，就用img参数，否则就用自定义参数
+        //这个组件只有一个li标签包裹，通过container页面调用来实现组件的复用
         return (
-            <div className="style_div">
-                <ul className="style_ul">
-                    {navComponent}
-                </ul>
-            </div>
+            <li className="style_li" onClick={handleClick}>
+                <img src={Nav.navImage[index+1]} className="style_img" />
+                <span className="style_span">{title}</span>
+            </li>
         )
     }
 }

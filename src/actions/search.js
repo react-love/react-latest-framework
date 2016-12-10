@@ -1,10 +1,9 @@
 /**
  * Created by Administrator on 2016/7/2.
  */
-export const RECEIVE_HOT_SEARCH = 'RECEIVE_HOT_SEARCH';
-
+// action是一个纯对象，不要觉得它是一个函数，要看return回来的其实就是一个object
 export function receiveHotSearch() {
     return {
-        type: RECEIVE_HOT_SEARCH
+        type: 'RECEIVE_HOT_SEARCH'
     }
 }

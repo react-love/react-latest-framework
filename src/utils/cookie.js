@@ -1,5 +1,5 @@
 
-
+//保存cookie
 export function saveData(name, value, min) {
     if (min) {
         var date = new Date();
@@ -9,7 +9,7 @@ export function saveData(name, value, min) {
     else var expires = "";
     document.cookie = name + "=" + value + expires + "; path=/";
 }
-
+// 读取cookie
 export function readData(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -24,3 +24,4 @@ export function readData(name) {
 export function removeData(name) {
     saveData(name, "", -1);
 }
+// 开发者还可以自定义保存localstorage或者其他缓存方式的通用方法

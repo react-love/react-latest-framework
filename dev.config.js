@@ -3,10 +3,11 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
+// 开发模式下的配置文件，抽离了react，redux，react-redux等插件，如果你用到了其他重量型的插件，也可以分离出来给浏览器做缓存，避免每次请求都加载这些不会变的文件
 module.exports = {
   devtool: false,
   entry: {
-    app: ['webpack-hot-middleware/client?path=http://localhost:3007/__webpack_hmr&reload=true&noInfo=false&quiet=false',
+    app: ['webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false',
       'babel-polyfill',
       './src/index'
     ],
@@ -15,10 +16,10 @@ module.exports = {
   output: {
     filename: 'mobile.bundle.js',
     path: path.join(__dirname, 'build'),
-    publicPath: 'http://localhost:3007/build/',
+    publicPath: 'http://localhost:3011/build/',
     chunkFilename: '[id].[hash].bundle.js'
   },
-
+  // BASE_URL是全局的api接口访问地址
   plugins: [
     new webpack.DefinePlugin({
       'process.env':{
@@ -34,7 +35,7 @@ module.exports = {
       filename: 'vendor.bundle.js'
     })
   ],
-
+  // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
   resolve: {
     extensions: ['', '.jsx', '.js', '.json'],
     modulesDirectories: ['node_modules', 'src'],
@@ -89,4 +90,5 @@ module.exports = {
   postcss: function () {
     return [require('autoprefixer'), require('precss')];
   }
+  // autoprefixer是自动添加-webkit等前缀的插件，写css3样式的时候，不需要手动写-webkit，-o之类的
 };

@@ -10,6 +10,7 @@ export default (
     <Route path="/" component={AppContainer}>
         <Route path="home" component={HomeContainer} />
         <Route path="search" component={SearchContainer} />
+        {/*在这里添加你的Route*/}
     </Route>
 );
 

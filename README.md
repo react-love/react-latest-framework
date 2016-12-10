@@ -8,18 +8,21 @@ email：1130216245@qq.com
 
 csdn：http://blog.csdn.net/hyy1115  
 
-2016-11-22更新：  
+2016-12-11更新：  
+1、优化了多个组件，统一采用无状态组件的方式，复用性更强大  
+2、优化了action，reducer，component直接的逻辑关系  
+3、给大部分文件增加了文字解释，让新手能够看得懂代码为什么这样写  
+4、增加了移动端点击事件插件，解决300毫秒延迟问题  
+5、最近更新的都是我从近来项目重构过程中总结出来的解决方案，为了让项目的结构更加的合理清晰  
 
-修复react-hot-loader找不到react/lib部分模块的bug。将react和react-dom使用15.3.0或者以下版本  
-
-期待已久的功能！！！新增了node服务器，在我的另外一个开源项目node-express-server，解决了api跨域和cookie跨域不能保存的问题。如果使用这份前端代码，请同时下载我的node服务器开源项目做测试。
-[node-express-server](https://github.com/hyy1115/node-express-server)
+请同时下载我写的简易服务端做联合测试[node-express-server](https://github.com/hyy1115/node-express-server)，因为工程结构是通过服务端返回html模板来加载js的，这是我在企业级开发中经常使用到的功能。
 
 =========================
 
-注意：这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案，我个人用这套总结的方案已经发布了3个企业项目，
+注意：这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案，我个人用这套总结的方案已经发布了多个企业项目（公众号：速投盈，法狗狗，法纳）。
 
-该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。
+该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。服务端渲染没有做，这个功能还待考虑，个人觉得前后端分离方案已经足够解决目前的问题，服务端渲染会增加前后端的耦合。
+
 
 与github上其他开源不同的是，这份代码采用了合理的redux架构，适合个人或者团队开发。  
 
@@ -32,11 +35,15 @@ csdn：http://blog.csdn.net/hyy1115
 2, Method 2: 或者本地运行shell命令  
 ```
  git clone https://github.com/hyy1115/react-redux-webpack.git
+ 
+ 
+ 服务端项目，具体安装教程看 https://github.com/hyy1115/node-express-server
+ git clone https://github.com/hyy1115/node-express-server.git 
 ```
  
-3, 安装依赖包，注意react的版本号，因为最新版的react有一些bug还没有解决，可能会跟旧版的其他插件造成冲突，解决方案可以看相关社区的issue。
+3, 安装依赖包，已经解决了一些依赖包安装最新版可能出现的bug，如果还有问题，可以看相关社区的issue。
 ```
-npm install
+npm install 或者cnpm install
 ```
 
 4, 运行demo。
@@ -44,7 +51,7 @@ npm install
     npm start
    ```
 
-5, 将会开启3007端口，这个时候要注意，不是在浏览器访问3007端口，而是访问
+5, 将会开启3011端口，这个时候要注意，不是在浏览器访问3011端口，而是访问
 ```
 http://localhost:9009
 
@@ -53,11 +60,11 @@ http://localhost:9009
 为什么是访问服务器端口而不是前端开启的端口呢？
 
 这里涉及到跨域问题，跨域的本质就不说了，说说我的解决办法，我把index.html放在服务器端，每次请求服务器端口地址的时候，都将会返回一个html，这个html
-中的script标签会链接3007端口的mobile.bundle.js，这样就很巧妙的解决了跨域的问题，同时还能保证前端代码热更新可用。
+中的script标签会链接3011端口的mobile.bundle.js，这样就很巧妙的解决了跨域的问题，同时还能保证前端代码热更新可用。
 ```
 
-6, 发布,参考http://blgxbook.win/  
-  网页打开的很慢，需要稍等片刻，发布的纯静态页面，没有接node服务器，需要自己下载node-express-server部署。
+6, 发布,参考http://blgxbook.win/  (主机屋已经过期)
+
 ```
 npm run build
 ```
@@ -83,7 +90,7 @@ npm run build
 3，实现热更新，实时监控js和css的变化。  
 ```
 entry: [
-    'webpack-hot-middleware/client?path=http://localhost:3007/__webpack_hmr&reload=true&noInfo=false&quiet=false',
+    'webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false',
     'babel-polyfill',
     './src/index'
   ],
@@ -101,10 +108,8 @@ const receiveNav = (response) => {
 export const getNav = () => {
     return async (dispatch) => {
         try {
-            await getData(`/book/navigation`)
-                .then(response => {
-                    dispatch(receiveNav(response))
-                })
+            let response = await getData(`/book/navigation`)
+            await dispatch(receiveNav(response))
         } catch (error) {
             console.log('error: ', error)
         }

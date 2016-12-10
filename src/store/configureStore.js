@@ -4,7 +4,7 @@ import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
 let createStoreWithMiddleware;
-
+// store负责管理所有reducer，module.hot.accept表示支持热更新
 const logger = createLogger({ collapsed: true });
 createStoreWithMiddleware = applyMiddleware(
     thunkMiddleware,
