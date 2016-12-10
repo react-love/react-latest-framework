@@ -2,7 +2,7 @@
 ==========================================
 
 ####作者：二月  
-email：1130216245@qq.com  
+email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件给我  
 
 知乎：https://www.zhihu.com/people/er-yue-shi-xiong  
 
