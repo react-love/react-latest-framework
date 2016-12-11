@@ -9,6 +9,7 @@ email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件�
 csdn：http://blog.csdn.net/hyy1115  
 
 2016-12-11更新：  
+
 1、优化了多个组件，统一采用无状态组件的方式，复用性更强大  
 2、优化了action，reducer，component直接的逻辑关系  
 3、给大部分文件增加了文字解释，让新手能够看得懂代码为什么这样写  
@@ -71,40 +72,77 @@ npm run build
 
 ===========================================
 
-####相关介绍
-1，网站制作了两页，在页面之间路由跳转。  
+####如何应用本框架到你的项目上？
+1，在container文件夹下面新建你的页面父容器，比如本例子中的homeContainer，一个基本的container模板如下所示。  
 ```
-    <Route path="/" component={AppContainer}>
-        <Route path="home" component={HomeContainer} />
-        <Route path="search" component={SearchContainer} />
-    </Route>
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+@connect(
+    state => state,
+    dispatch => bindActionCreators(。。。, dispatch)
+)
+export class HomeContainer extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentWillMount() {
+        
+    }
+
+    render() {
+        return(
+            <div className="">
+                这里调用导入的各个子组件模块
+            </div>
+        );
+    }
+}
 ```
 
-2，组件负责调用action方法，然后分派到相应的reducer，reducer负责更新状态。  
+2，接着你就需要将定义好的container写入路由，这样你就可以在浏览器上通过路由访问这个页面了。  
 ```
-    componentWillMount() {
-        this.props.getNav();
+    import React from 'react';
+    import { Route } from 'react-router';
+    
+    /* containers */
+    import { AppContainer } from 'appContainer';
+    import { HomeContainer } from 'containers/Home/homeContainer';
+    
+    export default (
+        <Route path="/" component={AppContainer}>
+            <Route path="home" component={HomeContainer} />
+        </Route>
+    );
+```
+
+3，假设你现在已经在component下面写好了一个导航组件nav，然后你要在container发action去异步请求后端的导航API，将获取的数据dispatch到reducer中。  
+
+container部分
+```
+componentWillMount() {
+        const { navMain } = this.props.nav //这个叫做es6的解构赋值
+        if (navMain.length === 0) {
+        //如果state中的navMain对象为空，则调用getNav方法
+            this.props.getNav();
+        }
     }
 ```
+action部分
+```
+import { getData, postData } from 'utils/fetchData'
 
-3，实现热更新，实时监控js和css的变化。  
-```
-entry: [
-    'webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false',
-    'babel-polyfill',
-    './src/index'
-  ],
-```
-
-4，用axios包装数据访问层，并用最终的异步解决方案async，await做异步处理。  
-```
+//这个叫做action，用于更新reduer中的state
 const receiveNav = (response) => {
     return {
         type: 'RECEIVE_NAV',
         navMain: response.data
     }
 }
-
+//获取服务器的参数，并且返回一个异步的dispatch，dispatch的对象是自己定义的action
 export const getNav = () => {
     return async (dispatch) => {
         try {
@@ -117,25 +155,48 @@ export const getNav = () => {
 }
 ```
 
-5，配置jsx语法写if..else ...函数，但是三元表达式仍然可以使用。  
+reducers部分
 ```
-render() {
-    return (
-        <div>
-            {
-                do {
-                    if (true) {
-                    //这里不需要return方法，直接用dom结构表示
-                        <div>111</div>
-                    } else {
-                        <div>2222</div>
-                    }
-                }
+// 初始化状态
+let initNavList = {
+    navMain: []
+}
+
+export function nav(state = initNavList, action) {
+    switch (action.type) {
+        case 'RECEIVE_NAV':
+            return {
+                ...state,   //三个点是展开符
+                navMain: action.navMain
             }
-        </div>
-    )
+
+        default:
+            return {...state};
+    }
 }
 ```
+
+4，到这一步，你已经完成了基本的一个数据流的控制了，需要注意的是，reducers中自定义的reducer需要在reducers文件夹下面的index.js里面注册。
+  
+```
+import { combineReducers } from 'redux';
+import { routeReducer } from 'redux-simple-router';
+import {reducer as formReducer} from 'redux-form';
+
+import { nav } from './nav';
+
+//注册reducer，每个自定义的reducer都要来这里注册！！！不注册会报错。
+const rootReducer = combineReducers({
+  form: formReducer,
+  routing: routeReducer,
+  /* your reducers */
+  nav, //导航相关
+});
+
+export default rootReducer;
+```
+
+5，store文件夹下面的js已经配置好了，除非你需要加上react的谷歌调试插件，否则不需要做任何修改。  
 
 6，最重要的功能，跟node服务器端成功实现了交互，注意遵循restful规范。
 
