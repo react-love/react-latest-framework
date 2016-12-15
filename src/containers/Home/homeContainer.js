@@ -10,14 +10,18 @@ import classNames from 'classnames'
 
 /*actions*/
 import * as navActions from 'actions/nav';
+import * as bookActions from 'actions/book'
 
 /*component*/
 import { Header } from 'components/Home/header';
 import { Nav } from 'components/Home/nav';
 import { Special } from 'components/Home/Special';
+import { BookList } from 'components/Home/bookList'
 
 /*files*/
 const search = require('./files/search.svg');
+
+require(`./styles/home.less`)
 
 /**
  * connect中间件
@@ -28,7 +32,7 @@ const search = require('./files/search.svg');
 
 @connect(
     state => state,
-    dispatch => bindActionCreators(navActions, dispatch)
+    dispatch => bindActionCreators({...navActions, ...bookActions}, dispatch)
 )
 export class HomeContainer extends Component {
 
@@ -42,8 +46,13 @@ export class HomeContainer extends Component {
 
     componentWillMount() {
         const { navMain } = this.props.nav //这个叫做es6的解构赋值
+        const { bookDetails } = this.props.books
         if (navMain.length === 0) {
             this.props.getNav();
+        }
+
+        if (bookDetails.length === 0) {
+            this.props.getBook()
         }
     }
 
@@ -54,6 +63,7 @@ export class HomeContainer extends Component {
 
     render() {
         const { navMain } = this.props.nav
+        const { bookDetails } = this.props.books
         //自定义样式
         let DIVClass = classNames({
             'main-body': false //true表示显示，false表示不显示该样式，可以根据state来判断是否显示
@@ -86,7 +96,32 @@ export class HomeContainer extends Component {
                     }
                     </ul>
                 </div>
-                <Special />
+                <div>
+                    <p className="style_p">专题</p>
+                    <Special />
+                </div>
+                <div>
+                    <p className="style_p">书籍列表</p>
+                    {
+                        bookDetails.length > 0 ?
+                            bookDetails.map((ele, index) => {
+                                return (
+                                    <BookList
+                                        key={index}
+                                        _id={ele._id}
+                                        imgUrl={ele.imgUrl}
+                                        title={ele.title}
+                                        author={ele.author}
+                                        press={ele.press}
+                                        publishedDate={ele.publishedDate}
+                                        currentPrice={ele.currentPrice}
+                                        originalPrice={ele.originalPrice}
+                                        index={index + 1}
+                                    />
+                                )
+                            }) : ''
+                    }
+                </div>
             </div>
         );
     }

@@ -1,0 +1,143 @@
+.header {
+  position: relative;
+  width: 100%;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 1.7rem;
+
+  .a_link {
+    position: absolute;
+    display: block;
+    top: 0;
+    color: #6c6c6c;
+    right: 5%;
+    width: 38px;
+    height: 40px;
+    z-index: 100;
+    font-size: 0.9em;
+    font-weight: normal;
+
+    .a_img {
+      width: 100%;
+      margin-bottom: 3px;
+      vertical-align: middle;
+      outline: none;
+      height: auto;
+    }
+  }
+}
+
+.style_div {
+  width: 100%;
+  background: #fff;
+  padding: 5px 0;
+  overflow: hidden;
+  .style_ul {
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+    .style_li {
+      width: 33%;
+      float: left;
+      list-style: none;
+      text-align: center;
+      padding-bottom: 10px;
+      padding-top: 5px;
+      .style_img {
+        width: 35%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        margin-bottom: 3px;
+      }
+      .style_span {
+        color: #3c3c3c;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+.style_p {
+  font-size: 1.4rem;
+  padding: 5px 20px;
+  border-bottom: 1px solid #f9f9f9;
+}
+
+.style_main {
+  width: 100%;
+  background: #fff;
+  padding: 5px 0;
+  overflow: hidden;
+  .style_div {
+    width: 90%;
+    margin: 0 auto;
+    .style_left {
+      width: 50%;
+      height: auto;
+      display: inline-block;
+      box-sizing: border-box;
+      float: left;
+      text-align: left;
+    }
+    .style_right {
+      width: 50%;
+      height: auto;
+      display: inline-block;
+      box-sizing: border-box;
+      float: left;
+      text-align: right;
+    }
+    .style_img {
+      width: 95%;
+      height: auto;
+      border: 1px solid #e8e8e8;
+      vertical-align: middle;
+      outline: none;
+    }
+  }
+}
+
+.home-book-list {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.5rem solid #eee;
+  padding: 1rem 0;
+  .book-img {
+    position: relative;
+    width: 33.33%;
+    .book-index {
+      background: rgb(255,68,51);
+      color: rgb(255,255,255);
+      font-size: 1.2rem;
+      padding: 0 0.5rem;
+      line-height: 1.4rem;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    img {
+      max-width: 75%;
+      max-height: 5.55rem;
+      padding: 0.75rem 11.5% 0.75rem 13.5%;
+    }
+  }
+  .book-contain {
+    width: 66.66%;
+    display: inline-flex;
+    flex-direction: column;
+    .book-title {
+      color: #3f3f3f;
+      font-size: 1.6rem;
+      line-height: 1.8rem;
+    }
+    .book-author {
+      color: #a0a0a0;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+    }
+  }
+}

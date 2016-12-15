@@ -3,8 +3,6 @@
  */
 import React, { Component } from 'react';
 
-require('./styles/special.less')
-
 /*files*/
 const zht_1 = require('./files/zht1.jpg');
 const zht_2 = require('./files/zht2.jpg');
@@ -15,7 +13,6 @@ export class Special extends Component {
 
         return (
             <div className="style_main">
-                <p className="style_p">专题</p>
                 <div className="style_div">
                     <div className="style_left">
                         <img src={zht_1} className="style_img" />

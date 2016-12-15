@@ -2,8 +2,6 @@
  * Created by Administrator on 2016/7/1.
  */
 import React, { Component } from 'react';
-/*scss*/
-require('./styles/nav.less')
 
 /*const*/
 import * as con from 'utils/const';

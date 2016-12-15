@@ -4,9 +4,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-/*style*/
-require('./styles/header.less')
-
 export class Header extends Component {
     //注意，组件内部也可能有时候会暴露事件给外部调用，和参数传递的原理一样
     render() {
