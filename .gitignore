@@ -57,3 +57,5 @@ ios
 .babelrc
 npm-debug.log
 build/
+
+.idea/
