@@ -4,8 +4,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-require('./styles/hotSearch.less')
-
 export class HotSearch extends Component {
 
     render() {

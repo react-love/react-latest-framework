@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+require(`./styles/search.less`)
+
 /*actions*/
 import * as searchActions from 'actions/search';
 
@@ -40,6 +42,10 @@ export class SearchContainer extends Component {
             <div>
                 <Header />
                 <div>
+                    <p className="search-hot-title">
+                        <i className="fa fa-fire"></i>
+                        <span>热门搜索</span>
+                    </p>
                     <p className="style_div_p">
                         {
                             hotData.length > 0 ?
