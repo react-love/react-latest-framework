@@ -10,7 +10,7 @@ export class BookList extends Component {
         const {_id, imgUrl, title, author, press, publishedDate, currentPrice, originalPrice, index} = this.props
 
         return (
-            <Link data-id={_id} className="home-book-list">
+            <Link to={`/bookList/${_id}`} data-id={_id} className="home-book-list">
                 <div className="book-img">
                     <span className="book-index">{index}</span>
                     <img className="" src={imgUrl} />

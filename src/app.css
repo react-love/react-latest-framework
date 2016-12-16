@@ -11,6 +11,9 @@ body, html {
     max-width: 640px;
     margin: 0 auto;
 }
+a {
+    text-decoration: none;
+}
 /*隐藏文本*/
 .textOverflow-hidden {
     overflow: hidden;

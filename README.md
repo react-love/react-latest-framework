@@ -1,12 +1,14 @@
 ###不能再多了——热更新、ES6/7、LESS、Router、async／await、本地node服务器，真实路由...
 ==========================================
 
-####作者：二月  
 email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件给我  
+
+本源码gitbook教程：https://www.gitbook.com/book/hyy1115/react-redux/details（正在撰写中）
 
 知乎：https://www.zhihu.com/people/er-yue-shi-xiong  
 
-csdn：http://blog.csdn.net/hyy1115  
+csdn：http://blog.csdn.net/hyy1115   
+      https://hyy1115.github.io/huangyongyue/
 
 2016-12-11更新：  
 
