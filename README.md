@@ -51,7 +51,11 @@ npm install 或者cnpm install
 
 4, 运行demo。
    ```
-    npm start
+    mac
+    npm run start-mac
+    
+    windows
+    npm run start-win
    ```
 
 5, 将会开启3011端口，这个时候要注意，不是在浏览器访问3011端口，而是访问
@@ -69,7 +73,11 @@ http://localhost:9009
 6, 发布,参考http://blgxbook.win/  (主机屋已经过期)
 
 ```
-npm run build
+mac
+npm run build-mac
+
+windows
+npm run build-win
 ```
 
 ===========================================
