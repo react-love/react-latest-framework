@@ -2,22 +2,24 @@ var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // 开发模式下的配置文件，抽离了react，redux，react-redux等插件，如果你用到了其他重量型的插件，也可以分离出来给浏览器做缓存，避免每次请求都加载这些不会变的文件
 module.exports = {
   devtool: false,
   entry: {
-    app: ['webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false',
+    app: [
+      'webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false',
       'babel-polyfill',
       './src/index'
     ],
-    vendors: ['react', 'redux', 'react-redux']
+    vendor: ['react']
   },
   output: {
-    filename: 'mobile.bundle.js',
+    filename: '[name].js',
     path: path.join(__dirname, 'build'),
     publicPath: 'http://localhost:3011/build/',
-    chunkFilename: '[id].[hash].bundle.js'
+    chunkFilename: '[name].js'
   },
   // BASE_URL是全局的api接口访问地址
   plugins: [
@@ -27,17 +29,18 @@ module.exports = {
       },
       BASE_URL: JSON.stringify('http://localhost:9009'),
     }),
+    // new ExtractTextPlugin('[name].css'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendors'],
-      filename: 'vendor.bundle.js'
+      names: ['vendor'],
+      filename: 'vendor.js'
     })
   ],
   // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
   resolve: {
-    extensions: ['', '.jsx', '.js', '.json'],
+    extensions: ['', '.js', '.jsx', '.less', '.scss', '.css'],
     modulesDirectories: ['node_modules', 'src'],
     alias: {
       'react/lib/ReactMount': 'react-dom/lib/ReactMount',
@@ -61,7 +64,7 @@ module.exports = {
           presets: ["react-hmre"]
         }
       }
-    }, {
+    },{
       test:   /\.less$/,
       loader: "style-loader!css-loader!less!postcss-loader"
     },  {

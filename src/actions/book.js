@@ -3,20 +3,16 @@
  */
 import { getData, postData } from 'utils/fetchData'
 
-const receiveBook = (response) => {
-    return {
-        type: 'RECEIVE_BOOK',
-        bookDetails: response.data
-    }
-}
+const receiveBook = (response) => ({
+    type: 'RECEIVE_BOOK',
+    bookDetails: response.data
+})
 
-export const getBook = () => {
-    return async (dispatch) => {
-        try {
-            let response = await getData(`/book/list`)
-            await dispatch(receiveBook(response))
-        } catch (error) {
-            console.log('error: ', error)
-        }
+export const getBook = () => async (dispatch, getState) => {
+    try {
+        let response = await getData(`/book/list`)
+        await dispatch(receiveBook(response))
+    } catch (error) {
+        console.log('error: ', error)
     }
 }

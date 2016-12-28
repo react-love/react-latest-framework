@@ -5,6 +5,8 @@ var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 // 打包发布的时候执行的是该文件，全部静态资源会打包到build文件夹
 module.exports = {
     devtool: false,
@@ -13,13 +15,13 @@ module.exports = {
             'babel-polyfill',
             './src/index'
         ],
-        vendors: ['react', 'redux', 'react-redux']
+        vendor: ['react']
     },
     output: {
-        filename: 'mobile.bundle.js',
+        filename: '[name].js',
         path: path.join(__dirname, 'build'),
-        publicPath: '/build/',
-        chunkFilename: '[id].[hash].bundle.js'
+        publicPath: 'http://localhost:3011/build/',
+        chunkFilename: '[name].js'
     },
 
     plugins: [
@@ -34,13 +36,14 @@ module.exports = {
             }
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendors'],
-            filename: 'vendor.bundle.js'
+            names: ['vendor'],
+            filename: 'vendor.js'
         })
+        // new ExtractTextPlugin("styles.css")
     ],
 
     resolve: {
-        extensions: ['', '.jsx', '.js', '.json'],
+        extensions: ['', '.js', '.jsx', '.less', '.scss', '.css'],
         modulesDirectories: ['node_modules', 'src'],
         alias: {
             'react/lib/ReactMount': 'react-dom/lib/ReactMount',
@@ -56,8 +59,14 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.js$/,
-            loaders: ['babel-loader'],
-            exclude: /node_modules/
+            loaders: ['react-hot', 'babel-loader'],
+            exclude: /node_modules/,
+            include: path.join(__dirname, 'src'),
+            env: {
+                development: {
+                    presets: ["react-hmre"]
+                }
+            }
         }, {
             test:   /\.less$/,
             loader: "style-loader!css-loader!less!postcss-loader"
@@ -65,25 +74,23 @@ module.exports = {
             test:   /\.css/,
             loader: "style-loader!css-loader!postcss-loader"
         }, {
-            test: /\.png$/,
-            loader: 'file?name=[md5:hash:base64:10].[ext]'
+            test: /\.(png|gif|svg)$/i,
+            loaders: [
+                'file?hash=sha512&digest=hex&name=[hash].[ext]',
+                'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            ]
         }, {
-            test: /\.jpg$/,
+            test: /\.(jpg|jpeg)/,
             loader: 'file?name=[md5:hash:base64:10].[ext]'
-        }, {
-            test: /\.gif$/,
-            loader: 'file?name=[name].[ext]'
         }, {
             test: /\.json$/,
             loader: 'json'
         }, {
             test: /\.md$/,
             loader: 'file?name=[name].[ext]'
-        }, {
-            test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-            loader: 'url?limit=10000&mimetype=image/svg+xml'
         }],
     },
+
     postcss: function () {
         return [require('autoprefixer'), require('precss')];
     }

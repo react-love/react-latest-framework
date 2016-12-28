@@ -62,6 +62,7 @@ export class HomeContainer extends Component {
     }
 
     render() {
+        console.log(8888)
         const { navMain } = this.props.nav
         const { bookDetails } = this.props.books
         //自定义样式

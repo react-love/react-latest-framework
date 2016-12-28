@@ -1,17 +1,27 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
-/* containers */
-import { AppContainer } from 'appContainer';
-import { HomeContainer } from 'containers/Home/homeContainer';
-import { SearchContainer } from 'containers/Search/searchContainer';
-import { BookListContainer } from 'containers/BookList/bookListContainer'
+import { AppContainer } from './appContainer';
+import { HomeContainer } from './containers/Home/homeContainer';
+
+const searchContainer = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('./containers/Search/searchContainer').default)
+    },'search')
+}
+
+const bookListContainer = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('./containers/BookList/bookListContainer').default)
+    },'bookList')
+}
 
 export default (
     <Route path="/" component={AppContainer}>
+        <IndexRoute component={HomeContainer} />
         <Route path="home" component={HomeContainer} />
-        <Route path="search" component={SearchContainer} />
-        <Route path="bookList/:bookId" component={BookListContainer}/>
+        <Route path="search" getComponent={searchContainer} />
+        <Route path="bookList/:bookId" getComponent={bookListContainer}/>
         {/*在这里添加你的Route*/}
     </Route>
 );

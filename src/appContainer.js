@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as css from './app.css'
+import './app.less'
 /* application components */
 
 @connect (

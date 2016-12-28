@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-require(`./styles/search.less`)
+import './styles/search.less'
 
 /*actions*/
 import * as searchActions from 'actions/search';
@@ -17,7 +17,7 @@ import { HotSearch } from 'components/Search/HotSearch';
     state => state,
     dispatch => bindActionCreators(searchActions, dispatch)
 )
-export class SearchContainer extends Component {
+export default class SearchContainer extends Component {
 
     constructor(props) {
         super(props);

@@ -17,7 +17,7 @@ import { Header } from 'components/Home/header';
     state => state,
     dispatch => bindActionCreators({...navActions, ...bookActions}, dispatch)
 )
-export class BookListContainer extends Component {
+export default class BookListContainer extends Component {
 
     constructor(props) {
         super(props);

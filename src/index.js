@@ -11,12 +11,11 @@ const store = configureStore();
 //解决移动端300毫秒延迟
 FastClick.attach(document.body);
 
-ReactDOM.render((
+ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Redirect from="/" to="home" />
             {routes}
         </Router>
-    </Provider>),
+    </Provider>,
     document.getElementById('root')
 );
