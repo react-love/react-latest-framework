@@ -1,4 +1,4 @@
-###不能再多了——热更新、ES6/7、LESS、Router、async／await、本地node服务器，真实路由...
+###热更新、ES6/7、LESS、Router、async／await、本地node服务器，真实路由，懒加载...
 ==========================================
 
 email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件给我  
@@ -7,28 +7,19 @@ email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件�
 
 https://hyy1115.github.io/huangyongyue/  
 
-2016-12-11更新：  
+2016-12-28更新：  
 
-1、优化了多个组件，统一采用无状态组件的方式，复用性更强大  
-2、优化了action，reducer，component直接的逻辑关系  
-3、给大部分文件增加了文字解释，让新手能够看得懂代码为什么这样写  
-4、增加了移动端点击事件插件，解决300毫秒延迟问题  
-5、最近更新的都是我从近来项目重构过程中总结出来的解决方案，为了让项目的结构更加的合理清晰  
+1、实现懒加载路由，js按路由切割打包。（服务端渲染必备技能）
 
-请同时下载我写的简易服务端做联合测试[node-express-server](https://github.com/hyy1115/node-express-server)，因为工程结构是通过服务端返回html模板来加载js的，这是我在企业级开发中经常使用到的功能。
+请同时下载我写的简易服务端做联合测试[node-express-server](https://github.com/hyy1115/node-express-server)，因为工程结构是通过服务端返回html模板来加载js的，为了解决跨域问题。
 
 =========================
 
-注意：这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案，我个人用这套总结的方案已经发布了多个企业项目（公众号：速投盈，法狗狗，法纳）。
+这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案，我个人用这套总结的方案已经发布了多个企业项目（公众号：速投盈，法狗狗，法纳）。该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。
 
-该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。服务端渲染没有做，这个功能还待考虑，个人觉得前后端分离方案已经足够解决目前的问题，服务端渲染会增加前后端的耦合。
-
-
-与github上其他开源不同的是，这份代码采用了合理的redux架构，适合个人或者团队开发。  
-
-有遇到issue的开发者可以反馈给我，有其他插件使用不明白的也可以反馈。
-
+ ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.png)
 ==========================
+
 ####Installation教程
 1, Method 1: 下载源代码到本地  
 
@@ -76,6 +67,8 @@ npm run build-mac
 windows
 npm run build-win
 ```
+压缩效果图
+![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/fenxi.png)
 
 ===========================================
 
