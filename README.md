@@ -1,11 +1,11 @@
 ###热更新、ES6/7、LESS、Router、async／await、本地node服务器，真实路由，懒加载...
 ==========================================
 
-email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件给我  
+email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件给我 ，想要交流的可以加qq。 
 
 本源码gitbook教程：https://www.gitbook.com/book/hyy1115/react-redux/details  （正在撰写中）
 
-https://hyy1115.github.io/huangyongyue/  
+我的简历：https://hyy1115.github.io/huangyongyue/  （可以查看本框架上线产品）  
 
 2016-12-28更新：  
 
@@ -15,15 +15,15 @@ https://hyy1115.github.io/huangyongyue/
 
 =========================
 
-这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案，我个人用这套总结的方案已经发布了多个企业项目（公众号：速投盈，法狗狗，法纳）。该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。
+这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案，我个人用这套总结的方案已经发布了多个企业项目（公众号：速投盈，法狗狗，法纳等多家律所多个定制版本）。该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。
 
  ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.png)
 ==========================
 
 ####Installation教程
-1, Method 1: 下载源代码到本地  
+1, 方法 1: 下载源代码到本地  
 
-2, Method 2: 或者本地运行shell命令  
+2, 方法 2: 或者本地运行shell命令  
 ```
  git clone https://github.com/hyy1115/react-redux-webpack.git
  
