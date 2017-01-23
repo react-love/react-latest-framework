@@ -1,7 +1,6 @@
 ###热更新、ES6/7、LESS、Router、async／await、本地node服务器，真实路由，懒加载...
-==========================================
 
-email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件给我 ，想要交流的可以加qq。 
+==========================================
 
 本源码gitbook教程：https://www.gitbook.com/book/hyy1115/react-redux/details  （正在撰写中）
 
@@ -15,7 +14,7 @@ email：点击<a href="mailto:1130216245@qq.com">1130216245@qq.com</a>发邮件�
 
 =========================
 
-这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案，我个人用这套总结的方案已经发布了多个企业项目（公众号：速投盈，法狗狗，法纳等多家律所多个定制版本）。该方案包含了开发阶段的调试，代码检查，开发效率，实时更新，state存储模式，异步模式，组件结构的管理，打包部署到服务器。
+这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案。
 
  ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.png)
 ==========================
@@ -58,7 +57,7 @@ http://localhost:9009
 中的script标签会链接3011端口的mobile.bundle.js，这样就很巧妙的解决了跨域的问题，同时还能保证前端代码热更新可用。
 ```
 
-6, 发布,参考http://blgxbook.win/  (主机屋已经过期)
+6, 发布
 
 ```
 mac
@@ -214,27 +213,6 @@ export default rootReducer;
 state初始为空，初次渲染页面必然会导致某个参数为空，那么只需要在组件里面做个简单的判断即可，防止把空参数传递进来，也有其他的解决办法，比如我在header组件里面用到的判断。
 
 4、webpack配置错误，也会导致热更新失败，或者打包失败，不了解webpack机制的还需要多多研究webpack的用法。
-
-
-
-=====================================================
-
-####版本更新说明
-从第一次发布react-redux版本到现在，已经做了好几次重大修复，抛弃了一些方案，也增加了一些方案。
-
-sass/scss：在第二版发布到时候就已经删除，并没有有效提高样式到管理效率和布局效率，而且需要安装framework 2.0，看到这我就默默到选择了放弃，不想折腾mac。
-
-less：目前到版本采用到方案，安装依赖包简单，语法也和scss相似，后期我打算用flex来做开发，不排除抛弃less，重新回到css到怀抱。
-
-路由到选择：有2个方案，hashHistory 和 browserHistory，初期采用到是hashHistory，但是由于不是真实路由，所以目前到版本我把它更换成了browserHistory，
-browserHistory有个问题要注意，当刷新网页到时候，会找不到真实路径，需要在server做一些配置，具体可以看我在本地server上写到代码。
-
-JSX：JSX语法不再只是支持三元表达式，还支持if（）else（），强大到没话可说。
-
-异步用fetch还是axios：fetch到方案我也用过，具体看http://sutouying.cn  ，axios是我目前使用到插件，具体看http://www.fagougou.com  ，
-这2个方案可操作性都差不多，在使用babel编译到条件下，没有明显区别，都可以使用。
-
-async还是promise：不用纠结这个问题，我们知道fetch通常和promise结合使用，而用axios，我更喜欢使用async，有时候也会用到promise。
 
 ==================================================
 
