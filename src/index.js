@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Redirect, hashHistory, browserHistory } from 'react-router';
 import configureStore from './store/configureStore';
 import routes from './routes';
 var FastClick = require('fastclick');
@@ -13,9 +12,7 @@ FastClick.attach(document.body);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory}>
-            {routes}
-        </Router>
+        {routes}
     </Provider>,
     document.getElementById('root')
 );

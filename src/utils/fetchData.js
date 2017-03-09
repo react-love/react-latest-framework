@@ -4,11 +4,15 @@
 import axios from 'axios'
 
 //封装好的get和post接口，调用方法情况action文件
-axios.defaults.baseURL = BASE_URL;
+export let instance = axios.create({
+    // baseURL: API_URL, //设置默认api路径
+    timeout: 10000, //设置超时时间
+    headers: {'X-Custom-Header': 'foobar'}
+});
 
 export const getData = (url, param) => {
     return (
-        axios.get(`${url}`, {
+        instance.get(`${url}`, {
             params: param
         })
     )
@@ -16,6 +20,6 @@ export const getData = (url, param) => {
 
 export const postData = (url, param) => {
     return (
-        axios.post(`${url}`, param)
+        instance.post(`${url}`, param)
     )
 }

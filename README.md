@@ -1,16 +1,24 @@
-###热更新、ES6/7、LESS、Router、async／await、本地node服务器，真实路由，懒加载...
+###热更新、ES6/7、LESS、Router、redux、async／await、本地node服务器，按需加载...
 
 ==========================================
 
 本源码gitbook教程：https://www.gitbook.com/book/hyy1115/react-redux/details  （正在撰写中）
 
-我的简历：https://hyy1115.github.io/huangyongyue/  （可以查看本框架上线产品）  
+欢迎加我交流：https://hyy1115.github.io/huangyongyue/  （可以查看本框架上线产品）  
 
-2016-12-28更新：  
+2017-03-10更新：  
 
-1、实现懒加载路由，js按路由切割打包。（服务端渲染必备技能）
+1、增加proxy代理解决跨域，详情可以查看我写的相关文档：https://segmentfault.com/a/1190000008635891  
 
-请同时下载我写的简易服务端做联合测试[node-express-server](https://github.com/hyy1115/node-express-server)，因为工程结构是通过服务端返回html模板来加载js的，为了解决跨域问题。
+2、将api移植到前端服务器访问，避免安装后端。
+
+3、增加ajax请求超时设置，默认设置10s超时。
+
+4、更新react-router版本为3.0.2稳定版。
+
+5、删除不必要的插件，并且优化了路由部分的代码。
+
+6、优化了打包代码。
 
 =========================
 
@@ -26,9 +34,6 @@
 ```
  git clone https://github.com/hyy1115/react-redux-webpack.git
  
- 
- 服务端项目，具体安装教程看 https://github.com/hyy1115/node-express-server
- git clone https://github.com/hyy1115/node-express-server.git 
 ```
  
 3, 安装依赖包，已经解决了一些依赖包安装最新版可能出现的bug，如果还有问题，可以看相关社区的issue。
@@ -45,19 +50,13 @@ npm install 或者cnpm install
     npm run start-win
    ```
 
-5, 将会开启3011端口，这个时候要注意，不是在浏览器访问3011端口，而是访问
+5, 将会开启3011端口.
 ```
-http://localhost:9009
+http://localhost:3011
 
-9009是node服务器的端口号，你最好先运行我发布的node开源项目，然后再和你的node合并解决方案。  
-
-为什么是访问服务器端口而不是前端开启的端口呢？
-
-这里涉及到跨域问题，跨域的本质就不说了，说说我的解决办法，我把index.html放在服务器端，每次请求服务器端口地址的时候，都将会返回一个html，这个html
-中的script标签会链接3011端口的mobile.bundle.js，这样就很巧妙的解决了跨域的问题，同时还能保证前端代码热更新可用。
 ```
 
-6, 发布
+6, 打包发布。
 
 ```
 mac
@@ -145,7 +144,7 @@ const receiveNav = (response) => {
 export const getNav = () => {
     return async (dispatch) => {
         try {
-            let response = await getData(`/book/navigation`)
+            let response = await getData(`/api/book/navigation`)
             await dispatch(receiveNav(response))
         } catch (error) {
             console.log('error: ', error)
@@ -180,13 +179,11 @@ export function nav(state = initNavList, action) {
 ```
 import { combineReducers } from 'redux';
 import { routeReducer } from 'redux-simple-router';
-import {reducer as formReducer} from 'redux-form';
 
 import { nav } from './nav';
 
 //注册reducer，每个自定义的reducer都要来这里注册！！！不注册会报错。
 const rootReducer = combineReducers({
-  form: formReducer,
   routing: routeReducer,
   /* your reducers */
   nav, //导航相关
@@ -196,10 +193,6 @@ export default rootReducer;
 ```
 
 5，store文件夹下面的js已经配置好了，除非你需要加上react的谷歌调试插件，否则不需要做任何修改。  
-
-6，最重要的功能，跟node服务器端成功实现了交互，注意遵循restful规范。
-
-[node-express-server](https://github.com/hyy1115/node-express-server)
 
 ===================================================
 
