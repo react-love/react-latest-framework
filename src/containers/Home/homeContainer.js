@@ -62,7 +62,6 @@ export class HomeContainer extends Component {
     }
 
     render() {
-        console.log(8888)
         const { navMain } = this.props.nav
         const { bookDetails } = this.props.books
         //自定义样式
@@ -70,7 +69,7 @@ export class HomeContainer extends Component {
             'main-body': false //true表示显示，false表示不显示该样式，可以根据state来判断是否显示
         })
         //还可以通过自定义样式传递给组件
-        let bgClass = {background: '#00bb9c'} //定义一个背景色的变量
+        let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
         return(
             <div className={DIVClass}>
                 <Header
@@ -83,7 +82,7 @@ export class HomeContainer extends Component {
                 <div className="style_div">
                     <ul className="style_ul">
                     {
-                        navMain.length > 0 ?
+                        !_.isEmpty(navMain) > 0 &&
                             navMain.map((elem, index) => {
                                 return (
                                     <Nav
@@ -93,7 +92,7 @@ export class HomeContainer extends Component {
                                         handleClick={() => this.handleClick()}
                                     />
                                 )
-                            }) : ''
+                            })
                     }
                     </ul>
                 </div>
@@ -104,7 +103,7 @@ export class HomeContainer extends Component {
                 <div>
                     <p className="style_p">书籍列表</p>
                     {
-                        bookDetails.length > 0 ?
+                        !_.isEmpty(bookDetails) &&
                             bookDetails.map((ele, index) => {
                                 return (
                                     <BookList
@@ -120,7 +119,7 @@ export class HomeContainer extends Component {
                                         index={index + 1}
                                     />
                                 )
-                            }) : ''
+                            })
                     }
                 </div>
             </div>

@@ -31,9 +31,9 @@ if (isPro) {
           },
           BASE_URL: JSON.stringify('http://localhost:9009'),
       }),
-      new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+      // new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.HotModuleReplacementPlugin()
+      // new webpack.NoErrorsPlugin()
   )
 }
 
@@ -56,58 +56,28 @@ module.exports = {
   plugins,
   // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
   resolve: {
-    extensions: ['', '.js', '.jsx', '.less', '.scss', '.css'],
-    modulesDirectories: ['node_modules', 'src'],
-    alias: {
-      'react/lib/ReactMount': 'react-dom/lib/ReactMount',
-      actions: __dirname + `/src/actions`,
-      components: __dirname + `/src/components`,
-      containers: __dirname + `/src/containers`,
-      reducers: __dirname + `/src/reducers`,
-      store: __dirname + `/src/store`,
-      utils: __dirname + `/src/utils`
-    }
+    extensions: ['.js', '.jsx', '.less', '.scss', '.css'],
+    modules: [
+      path.resolve(__dirname, 'node_modules'),
+      path.join(__dirname, './src')
+    ]
   },
 
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel-loader'],
-      exclude: /node_modules/,
-      include: path.join(__dirname, 'src'),
-      env: {
-        development: {
-          presets: ["react-hmre"]
-        }
-      }
-    },{
-      test:   /\.less$/,
-      loader: "style-loader!css-loader!less!postcss-loader"
-    },  {
-      test:   /\.css/,
-      loader: "style-loader!css-loader!postcss-loader"
-    }, {
-      test: /\.png$/,
-      loader: 'file?limit=10000&name=[md5:hash:base64:10].[ext]'
-    }, {
-      test: /\.jpg$/,
-      loader: 'file?limit=10000&name=[md5:hash:base64:10].[ext]'
-    }, {
-      test: /\.gif$/,
-      loader: 'file?limit=10000&name=[name].[ext]'
-    }, {
-      test: /\.json$/,
-      loader: 'json'
-    }, {
-      test: /\.md$/,
-      loader: 'file?name=[name].[ext]'
-    }, {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=image/svg+xml'
-    }],
-  },
-  postcss: function () {
-    return [require('autoprefixer'), require('precss')];
+      rules: [{
+          test: /\.(js|jsx)$/,
+          use: ['babel-loader'],
+          exclude: /node_modules/,
+          include: path.join(__dirname, 'src')
+      }, {
+          test: /\.(less|css)$/,
+          use: ["style-loader", "css-loader", "less-loader", "postcss-loader"]
+      }, {
+          test: /\.(png|jpg|gif|md)$/,
+          use: ['file-loader?limit=10000&name=[md5:hash:base64:10].[ext]']
+      }, {
+          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+          use: ['url-loader?limit=10000&mimetype=image/svg+xml']
+      }],
   }
-  // autoprefixer是自动添加-webkit等前缀的插件，写css3样式的时候，不需要手动写-webkit，-o之类的
 };

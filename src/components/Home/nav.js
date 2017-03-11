@@ -32,6 +32,13 @@ export class Nav extends Component {
         [con.NAV_IMAGE_9]: nav_9
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (_.isEqual(this.props, nextProps) || !_.isEmpty(this.props)) {
+            return false
+        }
+        return true
+    }
+
     render() {
         const { title, img, index, handleClick } = this.props
         // 如果是服务器传递过来的图标，就用img参数，否则就用自定义参数

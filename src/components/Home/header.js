@@ -6,6 +6,13 @@ import { Link } from 'react-router';
 
 export class Header extends Component {
     //注意，组件内部也可能有时候会暴露事件给外部调用，和参数传递的原理一样
+    shouldComponentUpdate(nextProps, nextState) {
+        if (_.isEqual(this.props, nextProps) || !_.isEmpty(this.props)) {
+            return false
+        }
+        return true
+    }
+
     render() {
         const {title, imgUrl, linkTo, bgColor} = this.props
         //提供4个接口参数给container做设置，可以不传参。

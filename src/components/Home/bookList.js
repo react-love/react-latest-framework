@@ -6,9 +6,15 @@ import { Link } from 'react-router';
 
 export class BookList extends Component {
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (_.isEqual(this.props, nextProps) || !_.isEmpty(this.props)) {
+            return false
+        }
+        return true
+    }
+
     render() {
         const {_id, imgUrl, title, author, press, publishedDate, currentPrice, originalPrice, index} = this.props
-
         return (
             <Link to={`/bookList/${_id}`} data-id={_id} className="home-book-list">
                 <div className="book-img">

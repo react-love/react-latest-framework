@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute, Router, Redirect, hashHistory, browserHistory } from 'react-router';
+import { Route, IndexRoute, Router, Redirect } from 'react-router';
 
 import { AppContainer } from './appContainer';
 import { HomeContainer } from './containers/Home/homeContainer';
@@ -17,14 +17,12 @@ const bookListContainer = (location, cb) => {
 }
 
 export default (
-    <Router history={browserHistory}>
-        <Route path="/" component={AppContainer}>
-            <IndexRoute component={HomeContainer} />
-            <Route path="home" component={HomeContainer} />
-            <Route path="search" getComponent={searchContainer} />
-            <Route path="bookList/:bookId" getComponent={bookListContainer}/>
-            {/*在这里添加你的Route*/}
-        </Route>
-    </Router>
+    <Route path="/" component={AppContainer}>
+        <IndexRoute component={HomeContainer} />
+        <Route path="home" component={HomeContainer} />
+        <Route path="search" getComponent={searchContainer} />
+        <Route path="bookList/:bookId" getComponent={bookListContainer}/>
+        {/*在这里添加你的Route*/}
+    </Route>
 );
 
