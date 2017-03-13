@@ -26,7 +26,9 @@
 
 这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案。
 
- ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.png)
+状态树  
+![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/store.png) 
+
 ==========================
 
 ####Installation教程
@@ -66,9 +68,7 @@ npm run build-mac
 
 windows
 npm run build-win
-```
-压缩效果图
-![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/fenxi.png)
+``` 
 
 ===========================================
 
@@ -195,6 +195,11 @@ export default rootReducer;
 ```
 
 5，store文件夹下面的js已经配置好了，除非你需要加上react的谷歌调试插件，否则不需要做任何修改。  
+
+![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.png)
+
+压缩效果图  
+![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/fenxi.png)
 
 ===================================================
 
