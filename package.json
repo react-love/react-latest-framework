@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "export NODE_ENV=development && nodemon server.js",
-    "start-mac": "export NODE_ENV=development && nodemon server.js",
-    "start-win": "set NODE_ENV=development && nodemon server.js",
+    "start": "export NODE_ENV=development && node server.js",
+    "start-mac": "export NODE_ENV=development && node server.js",
+    "start-win": "set NODE_ENV=development && node server.js",
     "lint": "eslint src",
     "build-mac": "export NODE_ENV=production && webpack --progress --verbose --colors --display-error-details --config webpack.config.js",
     "build-win": "set NODE_ENV=production && webpack --progress --verbose --colors --display-error-details --config webpack.config.js"
@@ -53,7 +53,6 @@
     "jasmine-core": "^2.3.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.2",
-    "nodemon": "^1.11.0",
     "nuka-carousel": "^2.0.1",
     "open": "0.0.5",
     "postcss-loader": "^0.7.0",
