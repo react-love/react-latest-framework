@@ -27,6 +27,8 @@ const options = {
 
 const compiler = webpack(webpackConfig);
 
+app.use(compression());
+
 app.use(webpackDevMiddleware(compiler, {
   historyApiFallback: true,
   noInfo: true,
@@ -38,8 +40,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 app.use(webpackHotMiddleware(compiler));
-app.use(compression());
-app.use(express.static(__dirname + '/build/'))
+// app.use(express.static(path.join(__dirname, 'build')))
 
 // 首页导航接口
 app.get('/api/book/navigation', function (req, res) {

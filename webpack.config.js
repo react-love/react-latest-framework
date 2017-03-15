@@ -31,9 +31,7 @@ if (isPro) {
           },
           BASE_URL: JSON.stringify('http://localhost:9009'),
       }),
-      // new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin()
-      // new webpack.NoErrorsPlugin()
   )
 }
 
