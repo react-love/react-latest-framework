@@ -1,4 +1,9 @@
-###热更新、ES6/7、LESS、Router、redux、async／await、本地node服务器，按需加载...
+
+### 热更新、ES6/7、LESS、Router、redux、webpack2、async／await、前端node服务器，按需加载...
+
+
+该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要从事实践项目的开发者。
+欢迎 watch、star、fork，因为我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。  
 
 ==========================================
 
@@ -26,28 +31,29 @@
 
 =========================
 
-这份代码不只是一个demo，不只是一个todo List，而是一个完整的react-redux-webpack开发方案。
-
 状态树  
 ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/store.png) 
 
 ==========================
 
-####Installation教程
-1, 方法 1: 下载源代码到本地  
+#### Installation 教程
 
-2, 方法 2: 或者本地运行shell命令  
+方法 1: 有github账号的推荐 Fork  
+
+方法 2: 本地运行 cmd 或者 shell 命令  
 ```
  git clone https://github.com/hyy1115/react-redux-webpack.git
  
 ```
+
+方法 3：没有github账号的点击download下载项目到本地。  
  
-3, 安装依赖包，已经解决了一些依赖包安装最新版可能出现的bug，如果还有问题，可以看相关社区的issue。
+1、 安装依赖包，已经解决了一些依赖包安装最新版可能出现的bug，如果还有问题，可以看相关社区的issue。
 ```
 npm install 或者cnpm install
 ```
 
-4, 运行demo。
+2、运行demo。
    ```
     mac
     npm run start-mac
@@ -56,13 +62,13 @@ npm install 或者cnpm install
     npm run start-win
    ```
 
-5, 将会开启3011端口.
+3、将会开启3011端口.
 ```
 http://localhost:3011
 
 ```
 
-6, 打包发布。
+4、打包发布。
 
 ```
 mac
@@ -75,7 +81,7 @@ npm run build-win
 ===========================================
 
 ####如何应用本框架到你的项目上？
-1，在container文件夹下面新建你的页面父容器，比如本例子中的homeContainer，一个基本的container模板如下所示。  
+1、在container文件夹下面新建你的页面父容器，比如本例子中的homeContainer，一个基本的container模板如下所示。  
 ```
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
@@ -105,7 +111,7 @@ export class HomeContainer extends Component {
 }
 ```
 
-2，接着你就需要将定义好的container写入路由，这样你就可以在浏览器上通过路由访问这个页面了。  
+2、接着你就需要将定义好的container写入路由，这样你就可以在浏览器上通过路由访问这个页面了。  
 ```
     import React from 'react';
     import { Route } from 'react-router';
@@ -121,7 +127,7 @@ export class HomeContainer extends Component {
     );
 ```
 
-3，假设你现在已经在component下面写好了一个导航组件nav，然后你要在container发action去异步请求后端的导航API，将获取的数据dispatch到reducer中。  
+3、假设你现在已经在component下面写好了一个导航组件nav，然后你要在container发action去异步请求后端的导航API，将获取的数据dispatch到reducer中。  
 
 container部分
 ```
@@ -178,7 +184,7 @@ export function nav(state = initNavList, action) {
 }
 ```
 
-4，到这一步，你已经完成了基本的一个数据流的控制了，需要注意的是，reducers中自定义的reducer需要在reducers文件夹下面的index.js里面注册。
+4、到这一步，你已经完成了基本的一个数据流的控制了，需要注意的是，reducers中自定义的reducer需要在reducers文件夹下面的index.js里面注册。
   
 ```
 import { combineReducers } from 'redux';
@@ -196,7 +202,7 @@ const rootReducer = combineReducers({
 export default rootReducer;
 ```
 
-5，store文件夹下面的js已经配置好了，除非你需要加上react的谷歌调试插件，否则不需要做任何修改。  
+5、store文件夹下面的js已经配置好了，除非你需要加上react的谷歌调试插件，否则不需要做任何修改。  
 
 ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.png)
 
