@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`测试头部组件 1`] = `
+<header
+  className="header"
+  style={undefined}
+>
+  测试头部
+  <a
+    className="a_link"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <img
+      className="a_img"
+      src={undefined}
+    />
+  </a>
+</header>
+`;

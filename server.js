@@ -27,6 +27,7 @@ const options = {
 
 const compiler = webpack(webpackConfig);
 
+// gzip压缩
 app.use(compression());
 
 app.use(webpackDevMiddleware(compiler, {

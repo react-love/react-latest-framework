@@ -7,9 +7,10 @@
 
 ==========================================
 
-本源码gitbook教程：https://www.gitbook.com/book/hyy1115/react-redux/details  （正在撰写中）
-
 欢迎加我交流：https://hyy1115.github.io/huangyongyue/  （可以查看本框架上线产品）  
+
+2017-03-28 更新：
+1、增加 jest 单例测试模型。
 
 2017-03-15更新：  
 
