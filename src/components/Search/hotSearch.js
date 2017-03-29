@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/7/2.
  */
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export class HotSearch extends Component {
 

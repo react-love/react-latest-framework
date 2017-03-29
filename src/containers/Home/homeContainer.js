@@ -34,7 +34,7 @@ require(`./styles/home.less`)
     state => state,
     dispatch => bindActionCreators({...navActions, ...bookActions}, dispatch)
 )
-export class HomeContainer extends Component {
+export default class HomeContainer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -75,8 +75,9 @@ export class HomeContainer extends Component {
                 <Header
                     title="react-redux架构"
                     imgUrl={search}
-                    linkTo="/search"
+                    linkTo="search"
                     bgColor={bgClass}
+                    match={this.props.match}
                     // {...this.props}当你需要在container调用子组件内部的属性，需要加上该语句，比如组件内部的ref
                 />
                 <div className="style_div">

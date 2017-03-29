@@ -37,6 +37,7 @@ export default class SearchContainer extends Component {
     }
 
     render() {
+        console.log('进入搜索页面。。。')
         const { hotData } = this.props.search
         return (
             <div>
@@ -48,7 +49,7 @@ export default class SearchContainer extends Component {
                     </p>
                     <p className="style_div_p">
                         {
-                            hotData.length > 0 ?
+                            hotData.length > 0 &&
                                 hotData.map((elem, index) => {
                                     return (
                                         <HotSearch
@@ -59,7 +60,7 @@ export default class SearchContainer extends Component {
                                             {...this.props}
                                         />
                                     )
-                                }) : ''
+                                })
                         }
                     </p>
                 </div>

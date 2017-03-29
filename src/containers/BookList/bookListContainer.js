@@ -11,7 +11,6 @@ import * as navActions from 'actions/nav';
 import * as bookActions from 'actions/book'
 
 /*component*/
-import { Header } from 'components/Home/header';
 
 @connect(
     state => state,
@@ -28,13 +27,10 @@ export default class BookListContainer extends Component {
     }
 
     render() {
-
+        const { match } = this.props
         return(
             <div className="">
-                <Header
-                    title="react-redux架构"
-                    linkTo="/search"
-                />
+
             </div>
         );
     }

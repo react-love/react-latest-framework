@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/7/2.
  */
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const back = require('./files/back_search.png');
 const search = require('./files/search_1.png');
@@ -14,7 +14,7 @@ export class Header extends Component {
         return (
             <div className="style_body">
                 <div className="style_main">
-                    <Link to="/home" className="style_a">
+                    <Link to="/" className="style_a">
                         <img src={back} className="style_a_img" />
                     </Link>
                     <div className="style_div_content">
