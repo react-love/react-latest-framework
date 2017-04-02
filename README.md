@@ -91,16 +91,30 @@ npm run build-win
 
 ===================================================
 
-####常用的排查bug方法  
-1、react和这么多的插件搭配使用，开发过程中不可避免会遇到很多的bug，有一些甚至无法从chrome找到答案，那么我们遇到这些问题的时候该怎么办呢？  
+#### 关于服务端渲染的建议（内容来自react-router官方文档）  
 
-2、第一步，打开chrome调试工具，如果你喜欢火狐或者微信调试之类的，我建议能用chrome的尽量用chrome，chrome开发者工具的console和netWork调试界面是
-开发react最经常用到的。有的人也会用chrome上的react调试插件，每次打开我都觉得很麻烦，所以本源码用的是logger插件，直接在console看到每个页面和事件触发的action。  
+查看原文：https://reacttraining.cn/web/guides/code-splitting
 
-3、如果chrome工具找不出bug的话，npm命令的控制台也可以看到详细的报错信息，大部分报错的情况是某个插件没有install，或者某个参数未定义。参数未定义的情况出现在异步ajax，
-state初始为空，初次渲染页面必然会导致某个参数为空，那么只需要在组件里面做个简单的判断即可，防止把空参数传递进来，也有其他的解决办法，比如我在header组件里面用到的判断。
+Code-splitting + server rendering
 
-4、webpack配置错误，也会导致热更新失败，或者打包失败，不了解webpack机制的还需要多多研究webpack的用法。
+代码分割 + 服务端渲染
+
+We’ve tried and failed a couple of times. What we learned:
+
+我们尝试了很多次都失败了，我们总结了下面几点：
+
+1、You need synchronous module resolution on the server so you can get those bundles in the initial render.
+
+你需要在服务端同步模块解析使得你可以在初始化渲染的时候得到那些文件。
+
+2、You need to load all the bundles in the client that were involved in the server render before rendering so that the client render is the same as the server render. (The trickiest part, I think its possible but this is where I gave up.)
+为了保证服务端渲染和客户端渲染的同步，你需要在客户端渲染前加载和服务端渲染一致的所有文件。（这也是我认为最难搞的地方，所以我放弃了）
+
+3、You need asynchronous resolution for the rest of the client app’s life.
+在客户端运行过程中，你需要异步解析其他没有在初始化渲染的部分。
+
+We determined that google was indexing our sites well enough for our needs without server rendering, so we dropped it in favor of code-splitting + service worker caching. Godspeed those who attempt the server-rendered, code-split apps.
+我们确定谷歌大神对我们网站的索引做得足够好，并不需要服务端渲染来解决SEO的问题，所以我们放弃了这种模式，而是采用更有利的代码分割 + service worker 缓存5的方式。愿上帝保佑那些想要尝试服务端渲染+代码分割的小白鼠:
 
 ==================================================
 
