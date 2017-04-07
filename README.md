@@ -9,6 +9,10 @@
 
 欢迎加我交流：https://hyy1115.github.io/huangyongyue/  （可以查看本框架上线产品）  
 
+2017-04-07 更新：  
+
+1、因为使用了BrowserRouter导致打包之后不能浏览静态文件，现在更改为 HashRouter，可以打包后正常使用了  
+
 2017-03-29 更新：
 
 1、增加 jest 单例测试模型。

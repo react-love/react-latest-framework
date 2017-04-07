@@ -15,9 +15,9 @@ FastClick.attach(document.body);
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter basename="/">
+        <HashRouter basename="/">
             <AppContainer />
-        </BrowserRouter>
+        </HashRouter>
     </Provider>,
     document.getElementById('root')
 );

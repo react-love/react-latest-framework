@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './app.less'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom'
 
 /* application components */
 // 首页组件不需要异步加载
@@ -36,13 +36,15 @@ export default class AppContainer extends React.Component {
     
   render() {
       return (
-          <Router>
-              <div>
-                  <Route exact path="/" component={HomeContainer} />
-                  <Route path="/search" component={Search} />
-                  <Route path="/bookList/:bookId" component={BookList} />
-              </div>
-          </Router>
+          <div>
+              <Router>
+                  <div>
+                      <Route exact path="/" component={HomeContainer} />
+                      <Route path="/search" component={Search} />
+                      <Route path="/bookList/:bookId" component={BookList} />
+                  </div>
+              </Router>
+          </div>
     );
   }
 }

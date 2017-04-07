@@ -7,9 +7,13 @@ var precss = require('precss');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isPro = nodeEnv === 'production';
 
-console.log("当前运行环境：", isPro)
+console.log("当前运行环境：", isPro ? 'production' : 'development')
 
 var plugins = []
+var app = [
+    'babel-polyfill',
+    './src/index'
+]
 if (isPro) {
   plugins.push(
       new webpack.optimize.UglifyJsPlugin({
@@ -24,7 +28,8 @@ if (isPro) {
       })
   )
 } else {
-  plugins.push(
+    app.push('webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false')
+    plugins.push(
       new webpack.DefinePlugin({
           'process.env':{
               'NODE_ENV': JSON.stringify(nodeEnv)
@@ -38,11 +43,7 @@ if (isPro) {
 module.exports = {
   devtool: false,
   entry: {
-    app: [
-      'webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false',
-      'babel-polyfill',
-      './src/index'
-    ]
+    app: app
   },
   output: {
     filename: '[name].js',
