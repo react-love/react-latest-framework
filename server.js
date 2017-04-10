@@ -27,7 +27,7 @@ const options = {
 
 const compiler = webpack(webpackConfig);
 
-// gzip压缩
+// gzip压缩，必须放在所有路由之前
 app.use(compression());
 
 app.use(webpackDevMiddleware(compiler, {

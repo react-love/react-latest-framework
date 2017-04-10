@@ -3,8 +3,9 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export class HotSearch extends Component {
+export class HotSearch extends React.Component {
 
     render() {
         const { hotText, hotClick } = this.props
@@ -16,4 +17,9 @@ export class HotSearch extends Component {
             </span>
         )
     }
+}
+
+HotSearch.propTypes = {
+    hotText: PropTypes.string,
+    hotClick: PropTypes.func
 }

@@ -3,8 +3,9 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export class BookList extends Component {
+export class BookList extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         if (_.isEqual(this.props, nextProps) || !_.isEmpty(this.props)) {
@@ -36,17 +37,17 @@ export class BookList extends Component {
             </Link>
         )
     }
+}
 
-    //数据验证
-    static propTypes = {
-        _id: React.PropTypes.string.isRequired,
-        imgUrl: React.PropTypes.string.isRequired,
-        title: React.PropTypes.string.isRequired,
-        author: React.PropTypes.string.isRequired,
-        press: React.PropTypes.string.isRequired,
-        publishedDate: React.PropTypes.string.isRequired,
-        currentPrice: React.PropTypes.string.isRequired,
-        originalPrice: React.PropTypes.string.isRequired,
-        index: React.PropTypes.number.isRequired //书籍序号
-    }
+//数据验证
+BookList.propTypes = {
+    _id: PropTypes.string.isRequired,
+    imgUrl: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    press: PropTypes.string.isRequired,
+    publishedDate: PropTypes.string.isRequired,
+    currentPrice: PropTypes.string.isRequired,
+    originalPrice: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired //书籍序号
 }

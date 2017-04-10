@@ -2,6 +2,7 @@
  * Created by Administrator on 2016/7/1.
  */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 /*const*/
 import * as con from '../../utils/const';
@@ -18,7 +19,7 @@ const nav_8 = require('./files/nydjk.png');
 const nav_9 = require('./files/nother.png');
 
 
-export class Nav extends Component {
+export class Nav extends React.Component {
     // 自定义图片路径数组
     static navImage = {
         [con.NAV_IMAGE_1]: nav_1,
@@ -50,4 +51,11 @@ export class Nav extends Component {
             </li>
         )
     }
+}
+
+Nav.propTypes = {
+    title: PropTypes.string.isRequired,
+    img: PropTypes.string,
+    index: PropTypes.number.isRequired,
+    handleClick: PropTypes.func.isRequired
 }

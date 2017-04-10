@@ -41,42 +41,42 @@ if (isPro) {
 }
 
 module.exports = {
-  devtool: false,
-  entry: {
-    app: app
-  },
-  output: {
-    filename: '[name].js',
-    path: path.join(__dirname, 'build'),
-    publicPath: 'http://localhost:3011/build/',
-    chunkFilename: '[name].js'
-  },
-  // BASE_URL是全局的api接口访问地址
-  plugins,
-  // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
-  resolve: {
-    extensions: ['.js', '.jsx', '.less', '.scss', '.css'],
-    modules: [
-      path.resolve(__dirname, 'node_modules'),
-      path.join(__dirname, './src')
-    ]
-  },
+    devtool: false,
+    entry: {
+        app: app
+    },
+    output: {
+        filename: '[name].js',
+        path: path.join(__dirname, 'build'),
+        publicPath: 'http://localhost:3011/build/',
+        chunkFilename: '[name].js'
+    },
+    // BASE_URL是全局的api接口访问地址
+    plugins,
+    // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
+    resolve: {
+        extensions: ['.js', '.jsx', '.less', '.scss', '.css'],
+        modules: [
+            path.resolve(__dirname, 'node_modules'),
+            path.join(__dirname, './src')
+        ]
+    },
 
-  module: {
-      rules: [{
-          test: /\.(js|jsx)$/,
-          use: ['babel-loader'],
-          exclude: /node_modules/,
-          include: path.join(__dirname, 'src')
-      }, {
-          test: /\.(less|css)$/,
-          use: ["style-loader", "css-loader", "less-loader", "postcss-loader"]
-      }, {
-          test: /\.(png|jpg|gif|md)$/,
-          use: ['file-loader?limit=10000&name=[md5:hash:base64:10].[ext]']
-      }, {
-          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-          use: ['url-loader?limit=10000&mimetype=image/svg+xml']
-      }],
-  }
+    module: {
+        rules: [{
+            test: /\.(js|jsx)$/,
+            use: ['babel-loader'],
+            exclude: /node_modules/,
+            include: path.join(__dirname, 'src')
+        }, {
+            test: /\.(less|css)$/,
+            use: ["style-loader", "css-loader", "less-loader", "postcss-loader"]
+        }, {
+            test: /\.(png|jpg|gif|md)$/,
+            use: ['file-loader?limit=10000&name=[md5:hash:base64:10].[ext]']
+        }, {
+            test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+            use: ['url-loader?limit=10000&mimetype=image/svg+xml']
+        }],
+    }
 };
