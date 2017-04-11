@@ -45,8 +45,7 @@
 
 =========================
 
-状态树  
-![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/store.png) 
+![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.gif)
 
 ==========================
 
@@ -94,7 +93,9 @@ npm run build-win
 
 ===========================================
 
-![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.png)
+状态树  
+![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/store.png) 
+
 
 压缩效果图  
 ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/fenxi.png)
