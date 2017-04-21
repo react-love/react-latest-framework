@@ -13,18 +13,6 @@ var bookList = require('./mock/bookList.json')
 
 var proxy = require('http-proxy-middleware')
 
-//context可以是单个字符串，也可以是多个字符串数组，分别对应你需要代理的api,星号（*）表示匹配当前路径下面的所有api
-const context = `/api/*`
-
-//options可选的配置参数请自行看readme.md文档，通常只需要配置target，也就是你的api所属的域名。
-const options = {
-    target: 'http://www.xxx.com',
-    changeOrigin: true
-}
-
-//将options对象用proxy封装起来，作为参数传递
-// const apiProxy = proxy(options)
-
 const compiler = webpack(webpackConfig);
 
 // gzip压缩，必须放在所有路由之前
@@ -43,6 +31,12 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 // app.use(express.static(path.join(__dirname, 'build')))
 
+//现在你只需要执行这一行代码，当你访问需要跨域的api资源时，就可以成功访问到了。
+// app.use('/api/*', proxy({
+//     target: 'http://www.baidu.com',
+//     changeOrigin: true
+// }))
+
 // 首页导航接口
 app.get('/api/book/navigation', function (req, res) {
     for (let i = 0; i < 9; i++) {
@@ -59,9 +53,6 @@ app.get('/api/book/list', function (req, res, next) {
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '/index.html'))
 })
-
-//现在你只需要执行这一行代码，当你访问需要跨域的api资源时，就可以成功访问到了。
-// app.use(context, apiProxy)
 
 app.listen(port, function(err){
   if (err) {
