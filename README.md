@@ -7,13 +7,13 @@
 
 有2个版本，请自行选择下载：
 
-master：标准版。（第二选择）
-
 V1.0.1：动画路由版。（推荐）
+
+master：标准版，当前。（第二选择）
 
 ==========================================
 
-欢迎加我交流：https://hyy1115.github.io/huangyongyue/ 
+加我交流：https://hyy1115.github.io/huangyongyue/
 
 2017-04-07 更新：  
 
@@ -25,28 +25,10 @@ V1.0.1：动画路由版。（推荐）
 
 2、升级react-router到V4稳定版：（V4不赞成用静态路由统一管理的方式，所以我删除了router.js，所有组件都可以用router的API包裹起来使用，具体看官方文档。）
 
-2017-03-15更新：  
-
-1、增加proxy代理解决跨域，详情可以查看我写的相关文档：https://segmentfault.com/a/1190000008635891  
-
-2、将api移植到前端服务器访问，避免安装后端。
-
-3、增加ajax请求超时设置，默认设置10s超时。
-
-4、更新react-router版本为3.0.2稳定版，webpack@2.2.1稳定版以及多个插件升级新稳定版。
-
-5、删除不必要的插件，并且优化了路由部分的代码。
-
-6、优化了打包代码，解决重复渲染的问题。
-
-7、增加lodash插件，方便处理常见数据操作。
-
-8、前端node服务器增加gzip压缩，压缩率达到70%。
 
 =========================
 
-状态树  
-![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/store.png) 
+![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/store.gif)
 
 ==========================
 
@@ -57,11 +39,11 @@ V1.0.1：动画路由版。（推荐）
 方法 2: 本地运行 cmd 或者 shell 命令  
 ```
  git clone https://github.com/hyy1115/react-redux-webpack.git
- 
+
 ```
 
 方法 3：没有github账号的点击download下载项目到本地。  
- 
+
 1、 安装依赖包，已经解决了一些依赖包安装最新版可能出现的bug，如果还有问题，可以看相关社区的issue。
 ```
 npm install 或者cnpm install
@@ -71,7 +53,7 @@ npm install 或者cnpm install
    ```
     mac
     npm run start-mac
-    
+
     windows
     npm run start-win
    ```
@@ -90,11 +72,9 @@ npm run build-mac
 
 windows
 npm run build-win
-``` 
+```
 
 ===========================================
-
-![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/index.png)
 
 压缩效果图  
 ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/fenxi.png)
