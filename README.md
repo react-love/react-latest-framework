@@ -9,6 +9,10 @@
 
 欢迎加我交流：https://hyy1115.github.io/huangyongyue/   
 
+2017-05-13 更新：
+
+1、教你如何利用本框架实现一个带路由的父子组件：https://github.com/hyy1115/react-redux-webpack2/blob/v1.0.1/doc/react.md
+
 2017-04-10 更新：  
 
 1、增加路由切换过渡动画
