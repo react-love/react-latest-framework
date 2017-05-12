@@ -27,7 +27,7 @@ require(`./styles/home.less`)
 /**
  * connect中间件
  * connect一定要写在需要传递参数的组件头部，因为这是语法规则，只对当前关联的组件生效，和java的原理是一致的
- * state用法：state => state（传递全部state） 或者 state => state.home（传递指定的state）
+ * state用法：state => state（传递全部state）
  * dispatch用法：（单个action）bindActionCreators(navActions, dispatch)，（多个action）bindActionCreators({...action1, ...action2}, dispatch)
  */
 
@@ -46,7 +46,7 @@ export default class HomeContainer extends React.Component {
     }
 
     componentWillMount() {
-        const { navMain } = this.props.nav //这个叫做es6的解构赋值
+        const { navMain } = this.props.nav
         const { bookDetails } = this.props.books
         if (navMain.length === 0) {
             this.props.getNav();
