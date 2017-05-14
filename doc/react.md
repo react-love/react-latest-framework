@@ -227,4 +227,3 @@ import HomeContainer from './containers/Home/homeContainer';
 <Route location={location} exact path="/" component={HomeContainer} />
 
 ```
-
