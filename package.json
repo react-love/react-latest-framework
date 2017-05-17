@@ -1,6 +1,6 @@
 {
   "name": "react-redux-webpack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "scripts": {
     "start": "export NODE_ENV=development && node server.js",
