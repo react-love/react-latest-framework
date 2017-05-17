@@ -13,21 +13,6 @@
 
 1、合并动画版和普通版。
 
-2017-05-13 更新：
-
-1、教你如何利用本框架实现一个带路由的父子组件：https://github.com/hyy1115/react-redux-webpack2/blob/v1.0.1/doc/react.md
-
-2017-04-07 更新：  
-
-1、因为使用了BrowserRouter导致打包之后不能浏览静态文件，现在更改为 HashRouter，可以打包后正常使用了  
-
-2017-03-29 更新：
-
-1、增加 jest 单例测试模型。
-
-2、升级react-router到V4稳定版：（V4不赞成用静态路由统一管理的方式，所以我删除了router.js，所有组件都可以用router的API包裹起来使用，具体看官方文档。）
-
-
 =========================
 
 ![image](https://github.com/hyy1115/react-redux-webpack/blob/v1.0.1/public/index.gif)
