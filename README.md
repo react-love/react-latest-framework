@@ -5,15 +5,17 @@
 该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要从事实践项目的开发者。
 欢迎 watch、star、fork，因为我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。  
 
-有2个版本，请自行选择下载：
-
-V1.0.1：动画路由版。（推荐）
-
-master：标准版，当前。（第二选择）
-
 ==========================================
 
-加我交流：https://hyy1115.github.io/huangyongyue/
+欢迎加我交流：https://hyy1115.github.io/huangyongyue/   
+
+2017-05-17 更新：
+
+1、合并动画版和普通版。
+
+2017-05-13 更新：
+
+1、教你如何利用本框架实现一个带路由的父子组件：https://github.com/hyy1115/react-redux-webpack2/blob/v1.0.1/doc/react.md
 
 2017-04-07 更新：  
 
@@ -28,7 +30,7 @@ master：标准版，当前。（第二选择）
 
 =========================
 
-![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/store.gif)
+![image](https://github.com/hyy1115/react-redux-webpack/blob/v1.0.1/public/index.gif)
 
 ==========================
 
@@ -64,7 +66,7 @@ http://localhost:3011
 
 ```
 
-4、打包发布。
+4、打包发布: 假设你用的是阿里云服务器，你可以把静态资源和图片都放到CDN，index.html放到你的域名服务器下面，请注意路径问题。  
 
 ```
 mac
@@ -75,6 +77,10 @@ npm run build-win
 ```
 
 ===========================================
+
+状态树  
+![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/store.png) 
+
 
 压缩效果图  
 ![image](https://github.com/hyy1115/react-redux-webpack/blob/master/public/fenxi.png)

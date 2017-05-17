@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classNames from 'classnames'
+import PropTypes from 'prop-types';
 
 /*actions*/
 import * as navActions from 'actions/nav';
@@ -16,7 +17,7 @@ import * as bookActions from 'actions/book'
     state => state,
     dispatch => bindActionCreators({...navActions, ...bookActions}, dispatch)
 )
-export default class BookListContainer extends Component {
+export default class BookListContainer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -28,10 +29,15 @@ export default class BookListContainer extends Component {
 
     render() {
         const { match } = this.props
+        console.log('bookList: ', this.props)
         return(
             <div className="">
-
+                bookList
             </div>
         );
     }
+}
+
+BookListContainer.propTypes = {
+    match: PropTypes.object
 }

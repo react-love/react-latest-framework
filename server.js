@@ -15,7 +15,7 @@ var proxy = require('http-proxy-middleware')
 
 const compiler = webpack(webpackConfig);
 
-// gzip压缩
+// gzip压缩，必须放在所有路由之前
 app.use(compression());
 
 app.use(webpackDevMiddleware(compiler, {
@@ -31,7 +31,7 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 // app.use(express.static(path.join(__dirname, 'build')))
 
-//你只需要执行这一段代码，当你访问需要跨域的api资源时，就可以成功访问到了。
+//现在你只需要执行这一行代码，当你访问需要跨域的api资源时，就可以成功访问到了。
 // app.use('/api/*', proxy({
 //     target: 'http://www.baidu.com',
 //     changeOrigin: true
