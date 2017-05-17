@@ -15,7 +15,7 @@
 
 =========================
 
-![image](https://github.com/hyy1115/react-redux-webpack2/tree/master/public/index.gif)
+![image](https://github.com/hyy1115/react-redux-webpack2/blob/master/public/store.gif)
 
 ==========================
 
@@ -63,12 +63,8 @@ npm run build-win
 
 ===========================================
 
-状态树  
-![image](https://github.com/hyy1115/react-redux-webpack2/tree/master/public/store.png) 
-
-
 压缩效果图  
-![image](https://github.com/hyy1115/react-redux-webpack2/tree/master/public/fenxi.png)
+![image](https://github.com/hyy1115/react-redux-webpack2/blob/master/public/fenxi.png)
 
 ===================================================
 
