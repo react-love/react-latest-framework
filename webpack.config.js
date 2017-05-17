@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var precss = require('precss');
 
 //判断当前运行环境是开发模式还是生产模式
@@ -9,7 +10,19 @@ const isPro = nodeEnv === 'production';
 
 console.log("当前运行环境：", isPro ? 'production' : 'development')
 
-var plugins = []
+var plugins = [
+    new ExtractTextPlugin('styles.css'),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: function (module) {
+            // 该配置假定你引入的 vendor 存在于 node_modules 目录中
+            return module.context && module.context.indexOf('node_modules') !== -1;
+        }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
+    })
+]
 var app = [
     'babel-polyfill',
     './src/index'
@@ -70,7 +83,9 @@ module.exports = {
             include: path.join(__dirname, 'src')
         }, {
             test: /\.(less|css)$/,
-            use: ["style-loader", "css-loader", "less-loader", "postcss-loader"]
+            use: ExtractTextPlugin.extract({
+                use: ["css-loader", "less-loader", "postcss-loader"]
+            })
         }, {
             test: /\.(png|jpg|gif|md)$/,
             use: ['file-loader?limit=10000&name=[md5:hash:base64:10].[ext]']

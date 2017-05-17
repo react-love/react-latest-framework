@@ -26,11 +26,10 @@ export default class SearchContainer extends React.Component {
     }
 
     componentWillMount() {
-        this.props.receiveHotSearch();
+        this.props.receiveHotSearch()
     }
 
     componentDidMount() {
-        console.log("渲染完成打印");
     }
 
     hotClick(text) {
@@ -38,7 +37,6 @@ export default class SearchContainer extends React.Component {
     }
 
     render() {
-        console.log('search：', this.props)
         const { hotData } = this.props.search
 
         return (

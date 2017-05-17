@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 /*actions*/
 import * as navActions from 'actions/nav';
-import * as bookActions from 'actions/book'
+import * as bookActions from 'actions/book';
 
 /*component*/
 import { Header } from 'components/Home/header';
@@ -59,7 +59,7 @@ export default class HomeContainer extends React.Component {
 
     handleClick() {
         //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        this.props.history.push('/')
+        // this.props.history.push('/')
     }
 
     render() {
@@ -67,7 +67,6 @@ export default class HomeContainer extends React.Component {
         const { bookDetails } = this.props.books
         //还可以通过自定义样式传递给组件
         let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
-        console.log('home: ', this.props)
         return(
             <div key={this.props.location.pathname}>
                 <Header
@@ -75,7 +74,6 @@ export default class HomeContainer extends React.Component {
                     imgUrl={search}
                     linkTo="search"
                     bgColor={bgClass}
-                    match={this.props.match}
                     // {...this.props}当你需要在container调用子组件内部的属性，需要加上该语句，比如组件内部的ref
                 />
                 <div className="style_div">

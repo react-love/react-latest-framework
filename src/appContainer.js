@@ -1,47 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import './app.css'
 import { Route, HashRouter as Router } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 /* application components */
-// 首页组件不需要异步加载
 import HomeContainer from './containers/Home/homeContainer';
-// bundle模型用来异步加载组件
-import Bundle from './bundle';
-// 导入search组件，需要在路径前面加上 bundle-loader?lazy!
 import SearchContainer from './containers/Search/searchContainer';
-
-import BookListContainer from './containers/BookList/bookListContainer'
-
-// 异步加载search组件
-// const Search = () => (
-//     <Bundle load={SearchContainer}>
-//         {(Search) => <Search />}
-//     </Bundle>
-// )
-
-// const BookList = () => (
-//     <Bundle load={BookListContainer}>
-//         {(BookList) => <BookList />}
-//     </Bundle>
-// )
+import BookListContainer from './containers/BookList/bookListContainer';
 
 @connect (state => state)
 export default class AppContainer extends React.Component {
-
-    componentDidMount() {
-        // preloads the rest
-        // Search(() => {})
-    }
     
   render() {
-        console.log('appContainer: ', this.props)
       return (
-          <Router>
+          <Router history={history}>
               <Route render={({ location }) => {
+                  console.log('location.pathname: ', location)
                   let cls = 'normal'
                   if (location.pathname === '/search') {
+                      cls = 'left'
+                  } else if (location.pathname.indexOf('bookList') > -1) {
                       cls = 'left'
                   }
                   return(

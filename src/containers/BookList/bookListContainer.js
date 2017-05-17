@@ -29,7 +29,6 @@ export default class BookListContainer extends React.Component {
 
     render() {
         const { match } = this.props
-        console.log('bookList: ', this.props)
         return(
             <div className="">
                 bookList

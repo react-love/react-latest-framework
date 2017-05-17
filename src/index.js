@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
+import { Router } from 'react-router';
 import { HashRouter } from 'react-router-dom'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 import AppContainer from './appContainer';
@@ -20,19 +21,24 @@ const logger = createLogger({ collapsed: true });
 
 //解决移动端300毫秒延迟
 FastClick.attach(document.body);
-
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(
-    thunk,
-    logger,
-    middleware
-)));
+let store;
+if(process.env.NODE_ENV === 'development') {
+    store = createStore(rootReducer, composeWithDevTools(applyMiddleware(
+        thunk,
+        logger,
+        middleware
+    )));
+} else {
+    store = createStore(rootReducer, composeWithDevTools(applyMiddleware(
+        thunk,
+        middleware
+    )));
+}
 
 const render = (Component) => {
     ReactDOM.render(
         <Provider store={store}>
-            <HashRouter history={history}>
-                <Component />
-            </HashRouter>
+            <Component />
         </Provider>,
         document.getElementById('root')
     );

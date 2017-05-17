@@ -15,12 +15,12 @@ export class Header extends React.Component {
     }
 
     render() {
-        const {title, imgUrl, linkTo, bgColor, match} = this.props
+        const {title, imgUrl, linkTo, bgColor} = this.props
         //提供4个接口参数给container做设置，可以不传参。
         return (
             <header className='header' style={bgColor}>
                 {title}
-                <Link to={`${match.url + linkTo}`} className="a_link" >
+                <Link to={linkTo} className="a_link">
                     <img src={imgUrl} className="a_img" />
                 </Link>
             </header>
@@ -33,6 +33,5 @@ Header.propTypes = {
     title: PropTypes.string.isRequired,
     imgUrl: PropTypes.string.isRequired,
     linkTo: PropTypes.string.isRequired,
-    bgColor: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired
+    bgColor: PropTypes.object.isRequired
 }

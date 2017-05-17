@@ -20,7 +20,7 @@ export class BookList extends React.Component {
             <Link to={`/bookList/${_id}`} data-id={_id} className="home-book-list">
                 <div className="book-img">
                     <span className="book-index">{index}</span>
-                    <img className="" src={imgUrl} />
+                    <img className="" src="" alt="图片" />
                 </div>
                 <div className="book-contain">
                     <p className="book-title textOverflow-hidden">{title}</p>

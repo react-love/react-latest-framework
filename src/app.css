@@ -33,13 +33,13 @@ a {
 
 /*路由切换动画——改变透明度*/
 .normal-enter {
-    opacity: 1;
+    opacity: 0;
     z-index: 10000;
 }
 
 .normal-enter.normal-enter-active {
     opacity: 1;
-    transition: opacity 0.4s ease-in;
+    transition: all 0.4s ease-in;
 }
 
 .normal-leave {
@@ -54,7 +54,7 @@ a {
 .normal-leave.normal-leave-active {
     opacity: 1;
     transform: translateX(100%);
-    transition: opacity 4s ease-out;
+    transition: all .4s ease-out;
 }
 
 /*路由切换动画——左移动*/
