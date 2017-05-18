@@ -25,7 +25,7 @@
 
 方法 2: 本地运行 cmd 或者 shell 命令  
 ```
- git clone https://github.com/hyy1115/react-redux-webpack.git
+ git clone https://github.com/hyy1115/react-redux-webpack2.git
 
 ```
 
