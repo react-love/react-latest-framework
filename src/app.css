@@ -3,14 +3,6 @@
     margin: 0;
     padding: 0;
 }
-body, html {
-    font-size: 10px;
-}
-#root {
-    min-width: 320px;
-    max-width: 640px;
-    margin: 0 auto;
-}
 a {
     text-decoration: none;
 }
@@ -80,4 +72,38 @@ a {
 .left-leave.left-leave-active {
     opacity: 1;
     transition: all 0.4s ease-out;
+}
+
+@media screen and (min-width: 320px) {
+    html, body { font-size: 12px; }
+}
+@media screen and (min-width: 360px) {
+    html, body { font-size: 13.5px; }
+}
+@media screen and (min-width: 375px) {
+    html, body { font-size: 14px; }
+}
+@media screen and (min-width: 414px) {
+    html, body { font-size: 15.5px; }
+}
+@media screen and (min-width: 720px) {
+    html, body { font-size: 27px; }
+}
+@media screen and (min-width: 1024px) {
+    html, body { font-size: 38.4px; }
+}
+@media screen and (min-width: 1080px) {
+    html, body { font-size: 40.5px; }
+}
+@media screen and (min-width: 1366px) {
+    html, body { font-size: 51px; }
+}
+@media screen and (min-width: 1440px) {
+    html, body { font-size: 54px; }
+}
+@media screen and (min-width: 1600px) {
+    html, body { font-size: 60px; }
+}
+@media screen and (min-width: 1920px) {
+    html, body { font-size: 72px; }
 }

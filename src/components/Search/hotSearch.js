@@ -10,11 +10,11 @@ export class HotSearch extends React.Component {
     render() {
         const { hotText, hotClick } = this.props
         return (
-            <span className="style_span"
+            <a className="style_span"
                   onClick={hotClick}
             >
                 {hotText}
-            </span>
+            </a>
         )
     }
 }
