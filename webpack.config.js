@@ -35,6 +35,7 @@ if (isPro) {
           }
       }),
       new webpack.DefinePlugin({
+          // 定义全局变量
           'process.env':{
               'NODE_ENV': JSON.stringify(nodeEnv)
           }
@@ -44,6 +45,7 @@ if (isPro) {
     app.push('webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false')
     plugins.push(
       new webpack.DefinePlugin({
+          // 定义全局变量
           'process.env':{
               'NODE_ENV': JSON.stringify(nodeEnv)
           },

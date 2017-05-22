@@ -73,7 +73,7 @@ a {
     opacity: 1;
     transition: all 0.4s ease-out;
 }
-
+/*适配设置*/
 @media screen and (min-width: 320px) {
     html, body { font-size: 12px; }
 }

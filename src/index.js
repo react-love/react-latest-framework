@@ -5,11 +5,9 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import { Router } from 'react-router';
-import { HashRouter } from 'react-router-dom'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 import AppContainer from './appContainer';
-import createHistory from 'history/createHashHistory';
+import createHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers/index';
 
 var FastClick = require('fastclick');

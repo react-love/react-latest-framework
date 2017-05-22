@@ -1,8 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 import './app.css'
 import { Route, HashRouter as Router } from 'react-router-dom'
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import createHistory from 'history/createHashHistory'
+const history = createHistory()
 
 /* application components */
 import HomeContainer from './containers/Home/homeContainer';
