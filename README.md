@@ -7,7 +7,7 @@
 
 ==========================================
 
-欢迎加我交流：https://hyy1115.github.io/huangyongyue/   
+体验动画路由切换：https://hyy1115.github.io/huangyongyue/   
 
 2017-05-17 更新：
 
