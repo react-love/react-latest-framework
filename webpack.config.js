@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var precss = require('precss');
+var argv = require('yargs').argv;
 
 //判断当前运行环境是开发模式还是生产模式
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -18,9 +18,6 @@ var plugins = [
             // 该配置假定你引入的 vendor 存在于 node_modules 目录中
             return module.context && module.context.indexOf('node_modules') !== -1;
         }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-        name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
     })
 ]
 var app = [
@@ -56,14 +53,14 @@ if (isPro) {
 }
 
 module.exports = {
-    devtool: false,
+    devtool: isPro ? 'source-map' : 'cheap-eval-source-map',
     entry: {
         app: app
     },
     output: {
         filename: '[name].js',
         path: path.join(__dirname, 'build'),
-        publicPath: 'http://localhost:3011/build/',
+        publicPath: isPro ? './build/' : 'http://localhost:3011/build/',
         chunkFilename: '[name].js'
     },
     // BASE_URL是全局的api接口访问地址

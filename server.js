@@ -19,13 +19,16 @@ const compiler = webpack(webpackConfig);
 app.use(compression());
 
 app.use(webpackDevMiddleware(compiler, {
-  historyApiFallback: true,
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath,
-  headers: { "X-Custom-Header": "yes" },
-  stats: {
-    colors: true
-  }
+    historyApiFallback: true,
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+    headers: { "X-Custom-Header": "yes" },
+    stats: {
+        assets: false,
+        usedExports: true,
+        colors: true
+    },
+    lazy: false
 }));
 
 app.use(webpackHotMiddleware(compiler));
