@@ -4,7 +4,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 const getBook = require('../src/actions/book');
-import { getData, postData } from '../src/utils/fetchData';
+import instance from '../src/utils/fetchData';
 import { Header } from '../src/components/Home/header';
 const receiveHotSearch = require('../src/actions/search');
 
@@ -13,7 +13,7 @@ test('首页得到书籍列表', () => {
 });
 
 test('async/await 函数测试', async () => {
-    await expect(getData(`/api/book/list`)).resolve;
+    await expect(instance.get(`/api/book/list`)).resolve;
 });
 
 it('测试头部组件', () => {
