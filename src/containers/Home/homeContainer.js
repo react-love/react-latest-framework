@@ -128,6 +128,5 @@ HomeContainer.propTypes = {
     navMain: PropTypes.array,
     bookDetails: PropTypes.array,
     match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired
 }
