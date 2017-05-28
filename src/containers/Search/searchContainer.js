@@ -12,7 +12,7 @@ import './styles/search.less'
 import * as searchActions from 'actions/search';
 
 import { Header } from 'components/Search/header';
-import { HotSearch } from 'components/Search/HotSearch';
+import { HotSearch } from 'components/Search/hotSearch';
 
 @connect(
     state => state,

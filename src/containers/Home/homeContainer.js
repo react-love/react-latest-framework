@@ -16,7 +16,7 @@ import * as bookActions from 'actions/book';
 /*component*/
 import { Header } from 'components/Home/header';
 import { Nav } from 'components/Home/nav';
-import { Special } from 'components/Home/Special';
+import { Special } from 'components/Home/special';
 import { BookList } from 'components/Home/bookList'
 
 /*files*/
