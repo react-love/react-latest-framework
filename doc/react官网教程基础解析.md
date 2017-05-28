@@ -403,4 +403,3 @@ class NextComponent extends MyComponent {
 ### 最后
 react基础分析到此为止，学会这些基本的知识，你已经可以做出非常丰富的react应用了，当然，结合https://github.com/hyy1115/react-redux-webpack2/tree/v1.0.1来
 学习可以让你更快实践出产品。
-
