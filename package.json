@@ -9,7 +9,8 @@
     "lint": "eslint src",
     "build-mac": "export NODE_ENV=production && webpack --progress --config webpack.config.js",
     "build-win": "set NODE_ENV=production&& webpack --progress --config webpack.config.js",
-    "test": "jest"
+    "test-jest": "jest",
+    "test": "vows --spec"
   },
   "repository": {
     "type": "git",
