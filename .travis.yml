@@ -3,4 +3,4 @@ node_js:
   - "iojs"
   - "6"
 
-script: make test
+script: make build
