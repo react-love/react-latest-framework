@@ -28,7 +28,8 @@ if (isPro) {
   plugins.push(
       new webpack.optimize.UglifyJsPlugin({
           compress: {
-              warnings: false
+              warnings: false,
+              drop_console: false
           }
       }),
       new webpack.DefinePlugin({

@@ -11,10 +11,6 @@
 
 体验动画路由切换：https://hyy1115.github.io/huangyongyue/   
 
-2017-05-17 更新：
-
-1、合并动画版和普通版。
-
 =========================
 
 ![image](https://github.com/hyy1115/react-redux-webpack2/blob/master/public/store.gif)
