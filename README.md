@@ -1,11 +1,17 @@
 
-### 热更新、ES6/7、LESS、Router、redux、webpack2、async／await、前端node服务器，按需加载...
+### 热更新、ES6/7、LESS、Router4、redux、webpack2、async／await、前端node服务器，按需加载...
+<hr />
 
 [![Build Status](https://travis-ci.org/hyy1115/react-redux-webpack2.svg?branch=master)](https://travis-ci.org/hyy1115/react-redux-webpack2)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)  
 
-该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要从事实践项目的开发者。
+适用人群：该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要一个比较干净、简洁的框架从事实践项目的开发者。（doc文件夹附有教程文档）
+
+不适用人群：想要学习完整项目，比如饿了么，社区论坛这种应用型项目，请搜索其他开源项目。
+
 欢迎 watch、star、fork，因为我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。  
+
+针对最近有人反映在windows热更新之后，浏览器不自动刷新的情况，我专门买了台i7 7700k台式机（说笑的，另有用处）。
 
 ==========================================
 
@@ -19,15 +25,7 @@
 
 #### Installation 教程
 
-方法 1: 有github账号的推荐 Fork  
-
-方法 2: 本地运行 cmd 或者 shell 命令  
-```
- git clone https://github.com/hyy1115/react-redux-webpack2.git
-
-```
-
-方法 3：没有github账号的点击download下载项目到本地。  
+fork到你的账号，简单省事，或者 download 项目到本地
 
 1、 安装依赖包，已经解决了一些依赖包安装最新版可能出现的bug，如果还有问题，可以看相关社区的issue。
 ```
