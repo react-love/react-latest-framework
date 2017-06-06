@@ -1,32 +1,40 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 import './app.css'
 import { Route, HashRouter as Router } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import createHistory from 'history/createHashHistory'
 const history = createHistory()
 
+import * as globalActions from 'actions/global'
+
 /* application components */
 import HomeContainer from './containers/Home/homeContainer';
 import SearchContainer from './containers/Search/searchContainer';
 import BookListContainer from './containers/BookList/bookListContainer';
 
-@connect (state => state)
+@connect (
+    state => state,
+    dispatch => bindActionCreators(globalActions, dispatch)
+)
 export default class App extends React.Component {
     
   render() {
+      const { animateCls } = this.props.global
+      console.log(animateCls)
       return (
           <Router history={history}>
               <Route render={({ location }) => {
-                  let cls = 'normal'
-                  if (location.pathname === '/search') {
-                      cls = 'left'
-                  } else if (location.pathname.indexOf('bookList') > -1) {
-                      cls = 'left'
-                  }
+                  {/*let cls = 'normal'*/}
+                  {/*if (location.pathname === '/search') {*/}
+                      {/*cls = 'left'*/}
+                  {/*} else if (location.pathname.indexOf('bookList') > -1) {*/}
+                      {/*cls = 'left'*/}
+                  {/*}*/}
                   return(
                       <CSSTransitionGroup
-                          transitionName={cls}
+                          transitionName={animateCls}
                           transitionEnter={true}
                           transitionLeave={true}
                           transitionEnterTimeout={400}

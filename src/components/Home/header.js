@@ -15,12 +15,12 @@ export class Header extends React.Component {
     }
 
     render() {
-        const {title, imgUrl, linkTo, bgColor} = this.props
+        const { title, imgUrl, linkTo, bgColor, handleClick } = this.props
         //提供4个接口参数给container做设置，可以不传参。
         return (
             <header className='header' style={bgColor}>
                 {title}
-                <Link to={linkTo} className="a_link">
+                <Link to={linkTo} className="a_link" onClick={() => handleClick('left')}>
                     <img src={imgUrl} className="a_img" />
                 </Link>
             </header>

@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 /*actions*/
 import * as navActions from 'actions/nav';
 import * as bookActions from 'actions/book';
+import * as globalActions from 'actions/global'
 
 /*component*/
 import { Header } from 'components/Home/header';
@@ -33,7 +34,7 @@ require(`./styles/home.less`)
 
 @connect(
     state => state,
-    dispatch => bindActionCreators({...navActions, ...bookActions}, dispatch)
+    dispatch => bindActionCreators({...navActions, ...bookActions, ...globalActions}, dispatch)
 )
 export default class HomeContainer extends React.Component {
 
@@ -74,6 +75,7 @@ export default class HomeContainer extends React.Component {
                     imgUrl={search}
                     linkTo="search"
                     bgColor={bgClass}
+                    handleClick={this.props.currentAnimate}
                     // {...this.props}当你需要在container调用子组件内部的属性，需要加上该语句，比如组件内部的ref
                 />
                 <div className="style_div">

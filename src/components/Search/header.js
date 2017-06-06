@@ -11,10 +11,11 @@ const search = require('./files/search_1.png');
 export class Header extends Component {
 
     render() {
+        const { handleClick } = this.props
         return (
             <div className="style_body">
                 <div className="style_main">
-                    <Link to="/" className="style_a">
+                    <Link to="/" className="style_a" onClick={() => handleClick('right')}>
                         <img src={back} className="style_a_img" />
                     </Link>
                     <div className="style_div_content">

@@ -10,13 +10,14 @@ import './styles/search.less'
 
 /*actions*/
 import * as searchActions from 'actions/search';
+import * as globalActions from 'actions/global';
 
 import { Header } from 'components/Search/header';
 import { HotSearch } from 'components/Search/hotSearch';
 
 @connect(
     state => state,
-    dispatch => bindActionCreators(searchActions, dispatch)
+    dispatch => bindActionCreators({...searchActions, ...globalActions}, dispatch)
 )
 export default class SearchContainer extends React.Component {
 
@@ -41,7 +42,7 @@ export default class SearchContainer extends React.Component {
 
         return (
             <div key={this.props} style={{height: '100vh'}}>
-                <Header />
+                <Header handleClick={this.props.currentAnimate} />
                 <div>
                     <p className="search-hot-title">
                         <i className="fa fa-fire"></i>
