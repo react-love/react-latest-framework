@@ -227,3 +227,43 @@ import HomeContainer from './containers/Home/homeContainer';
 <Route location={location} exact path="/" component={HomeContainer} />
 
 ```
+
+### 关于CSSTransitionGroup动画的解释
+在AppContainer.js文件里面，你已经看到了react过渡动画的使用方式，需要注意以下几点。
+
+1、保证key的唯一性：我把location.pathname当做key
+```text
+ key={location.pathname}
+```
+
+2、CSSTransitionGroup配置参数的解释：
+```text
+    transitionName：动画样式名称
+    transitionEnter：是否允许进入动画显示
+    transitionLeave：是否允许离开动画显示
+    transitionEnterTimeout：进入动画的执行时长
+    transitionLeaveTimeout：离开动画的执行时长
+```
+以app.css中的左移样式为例子：
+
+```css
+.left-enter {} 初始
+
+.left-enter.left-enter-active {} 激活动画
+
+.left-leave {} 初始
+
+.left-leave.left-leave-active {} 激活动画
+```
+left 表示 transitionName，那么为什么有个enter和leave分别有2个状态呢？因为css3动画需要一个初始状态的值。
+
+这里又一个难理解的地方是enter和leave到底代表的是什么？
+
+enter：指新路由进入时候执行的动画。
+
+leave：指旧路由离开时候执行的动画。
+
+在项目中，假设你当前在首页，当你点击右上角的搜索时，首页会向左移动，搜索页面也从右边向左边移出来。
+也就是说，首页就是执行leave的动画，而搜索页面执行enter的动画。
+
+如果单单通过路由的pathname来控制动画的样式，还是不够的，想要更加丰富的动画效果，你可能需要一个全局变量或者action来控制样式的调用。
