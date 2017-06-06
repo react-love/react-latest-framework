@@ -12,13 +12,12 @@ import SearchContainer from './containers/Search/searchContainer';
 import BookListContainer from './containers/BookList/bookListContainer';
 
 @connect (state => state)
-export default class AppContainer extends React.Component {
+export default class App extends React.Component {
     
   render() {
       return (
           <Router history={history}>
               <Route render={({ location }) => {
-                  console.log('location.pathname: ', location)
                   let cls = 'normal'
                   if (location.pathname === '/search') {
                       cls = 'left'
