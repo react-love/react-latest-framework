@@ -26,12 +26,6 @@ export default class App extends React.Component {
       return (
           <Router history={history}>
               <Route render={({ location }) => {
-                  {/*let cls = 'normal'*/}
-                  {/*if (location.pathname === '/search') {*/}
-                      {/*cls = 'left'*/}
-                  {/*} else if (location.pathname.indexOf('bookList') > -1) {*/}
-                      {/*cls = 'left'*/}
-                  {/*}*/}
                   return(
                       <CSSTransitionGroup
                           transitionName={animateCls}

@@ -7,15 +7,10 @@ import { connect } from 'react-redux';
 import classNames from 'classnames'
 import PropTypes from 'prop-types';
 
-/*actions*/
-import * as navActions from 'actions/nav';
-import * as bookActions from 'actions/book'
-
 /*component*/
 
 @connect(
-    state => state,
-    dispatch => bindActionCreators({...navActions, ...bookActions}, dispatch)
+    state => state
 )
 export default class BookListContainer extends React.Component {
 

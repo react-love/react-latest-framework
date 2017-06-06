@@ -208,7 +208,7 @@ import * as navActions from 'actions/nav'; //导入nav文件下面的所有函�
 接着你就可以在组件中通过props的方式去调用action里面的方法了。
 ```javascript
 componentWillMount() {
-        const { navMain } = this.props.nav //读取reducer中的nav。
+        const { navMain } = this.props.home //读取reducer中的nav。
 
         //如果state中的navMain为空，那么就执行getNav()函数去请求后端导航数据。
         if (navMain.length === 0) {

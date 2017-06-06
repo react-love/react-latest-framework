@@ -10,8 +10,7 @@ import PropTypes from 'prop-types';
 //关于import什么时候用{}，什么时候不用大括号，通过那个插件或者组件是否包含default来判断，如果包含，则不需要{}
 
 /*actions*/
-import * as navActions from 'actions/nav';
-import * as bookActions from 'actions/book';
+import * as homeActions from 'actions/home';
 import * as globalActions from 'actions/global'
 
 /*component*/
@@ -34,7 +33,7 @@ require(`./styles/home.less`)
 
 @connect(
     state => state,
-    dispatch => bindActionCreators({...navActions, ...bookActions, ...globalActions}, dispatch)
+    dispatch => bindActionCreators({...homeActions, ...globalActions}, dispatch)
 )
 export default class HomeContainer extends React.Component {
 
@@ -47,8 +46,7 @@ export default class HomeContainer extends React.Component {
     }
 
     componentWillMount() {
-        const { navMain } = this.props.nav
-        const { bookDetails } = this.props.books
+        const { navMain, bookDetails } = this.props.home
         if (navMain.length === 0) {
             this.props.getNav();
         }
@@ -64,8 +62,7 @@ export default class HomeContainer extends React.Component {
     }
 
     render() {
-        const { navMain } = this.props.nav
-        const { bookDetails } = this.props.books
+        const { navMain, bookDetails } = this.props.home
         //还可以通过自定义样式传递给组件
         let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
         return(
