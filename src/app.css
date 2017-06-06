@@ -67,10 +67,12 @@ a {
 
 .left-leave {
     opacity: 1;
+    transform: translateX(0);
 }
 
 .left-leave.left-leave-active {
     opacity: 1;
+    transform: translateX(-100%);
     transition: all 0.4s ease-out;
 }
 /*适配设置*/
