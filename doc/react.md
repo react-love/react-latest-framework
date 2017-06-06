@@ -59,7 +59,7 @@ utils：一些工具js的管理。
 
 app.css：基本的css配置，你也可以把reset.css或者其他初始化样式的css写入app.css中。
 
-appContainer.js：我们叫他根组件，在SPA应用中，通常只有一个根组件。
+App.js：我们叫他根组件，在SPA应用中，通常只有一个根组件。
 
 bundle.js：react-router4中使用的懒加载代码，目前我已经注释掉，有需求的可以自己尝试使用。
 

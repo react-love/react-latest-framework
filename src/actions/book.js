@@ -10,8 +10,8 @@ const receiveBook = (response) => ({
 
 export const getBook = () => async (dispatch, getState) => {
     try {
-        let response = await instance.get(`/api/book/list`)
-        await dispatch(receiveBook(response))
+        let response = await instance.get(`/book/list`)
+        await dispatch(receiveBook(response.data))
         return response
     } catch (error) {
         console.log('error: ', error)

@@ -6,7 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
-import AppContainer from './appContainer';
+import { AppContainer } from 'react-hot-loader';
+import App from './App';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers/index';
 
@@ -19,31 +20,25 @@ const logger = createLogger({ collapsed: true });
 
 //解决移动端300毫秒延迟
 FastClick.attach(document.body);
-let store;
-if(process.env.NODE_ENV === 'development') {
-    store = createStore(rootReducer, composeWithDevTools(applyMiddleware(
-        thunk,
-        logger,
-        middleware
-    )));
-} else {
-    store = createStore(rootReducer, composeWithDevTools(applyMiddleware(
-        thunk,
-        middleware
-    )));
-}
+const middlewares = [thunk, middleware];
 
-const render = (Component) => {
+if(process.env.NODE_ENV === 'development') {
+    middlewares.push(logger)
+}
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares)));
+
+const render = Component =>
     ReactDOM.render(
-        <Provider store={store}>
-            <Component />
-        </Provider>,
+        <AppContainer>
+            <Provider store={store}>
+                <Component />
+            </Provider>
+        </AppContainer>,
         document.getElementById('root')
     );
-}
 
-render(AppContainer)
+render(App)
 
 if(module.hot) {
-    module.hot.accept('./appContainer', () => { render(AppContainer) });
+    module.hot.accept('./App', () => { render(App) });
 }
