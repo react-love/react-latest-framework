@@ -18,50 +18,41 @@ var plugins = [
             // 该配置假定你引入的 vendor 存在于 node_modules 目录中
             return module.context && module.context.indexOf('node_modules') !== -1;
         }
+    }),
+    new webpack.DefinePlugin({
+        // 定义全局变量
+        'process.env':{
+            'NODE_ENV': JSON.stringify(nodeEnv)
+        }
     })
 ]
-var app = [
-    'babel-polyfill',
-    './src/index'
-]
+var app = ['./index']
 if (isPro) {
   plugins.push(
       new webpack.optimize.UglifyJsPlugin({
-          compress: {
-              warnings: false,
-              drop_console: false
-          }
-      }),
-      new webpack.DefinePlugin({
-          // 定义全局变量
-          'process.env':{
-              'NODE_ENV': JSON.stringify(nodeEnv)
-          }
+          sourceMap: true,
+          comments: false
       })
   )
 } else {
-    app.push('webpack-hot-middleware/client?path=http://localhost:3011/__webpack_hmr&reload=true&noInfo=false&quiet=false')
+    app.unshift('react-hot-loader/patch', 'webpack-dev-server/client?http://localhost:3011', 'webpack/hot/only-dev-server')
     plugins.push(
-      new webpack.DefinePlugin({
-          // 定义全局变量
-          'process.env':{
-              'NODE_ENV': JSON.stringify(nodeEnv)
-          },
-          BASE_URL: JSON.stringify('http://localhost:9009'),
-      }),
-      new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+        new webpack.NoEmitOnErrorsPlugin()
   )
 }
 
 module.exports = {
-    devtool: isPro ? 'source-map' : 'cheap-eval-source-map',
+    context: path.resolve(__dirname, 'src'),
+    devtool: isPro ? 'source-map' : 'inline-source-map',
     entry: {
         app: app
     },
     output: {
         filename: '[name].js',
         path: path.join(__dirname, 'build'),
-        publicPath: isPro ? './build/' : 'http://localhost:3011/build/',
+        publicPath: isPro ? './build/' : '/build/',
         chunkFilename: '[name].js'
     },
     // BASE_URL是全局的api接口访问地址
@@ -77,21 +68,31 @@ module.exports = {
 
     module: {
         rules: [{
-            test: /\.(js|jsx)$/,
-            use: ['babel-loader'],
-            exclude: /node_modules/,
-            include: path.join(__dirname, 'src')
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader?cacheDirectory=true'
+            }
         }, {
             test: /\.(less|css)$/,
             use: ExtractTextPlugin.extract({
                 use: ["css-loader", "less-loader", "postcss-loader"]
             })
         }, {
-            test: /\.(png|jpg|gif|md)$/,
-            use: ['file-loader?limit=10000&name=[md5:hash:base64:10].[ext]']
-        }, {
-            test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-            use: ['url-loader?limit=10000&mimetype=image/svg+xml']
-        }],
-    }
+            test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+            use: ['url-loader?limit=10000&name=files/[md5:hash:base64:10].[ext]']
+        }]
+    },
+    devServer: {
+        hot: true,
+        compress: true,
+        port: 3011,
+        historyApiFallback: true,
+        contentBase: path.resolve(__dirname),
+        publicPath: '/build/',
+        stats: {
+            modules: false,
+            chunks: false
+        },
+    },
 };
