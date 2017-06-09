@@ -11,7 +11,7 @@ const search = require('./files/search_1.png');
 export class Header extends Component {
 
     render() {
-        const { handleClick } = this.props
+        const { handleClick, currentHot } = this.props
         return (
             <div className="style_body">
                 <div className="style_main">
@@ -20,7 +20,7 @@ export class Header extends Component {
                     </Link>
                     <div className="style_div_content">
                         <img src={search} className="style_div_img" />
-                        <input type="text" placeholder="搜索书名" className="style_div_input" />
+                        <input type="text" placeholder="搜索书名" className="style_div_input" value={currentHot} />
                     </div>
                     <Link to="/search" className="style_right_a">搜索</Link>
                 </div>

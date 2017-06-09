@@ -8,10 +8,11 @@ import PropTypes from 'prop-types';
 export class HotSearch extends React.Component {
 
     render() {
-        const { hotText, hotClick } = this.props
+        const { hotText, hotClick, currentHot } = this.props
         return (
             <a className="style_span"
                   onClick={hotClick}
+               style={{color: currentHot === hotText ? '#398cee' : ''}}
             >
                 {hotText}
             </a>

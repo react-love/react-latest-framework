@@ -24,6 +24,9 @@ export default class SearchContainer extends React.Component {
     constructor(props) {
         super(props);
         this.hotClick = this.hotClick.bind(this);
+        this.state = {
+            currentHot: undefined
+        }
     }
 
     componentWillMount() {
@@ -34,15 +37,15 @@ export default class SearchContainer extends React.Component {
     }
 
     hotClick(text) {
-        console.log(text)
+        this.setState({currentHot: text})
     }
 
     render() {
         const { hotData } = this.props.search
-
+        const { currentHot } = this.state
         return (
             <div key={this.props} style={{height: '100vh'}}>
-                <Header handleClick={this.props.currentAnimate} />
+                <Header handleClick={this.props.currentAnimate} currentHot={currentHot} />
                 <div>
                     <p className="search-hot-title">
                         <i className="fa fa-fire"></i>
@@ -58,6 +61,7 @@ export default class SearchContainer extends React.Component {
                                         key={index}
                                         hotText={elem.text}
                                         hotClick={() => this.hotClick(elem.text)}
+                                        currentHot={currentHot}
                                         {...this.props}
                                     />
                                 )
