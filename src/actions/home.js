@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/7/2.
  */
-import instance from 'utils/fetchData'
+import instance from 'utils/instance'
 
 //这个叫做action，用于更新reduer中的state
 const receiveNav = (response) => ({

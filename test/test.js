@@ -4,7 +4,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 const getBook = require('../src/actions/book');
-import instance from '../src/utils/fetchData';
+import instance from '../src/utils/instance';
 const receiveHotSearch = require('../src/actions/search');
 
 test('首页得到书籍列表', () => {
