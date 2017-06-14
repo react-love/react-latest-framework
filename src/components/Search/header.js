@@ -10,6 +10,15 @@ const search = require('./files/search_1.png');
 //该组件没有做无状态优化处理，根据其他几个组件的优化方式，可以自行思考
 export class Header extends Component {
 
+    constructor(props) {
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+        this.props.upDateValue(event.target.value);
+    }
+
     render() {
         const { handleClick, currentHot } = this.props
         return (
@@ -20,7 +29,12 @@ export class Header extends Component {
                     </Link>
                     <div className="style_div_content">
                         <img src={search} className="style_div_img" />
-                        <input type="text" placeholder="搜索书名" className="style_div_input" value={currentHot} />
+                        <input type="text"
+                               placeholder="搜索书名"
+                               className="style_div_input"
+                               value={currentHot}
+                               onChange={this.handleChange}
+                        />
                     </div>
                     <Link to="/search" className="style_right_a">搜索</Link>
                 </div>

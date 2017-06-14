@@ -22,10 +22,11 @@ import { HotSearch } from 'components/Search/hotSearch';
 export default class SearchContainer extends React.Component {
 
     constructor(props) {
-        super(props);
-        this.hotClick = this.hotClick.bind(this);
+        super(props)
+        this.hotClick = this.hotClick.bind(this)
+        this.upDateValue = this.upDateValue.bind(this)
         this.state = {
-            currentHot: undefined
+            currentHot: ''
         }
     }
 
@@ -33,7 +34,8 @@ export default class SearchContainer extends React.Component {
         this.props.receiveHotSearch()
     }
 
-    componentDidMount() {
+    upDateValue(value) {
+        this.setState({currentHot: value})
     }
 
     hotClick(text) {
@@ -45,7 +47,10 @@ export default class SearchContainer extends React.Component {
         const { currentHot } = this.state
         return (
             <div key={this.props} style={{height: '100vh'}}>
-                <Header handleClick={this.props.currentAnimate} currentHot={currentHot} />
+                <Header handleClick={this.props.currentAnimate}
+                        currentHot={currentHot}
+                        upDateValue={this.upDateValue}
+                />
                 <div>
                     <p className="search-hot-title">
                         <i className="fa fa-fire"></i>
