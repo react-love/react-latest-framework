@@ -12,7 +12,7 @@ const receiveNav = (response) => ({
 //获取服务器的参数，并且返回一个异步的dispatch，dispatch的对象是自己定义的action
 export const getNav = () => async (dispatch, getState) => {
     try {
-        let response = await instance.get(`book/navigation`)
+        let response = await instance.get(`/book/navigation`)
         await dispatch(receiveNav(response.data))
     } catch (error) {
         console.log('error: ', error)

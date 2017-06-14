@@ -19,6 +19,12 @@ import BookListContainer from './containers/BookList/bookListContainer';
     dispatch => bindActionCreators(globalActions, dispatch)
 )
 export default class App extends React.Component {
+
+    componentDidMount() {
+        window.addEventListener('hashchange', () => {
+           this.props.currentAnimate('normal')
+        })
+    }
     
   render() {
       const { animateCls } = this.props.global
