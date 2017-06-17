@@ -11,31 +11,28 @@
 
 欢迎 watch、star、fork，因为我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。  
 
-2017.6.10 更新
+2017.6.17 更新
 
-1、测试Windows7上chrome热更新正常；
+1、使用webpack的import()实现代码切割，不只是在路由中使用，你可以在任意组件内部使用代码切割方法懒加载组件，。
 
-2、增加状态提升的实现，代码在搜索页面；
+在路由route中，你可以这样
+```jsx harmony
+//封装好的异步方法，非原创，使用了一个大神写的函数。
+import { asyncComponent } from './AsyncComponent'
 
-3、监听浏览器返回和前进按钮事件执行动画。
+//使用asyncComponent()，你就能将Promise的返回值赋给一个变量
+const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./containers/Search/searchContainer"))
 
-2017.6.7 更新
+<Route path="/xx" component={Search} />
+```
 
-1、新增了global（action）来控制路由切换时调用的动画，我实现了左移动、右移动2种特效，你可以点击下面的demo查看效果。
+请注意import()方法是异步的，你不能这样使用
 
-2017.6.6 更新
+```javascript
+const Foo = import("./xx") // 错误的写法
 
-1、热更新改成react-hot-loader3；
-
-2、前端改成webpack-dev-server启动；
-
-3、mock移到easy-mock。
-
-4、如果你不喜欢这种启动和热更新方式，请切换tag版本（不会切换tag吗？）。
-
-5、更新了webpack插件和其他几个插件，你打包之后会发现js体积变小了。
-
-6、新版本推送的比较仓促，有bug可以给我反馈。
+<Route path="/xx" component={import("./xxx")} /> //错误的写法
+```
 
 ==========================================
 
@@ -83,36 +80,6 @@ npm run build-win
 
 ===========================================
 
-压缩效果图  
+压缩效果图（非最新版效果）  
+
 ![image](https://github.com/hyy1115/react-redux-webpack2/blob/master/public/fenxi.png)
-
-===================================================
-
-#### 关于服务端渲染的建议（内容来自react-router官方文档）  
-
-查看原文：https://reacttraining.cn/web/guides/code-splitting
-
-Code-splitting + server rendering
-
-代码分割 + 服务端渲染
-
-We’ve tried and failed a couple of times. What we learned:
-
-我们尝试了很多次都失败了，我们总结了下面几点：
-
-1、You need synchronous module resolution on the server so you can get those bundles in the initial render.
-
-你需要在服务端同步模块解析使得你可以在初始化渲染的时候得到那些文件。
-
-2、You need to load all the bundles in the client that were involved in the server render before rendering so that the client render is the same as the server render. (The trickiest part, I think its possible but this is where I gave up.)
-为了保证服务端渲染和客户端渲染的同步，你需要在客户端渲染前加载和服务端渲染一致的所有文件。（这也是我认为最难搞的地方，所以我放弃了）
-
-3、You need asynchronous resolution for the rest of the client app’s life.
-在客户端运行过程中，你需要异步解析其他没有在初始化渲染的部分。
-
-We determined that google was indexing our sites well enough for our needs without server rendering, so we dropped it in favor of code-splitting + service worker caching. Godspeed those who attempt the server-rendered, code-split apps.
-我们确定谷歌大神对我们网站的索引做得足够好，并不需要服务端渲染来解决SEO的问题，所以我们放弃了这种模式，而是采用更有利的代码分割 + service worker 缓存5的方式。愿上帝保佑那些想要尝试服务端渲染+代码分割的小白鼠:
-
-==================================================
-
-####Finally, JavaScript is the world's best language, if demand, you can directly send me an email  

@@ -1,18 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import './app.css'
 import { Route, HashRouter as Router } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import createHistory from 'history/createHashHistory'
 const history = createHistory()
 
-import * as globalActions from 'actions/global'
+/*
+ 全局导入less
+ 如果你发现你的样式没有起作用，那么很可能是没有在这里导入样式
+ */
+import './app.less'
+import './containers/Home/styles/home.less'
+import './containers/Search/styles/search.less'
 
-/* application components */
-import HomeContainer from './containers/Home/homeContainer';
-import SearchContainer from './containers/Search/searchContainer';
-import BookListContainer from './containers/BookList/bookListContainer';
+import * as globalActions from 'actions/global'
+import { asyncComponent } from './AsyncComponent'
+
+import homeContainer from './containers/Home/homeContainer'
+
+const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./containers/Search/searchContainer"))
+const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ "./containers/BookList/bookListContainer"))
 
 @connect (
     state => state,
@@ -41,9 +49,9 @@ export default class App extends React.Component {
                           transitionLeaveTimeout={400}
                       >
                           <div key={location.pathname}>
-                              <Route location={location} exact path="/" component={HomeContainer} />
-                              <Route location={location} path="/search" component={SearchContainer} />
-                              <Route location={location} path="/bookList/:bookId" component={BookListContainer} />
+                              <Route location={location} exact path="/" component={homeContainer} />
+                              <Route location={location} path="/search" component={Search} />
+                              <Route location={location} path="/bookList/:bookId" component={BookList} />
                           </div>
                       </CSSTransitionGroup>
                   )

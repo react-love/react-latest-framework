@@ -22,8 +22,6 @@ import { BookList } from 'components/Home/bookList'
 /*files*/
 const search = require('./files/search.svg');
 
-require(`./styles/home.less`)
-
 /**
  * connect中间件
  * connect一定要写在需要传递参数的组件头部，因为这是语法规则，只对当前关联的组件生效，和java的原理是一致的

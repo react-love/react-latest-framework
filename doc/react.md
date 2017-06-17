@@ -61,7 +61,7 @@ app.css：基本的css配置，你也可以把reset.css或者其他初始化样�
 
 App.js：我们叫他根组件，在SPA应用中，通常只有一个根组件。
 
-bundle.js：react-router4中使用的懒加载代码，目前我已经注释掉，有需求的可以自己尝试使用。
+AsyncComponent.js：react-router4中使用的懒加载代码，目前我已经注释掉，有需求的可以自己尝试使用。
 
 index.js：webpack中entry使用的入口js文件，包括store的管理，根组件的渲染都在该文件中。
 
