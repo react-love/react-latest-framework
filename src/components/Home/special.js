@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/7/2.
  */
-import React, { Component } from 'react';
+import React from 'react';
 
 /*files*/
 const zht_1 = require('./files/zht1.jpg');

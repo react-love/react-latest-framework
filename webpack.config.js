@@ -29,9 +29,14 @@ var plugins = [
 var app = ['./index']
 if (isPro) {
   plugins.push(
+      new webpack.LoaderOptionsPlugin({
+          minimize: true,
+          debug: false
+      }),
       new webpack.optimize.UglifyJsPlugin({
           sourceMap: true,
-          comments: false
+          comments: false,
+          ie8: true
       })
   )
 } else {
@@ -63,7 +68,14 @@ module.exports = {
         modules: [
             path.resolve(__dirname, 'node_modules'),
             path.join(__dirname, './src')
-        ]
+        ],
+        alias: {
+            "actions": path.resolve(__dirname, "src/actions"),
+            "components": path.resolve(__dirname, "src/components"),
+            "containers": path.resolve(__dirname, "src/containers"),
+            "reducers": path.resolve(__dirname, "src/reducers"),
+            "utils": path.resolve(__dirname, "src/utils")
+        }
     },
 
     module: {

@@ -1,11 +1,11 @@
 /**
  * Created by Administrator on 2016/7/1.
  */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 /*const*/
-import * as con from '../../utils/const';
+import * as con from 'utils/const';
 
 /*files*/
 const nav_1 = require('./files/nsyjr.png');

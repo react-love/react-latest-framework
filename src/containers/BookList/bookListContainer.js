@@ -1,10 +1,9 @@
 /**
  * Created by Administrator on 2016/7/1.
  */
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import classNames from 'classnames'
 import PropTypes from 'prop-types';
 
 /*component*/
