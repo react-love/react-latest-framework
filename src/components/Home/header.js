@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 export class Header extends React.Component {
     //注意，组件内部也可能有时候会暴露事件给外部调用，和参数传递的原理一样
     shouldComponentUpdate(nextProps, nextState) {
-        if (_.isEqual(this.props, nextProps) || !_.isEmpty(this.props)) {
+        if (isEqual(this.props, nextProps) || !isEmpty(this.props)) {
             return false
         }
         return true

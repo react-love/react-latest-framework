@@ -4,7 +4,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
@@ -12,19 +11,25 @@ import createHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers/index';
 
 var FastClick = require('fastclick');
-import 'lodash'
+
+//按模块导入lodash，可以有效减小vendor.js的大小
+import isEmpty from 'lodash/isEmpty';
+import isEqual from 'lodash/isEqual';
+import debounce from 'lodash/debounce';
+import isArray from 'lodash/isArray';
+
+window.isEmpty = isEmpty;
+window.isEqual = isEqual;
+window.debounce = debounce;
+window.isArray = isArray;
 
 const history = createHistory();
 const middleware = routerMiddleware(history)
-const logger = createLogger({ collapsed: true });
 
 //解决移动端300毫秒延迟
 FastClick.attach(document.body);
 const middlewares = [thunk, middleware];
 
-if(process.env.NODE_ENV === 'development') {
-    middlewares.push(logger)
-}
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares)));
 
 const render = Component =>

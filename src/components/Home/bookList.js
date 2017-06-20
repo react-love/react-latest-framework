@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 export class BookList extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (_.isEqual(this.props, nextProps) || !_.isEmpty(this.props)) {
+        if (isEqual(this.props, nextProps) || !isEmpty(this.props)) {
             return false
         }
         return true

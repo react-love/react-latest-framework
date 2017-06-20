@@ -26,7 +26,7 @@ var plugins = [
         }
     })
 ]
-var app = ['./index']
+var app = ['./entry']
 if (isPro) {
   plugins.push(
       new webpack.LoaderOptionsPlugin({
