@@ -82,6 +82,6 @@ npm run build-win
 
 ===========================================
 
-压缩效果图（非最新版效果）  
+压缩效果图
 
 ![image](https://github.com/hyy1115/react-redux-webpack2/blob/master/public/fenxi.png)
