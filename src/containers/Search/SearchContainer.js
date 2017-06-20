@@ -10,8 +10,8 @@ import PropTypes from 'prop-types';
 import * as searchActions from 'actions/search';
 import * as globalActions from 'actions/global';
 
-import { Header } from 'components/Search/header';
-import { HotSearch } from 'components/Search/hotSearch';
+import { Header } from 'components/Search/Header';
+import { HotSearch } from 'components/Search/HotSearch';
 
 @connect(
     state => state,

@@ -11,16 +11,16 @@ const history = createHistory()
  如果你发现你的样式没有起作用，那么很可能是没有在这里导入样式
  */
 import './app.less'
-import './containers/Home/styles/home.less'
-import './containers/Search/styles/search.less'
+import 'containers/Home/styles/home.less'
+import 'containers/Search/styles/search.less'
 
 import * as globalActions from 'actions/global'
 import { asyncComponent } from './AsyncComponent'
 
-import homeContainer from './containers/Home/homeContainer'
+import homeContainer from 'containers/Home/HomeContainer'
 
-const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./containers/Search/searchContainer"))
-const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ "./containers/BookList/bookListContainer"))
+const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./containers/Search/SearchContainer"))
+const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ "./containers/BookList/BookListContainer"))
 
 @connect (
     state => state,
