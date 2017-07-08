@@ -7,7 +7,7 @@
 
 重磅消息：webpack3正式来袭：https://github.com/webpack/webpack/releases/tag/v3.0.0  ，你准备好颤抖没？
 
-升级webpack3指南：
+#### 升级webpack3指南：
 
 1、你可以直接将webpack升级到3.0.0；
 
@@ -26,7 +26,7 @@ plugins: [
 
 欢迎 watch、star、fork，因为我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。  
 
-2017.6.17 更新
+#### 2017.6.17 更新
 
 1、使用webpack的import()实现代码切割，不只是在路由中使用，你可以在任意组件内部使用代码切割方法懒加载组件，。
 
@@ -95,6 +95,20 @@ npm run build-win
 
 ===========================================
 
-压缩效果图
+#### 压缩效果图
 
 ![image](https://github.com/hyy1115/react-redux-webpack2/blob/master/public/fenxi.png)
+
+#### 参与开源项目的方法（详情可以网上搜索教程）
+
+如果你对该项目感兴趣，想共享一份你的力量，请大胆pull request吧！
+
+1、点击fork
+
+2、去到你fork之后的项目下面
+
+3、clone到本地
+
+4、你可以在本地修改、删除、增加，然后commit到本地缓存，接着push到远程。（请注意每次commit尽量做小改动，切勿改了几十个文件全部都commit到一起！）
+
+5、然后，在github桌面客户端pull request你的commit
