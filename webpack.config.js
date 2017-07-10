@@ -12,7 +12,7 @@ console.log("当前运行环境：", isPro ? 'production' : 'development')
 
 var plugins = [
     new ExtractTextPlugin('styles.css'),
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: function (module) {
