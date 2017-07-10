@@ -5,26 +5,15 @@
 [![Build Status](https://travis-ci.org/hyy1115/react-redux-webpack2.svg?branch=master)](https://travis-ci.org/hyy1115/react-redux-webpack2)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)  
 
-重磅消息：webpack3正式来袭：https://github.com/webpack/webpack/releases/tag/v3.0.0  ，你准备好颤抖没？
-
-#### 升级webpack3指南：
-
-1、你可以直接将webpack升级到3.0.0；
-
-2、增加配置
-```javascript
-plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin()
-  ]
-```
-
-注意：不推荐你升级，因为webpack3还存在bug，从issue上就能看出来，我倒是觉得webpack2.6.1已经足够好用了。
-
 适用人群：该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要一个比较干净、简洁的框架从事实践项目的开发者。（doc文件夹附有教程文档）
 
 不适用人群：想要学习完整项目，比如饿了么，社区论坛这种应用型项目，请搜索其他开源项目。
 
 欢迎 watch、star、fork，因为我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。  
+
+#### 2016.7.10 更新
+
+1、升级到webpack3.1.0，start和build测试结果正常，终于可以使用了。
 
 #### 2017.6.17 更新
 
