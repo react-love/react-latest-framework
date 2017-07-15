@@ -88,6 +88,10 @@ npm run build-win
 
 ![image](https://github.com/hyy1115/react-redux-webpack2/blob/master/public/fenxi.png)
 
+#### 加入我们的组织
+
+![image](https://segmentfault.com/img/bVQYb6?w=564&h=786)
+
 #### 参与开源项目的方法（详情可以网上搜索教程）
 
 如果你对该项目感兴趣，想共享一份你的力量，请大胆pull request吧！
