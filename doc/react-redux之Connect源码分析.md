@@ -983,7 +983,7 @@ shouldUpdateDispatchProps：同时满足haveOwnPropsChanged、doDispatchPropsDep
 
 **connect渲染结果**：在你绑定的组件外层包裹了Connect组件，看下面的图你应该能更加清晰的了解connect做的事情。
 
-![clipboard.png](/img/bVQXkk)
+![clipboard.png](https://segmentfault.com/img/bVQXkk?w=1744&h=706)
 
 
 **componentWillReceiveProps**：组件接收到新的state。如果pure为false，并且nextProps和this.props不相等，则设置this.haveOwnPropsChanged为true。
