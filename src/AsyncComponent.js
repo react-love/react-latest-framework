@@ -1,5 +1,5 @@
 import React from 'react'
-export const asyncComponent = loadComponent => (
+const asyncComponent = loadComponent => (
     class AsyncComponent extends React.Component {
         state = {
             Component: null,
@@ -31,3 +31,5 @@ export const asyncComponent = loadComponent => (
         }
     }
 );
+
+export default asyncComponent;

@@ -111,6 +111,7 @@ module.exports = {
             modules: false,
             chunks: false
         },
+        overlay: false,
         setup(app) {
           app.use(errorOverlayMiddleware());
         }

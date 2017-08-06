@@ -15,7 +15,7 @@ import 'containers/Home/styles/home.less'
 import 'containers/Search/styles/search.less'
 
 import * as globalActions from 'actions/global'
-import { asyncComponent } from './AsyncComponent'
+import asyncComponent from './AsyncComponent'
 
 import homeContainer from 'containers/Home/HomeContainer'
 
@@ -36,7 +36,6 @@ export default class App extends React.Component {
     
   render() {
       const { animateCls } = this.props.global
-      console.log(animateCls)
       return (
           <Router history={history}>
               <Route render={({ location }) => {
