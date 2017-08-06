@@ -75,7 +75,6 @@ export default class HomeContainer extends React.Component {
                 <div className="style_div">
                     <ul className="style_ul">
                         {
-                            !isEmpty(navMain) > 0 &&
                             navMain.map((elem, index) => {
                                 return (
                                     <Nav
@@ -96,7 +95,6 @@ export default class HomeContainer extends React.Component {
                 <div>
                     <p className="style_p">书籍列表</p>
                     {
-                        !isEmpty(bookDetails) &&
                         bookDetails.map((ele, index) => {
                             return (
                                 <BookList

@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const errorOverlayMiddleware = require('react-error-overlay/middleware');
 var argv = require('yargs').argv;
 
 //判断当前运行环境是开发模式还是生产模式
@@ -103,9 +104,15 @@ module.exports = {
         historyApiFallback: true,
         contentBase: path.resolve(__dirname),
         publicPath: '/build/',
+        watchOptions: {
+          ignored: /node_modules/,
+        },
         stats: {
             modules: false,
             chunks: false
         },
+        setup(app) {
+          app.use(errorOverlayMiddleware());
+        }
     },
 };
