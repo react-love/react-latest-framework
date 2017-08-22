@@ -1,19 +1,17 @@
-var path = require('path');
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-const errorOverlayMiddleware = require('react-error-overlay/middleware');
-var argv = require('yargs').argv;
+var path = require('path')
+var webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var argv = require('yargs').argv
+const webpackServerConfig = require('./webpackServerConfig')
 
 //判断当前运行环境是开发模式还是生产模式
-const nodeEnv = process.env.NODE_ENV || 'development';
-const isPro = nodeEnv === 'production';
+const nodeEnv = process.env.NODE_ENV || 'development'
+const isPro = nodeEnv === 'production'
 
 console.log("当前运行环境：", isPro ? 'production' : 'development')
 
 var plugins = [
-    new ExtractTextPlugin('styles.css'),
-    // new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: function (module) {
@@ -31,6 +29,9 @@ var plugins = [
 var app = ['./entry']
 if (isPro) {
   plugins.push(
+      new ExtractTextPlugin({
+          filename: 'styles.css'
+      }),
       new webpack.LoaderOptionsPlugin({
           minimize: true,
           debug: false
@@ -42,7 +43,7 @@ if (isPro) {
       })
   )
 } else {
-    app.unshift('react-hot-loader/patch', 'webpack-dev-server/client?http://localhost:3011', 'webpack/hot/only-dev-server')
+    app.unshift('react-hot-loader/patch', `webpack-dev-server/client?http://${webpackServerConfig.host}:${webpackServerConfig.port}`, 'webpack/hot/only-dev-server')
     plugins.push(
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
@@ -84,36 +85,16 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
-            use: {
-                loader: 'babel-loader?cacheDirectory=true'
-            }
+            use: 'babel-loader'
         }, {
             test: /\.(less|css)$/,
-            use: ExtractTextPlugin.extract({
-                use: ["css-loader", "less-loader", "postcss-loader"]
-            })
+            use: isPro ? ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ["css-loader", "less-loader"]
+                }) : ["style-loader", "css-loader", "less-loader"]
         }, {
             test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
             use: ['file-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]']
         }]
-    },
-    devServer: {
-        hot: true,
-        compress: true,
-        port: 3011,
-        historyApiFallback: true,
-        contentBase: path.resolve(__dirname),
-        publicPath: '/build/',
-        watchOptions: {
-          ignored: /node_modules/,
-        },
-        stats: {
-            modules: false,
-            chunks: false
-        },
-        overlay: false,
-        setup(app) {
-          app.use(errorOverlayMiddleware());
-        }
-    },
+    }
 };

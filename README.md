@@ -1,5 +1,5 @@
 
-### 热更新、ES6/7、LESS、Router4、redux、webpack2、async／await、前端node服务器，按需加载...
+### 热更新、ES6/7、LESS、Router4、redux、webpack3、async／await、前端node服务器，按需加载...
 <hr />
 
 [![Build Status](https://travis-ci.org/hyy1115/react-redux-webpack2.svg?branch=master)](https://travis-ci.org/hyy1115/react-redux-webpack2)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
@@ -7,13 +7,22 @@
 
 适用人群：该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要一个比较干净、简洁的框架从事实践项目的开发者。（doc文件夹附有教程文档）
 
-不适用人群：想要学习完整项目，比如饿了么，社区论坛这种应用型项目，请搜索其他开源项目。
+```text
+官方推荐：
 
+对于 HTTP/1.1 客户端，由 webpack 打包你的应用程序会尤其强大，因为在浏览器发起一个新请求时，
+它能够减少应用程序必须等待的时间。对于 HTTP/2，你还可以使用代码拆分(Code Splitting)以及通过 
+webpack 打包来实现最佳优化。
+```
 欢迎 watch、star、fork，因为我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。  
 
-#### 2017.7.15 更新
+#### 2017.8.22 更新
 
-1、推送react技术栈插件源码解析，不断更新中，欢迎watch。
+1、升级babel到最新稳定版
+
+2、升级webpack到3.5.5
+
+3、更新css和less提取模式，由于webpack开发环境不支持css热更新，所以不单独提取css，而在生成环境下，单独打包css模块。
 
 #### 2017.6.17 更新
 

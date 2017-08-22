@@ -14,13 +14,13 @@
     "stage-3"
   ],
   "plugins": [
-    "react-hot-loader/babel",
     ["transform-runtime", {
       "helpers": false,
       "polyfill": false,
       "regenerator": true,
       "moduleName": "babel-runtime"
     }],
+    "react-hot-loader/babel",
     "transform-decorators-legacy",
     "transform-async-to-generator",
     "transform-do-expressions",

@@ -1,17 +1,19 @@
 /**
  * Created by Administrator on 2016/7/2.
  */
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 /*actions*/
-import * as searchActions from 'actions/search';
-import * as globalActions from 'actions/global';
+import * as searchActions from 'actions/search'
+import * as globalActions from 'actions/global'
 
-import { Header } from 'components/Search/Header';
-import { HotSearch } from 'components/Search/HotSearch';
+import { Header } from 'components/Search/Header'
+import { HotSearch } from 'components/Search/HotSearch'
+
+import 'containers/Search/styles/search.less'
 
 @connect(
     state => state,

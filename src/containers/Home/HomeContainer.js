@@ -1,25 +1,27 @@
 /**
  * Created by Administrator on 2016/7/1.
  */
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 //关于import什么时候用{}，什么时候不用大括号，通过那个插件或者组件是否包含default来判断，如果包含，则不需要{}
 
 /*actions*/
-import * as homeActions from 'actions/home';
+import * as homeActions from 'actions/home'
 import * as globalActions from 'actions/global'
 
 /*component*/
-import { Header } from 'components/Home/Header';
-import { Nav } from 'components/Home/Nav';
-import { Special } from 'components/Home/Special';
+import { Header } from 'components/Home/Header'
+import { Nav } from 'components/Home/Nav'
+import { Special } from 'components/Home/Special'
 import { BookList } from 'components/Home/BookList'
 
 /*files*/
-const search = require('./files/search.svg');
+const search = require('./files/search.svg')
+
+import 'containers/Home/styles/home.less'
 
 /**
  * connect中间件
@@ -70,7 +72,6 @@ export default class HomeContainer extends React.Component {
                     linkTo="search"
                     bgColor={bgClass}
                     handleClick={this.props.currentAnimate}
-                    // {...this.props}当你需要在container调用子组件内部的属性，需要加上该语句，比如组件内部的ref
                 />
                 <div className="style_div">
                     <ul className="style_ul">
