@@ -11,7 +11,7 @@ const history = createHistory()
  */
 import './app.less'
 
-import * as globalActions from 'actions/global'
+import * as global from 'actions/global'
 import asyncComponent from './AsyncComponent'
 
 import homeContainer from 'containers/Home/HomeContainer'
@@ -20,8 +20,8 @@ const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./c
 const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ "./containers/BookList/BookListContainer"))
 
 @connect (
-    state => state,
-    dispatch => bindActionCreators(globalActions, dispatch)
+    state => {return {...state.global}},
+    dispatch => bindActionCreators(global, dispatch)
 )
 export default class App extends React.Component {
 
@@ -32,7 +32,7 @@ export default class App extends React.Component {
     }
     
   render() {
-      const { animateCls } = this.props.global
+      const { animateCls } = this.props
       return (
           <Router history={history}>
               <Route render={({ location }) => {

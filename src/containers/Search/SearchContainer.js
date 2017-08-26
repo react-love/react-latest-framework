@@ -7,8 +7,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 /*actions*/
-import * as searchActions from 'actions/search'
-import * as globalActions from 'actions/global'
+import * as search from 'actions/search'
+import * as global from 'actions/global'
 
 import Header from 'components/Search/Header'
 import HotSearch from 'components/Search/HotSearch'
@@ -16,11 +16,10 @@ import HotSearch from 'components/Search/HotSearch'
 import 'containers/Search/styles/search.less'
 
 @connect(
-    state => state,
-    dispatch => bindActionCreators({...searchActions, ...globalActions}, dispatch)
+    state => {return {...state.search}},
+    dispatch => bindActionCreators({...search, ...global}, dispatch)
 )
 export default class SearchContainer extends React.Component {
-
     constructor(props) {
         super(props)
         this.hotClick = this.hotClick.bind(this)
@@ -29,25 +28,21 @@ export default class SearchContainer extends React.Component {
             currentHot: ''
         }
     }
-
     componentWillMount() {
         console.log('进入搜索页面')
         this.props.receiveHotSearch()
     }
-
     upDateValue(value) {
         this.setState({currentHot: value})
     }
-
     hotClick(text) {
         this.setState({currentHot: text})
     }
-
     render() {
-        const { hotData } = this.props.search
+        const { hotData } = this.props
         const { currentHot } = this.state
         return (
-            <div key={this.props} style={{height: '100vh'}}>
+            <div style={{height: '100vh'}}>
                 <Header handleClick={this.props.currentAnimate}
                         currentHot={currentHot}
                         upDateValue={this.upDateValue}
@@ -78,7 +73,6 @@ export default class SearchContainer extends React.Component {
         )
     }
 }
-
 SearchContainer.propTypes = {
     hotData: PropTypes.array
 }
