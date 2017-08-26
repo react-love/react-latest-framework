@@ -101,7 +101,6 @@ export default class HomeContainer extends React.Component {
                                 <BookList
                                     key={index}
                                     _id={ele._id}
-                                    imgUrl={ele.imgUrl}
                                     title={ele.title}
                                     author={ele.author}
                                     press={ele.press}
