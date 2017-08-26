@@ -13,10 +13,10 @@ import * as homeActions from 'actions/home'
 import * as globalActions from 'actions/global'
 
 /*component*/
-import { Header } from 'components/Home/Header'
-import { Nav } from 'components/Home/Nav'
-import { Special } from 'components/Home/Special'
-import { BookList } from 'components/Home/BookList'
+import Header from 'components/Home/Header'
+import Nav from 'components/Home/Nav'
+import Special from 'components/Home/Special'
+import BookList from 'components/Home/BookList'
 
 /*files*/
 const search = require('./files/search.svg')

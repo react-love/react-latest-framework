@@ -19,7 +19,7 @@ const nav_8 = require('./files/nydjk.png');
 const nav_9 = require('./files/nother.png');
 
 
-export class Nav extends React.Component {
+export default class Nav extends React.Component {
     // 自定义图片路径数组
     static navImage = {
         [con.NAV_IMAGE_1]: nav_1,

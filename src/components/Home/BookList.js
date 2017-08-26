@@ -1,11 +1,11 @@
 /**
  * Created by yongyuehuang on 2016/12/15.
  */
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export class BookList extends React.Component {
+export default class BookList extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         if (isEqual(this.props, nextProps) || !isEmpty(this.props)) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { Route, HashRouter as Router } from 'react-router-dom'
+import { Route, Router } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import createHistory from 'history/createHashHistory'
 const history = createHistory()

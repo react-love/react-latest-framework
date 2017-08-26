@@ -7,7 +7,7 @@ import React from 'react';
 const zht_1 = require('./files/zht1.jpg');
 const zht_2 = require('./files/zht2.jpg');
 
-export class Special extends React.Component {
+export default class Special extends React.Component {
 
     render() {
 
