@@ -1,14 +1,15 @@
 /**
  * Created by Administrator on 2016/7/2.
  */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-const back = require('./files/back_search.png');
-const search = require('./files/search_1.png');
+const back = require('./files/back_search.png')
+const search = require('./files/search_1.png')
 
 //该组件没有做无状态优化处理，根据其他几个组件的优化方式，可以自行思考
-export class Header extends React.Component {
+export default class Header extends React.Component {
 
     constructor(props) {
         super(props)
@@ -41,4 +42,9 @@ export class Header extends React.Component {
             </div>
         )
     }
+}
+Header.propTypes = {
+    handleClick: PropTypes.func.isRequired,
+    currentHot: PropTypes.string.isRequired,
+    upDateValue: PropTypes.func.isRequired
 }

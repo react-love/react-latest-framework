@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import * as searchActions from 'actions/search'
 import * as globalActions from 'actions/global'
 
-import { Header } from 'components/Search/Header'
+import Header from 'components/Search/Header'
 import { HotSearch } from 'components/Search/HotSearch'
 
 import 'containers/Search/styles/search.less'
