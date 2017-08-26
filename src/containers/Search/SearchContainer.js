@@ -11,7 +11,7 @@ import * as searchActions from 'actions/search'
 import * as globalActions from 'actions/global'
 
 import Header from 'components/Search/Header'
-import { HotSearch } from 'components/Search/HotSearch'
+import HotSearch from 'components/Search/HotSearch'
 
 import 'containers/Search/styles/search.less'
 
@@ -63,12 +63,11 @@ export default class SearchContainer extends React.Component {
                             hotData.map((elem, index) => {
                                 return (
                                     <HotSearch
-                                        ref="hotSearch"
+                                        ref={hotSearch => this.hotSearch = hotSearch}
                                         key={index}
                                         hotText={elem.text}
                                         hotClick={() => this.hotClick(elem.text)}
                                         currentHot={currentHot}
-                                        {...this.props}
                                     />
                                 )
                             })
