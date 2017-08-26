@@ -16,13 +16,17 @@ webpack 打包来实现最佳优化。
 ```
 欢迎 watch、star、fork，因为我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。  
 
-#### 2017.8.22 更新
+#### 2017.8.27 更新
 
 1、升级babel到最新稳定版
 
 2、升级webpack到3.5.5
 
 3、更新css和less提取模式，由于webpack开发环境不支持css热更新，所以不单独提取css，而在生成环境下，单独打包css模块。
+
+4、全面优化组件，vendor.js打包体积有所减少，线上开启gzip之后仅有92.1kb，点击上面的链接在线查看
+
+5、完善eslint规则
 
 #### 2017.6.17 更新
 
@@ -67,23 +71,23 @@ npm install 或者cnpm install
 ```
 
 2、运行demo。
-   ```
+ ```nodemon
     mac
     npm run start-mac
 
     windows
     npm run start-win
-   ```
+ ```
 
 3、将会开启3011端口.
-```
+```nodemon
 http://localhost:3011
 
 ```
 
 4、打包发布: 假设你用的是阿里云服务器，你可以把静态资源和图片都放到CDN，index.html放到你的域名服务器下面，请注意路径问题。  
 
-```
+```nodemon
 mac
 npm run build-mac
 
@@ -93,24 +97,72 @@ npm run build-win
 
 ===========================================
 
-#### 压缩效果图
+#### 关于DOC文档教程的解释
 
-![image](https://github.com/hyy1115/react-redux-webpack2/blob/master/public/fenxi.png)
+非常抱歉的是由于各个插件版本升级太快，一些文档教程没有实时跟上维护修改，如果你有参与项目的意愿，可以帮忙更新DOC教程。
+
+#### 关于react-transition-group的注意事项
+
+```text
+react-transition-group目前有V1和V2，本项目使用的是V1，如果没有需求，请勿切换到V2，我尝试升级V2，发现过渡动画切换出现了异常。
+如果你想升级，那么我可以提供一个简易的代码修改提示。
+```
+
+**升级V2小提示：(不建议升级)**
+1、修改css动画class退出属性
+```css
+.example-leave {
+  opacity: 1;
+}
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+/*leave 改为 exit*/
+
+.example-exit {
+  opacity: 1;
+}
+
+.example-exit.example-exit-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+```
+2、CSSTransitionGroup替换成TransitionGroup和CSSTransition，同时修改props
+```javascript
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
+
+class A extends React.Component {
+    render() {
+        return (
+            <TransitionGroup>
+                <CSSTransition 
+                    key={location.pathname}
+                    classNames={animateCls}
+                    enter={true}
+                    exit={true}
+                    timeout={{exit: 400, enter: 400}}
+                >
+                    <div>
+                        <Route location={location} exact path="/" component={homeContainer} />
+                        <Route location={location} path="/search" component={Search} />
+                        <Route location={location} path="/bookList/:bookId" component={BookList} />
+                    </div>
+                </CSSTransition>
+            </TransitionGroup>
+        )
+    }
+}
+
+```
 
 #### 加入我们的组织
+**微信群已超过100人，如果你需要加群，请私聊我。**
 
 ![image](https://segmentfault.com/img/bVQYb6?w=564&h=786)
 
 #### 参与开源项目的方法（详情可以网上搜索教程）
 
-如果你对该项目感兴趣，想共享一份你的力量，请大胆pull request吧！
-
-1、点击fork
-
-2、去到你fork之后的项目下面
-
-3、clone到本地
-
-4、你可以在本地修改、删除、增加，然后commit到本地缓存，接着push到远程。（请注意每次commit尽量做小改动，切勿改了几十个文件全部都commit到一起！）
-
-5、然后，在github桌面客户端pull request你的commit
+**如果你对该项目感兴趣，想共享一份你的力量，请大胆pull PR！**
