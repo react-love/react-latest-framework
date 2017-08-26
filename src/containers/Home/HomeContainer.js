@@ -31,7 +31,7 @@ import 'containers/Home/styles/home.less'
  */
 
 @connect(
-    state => state,
+    state => {return {...state.home}},
     dispatch => bindActionCreators({...homeActions, ...globalActions}, dispatch)
 )
 export default class HomeContainer extends React.Component {
@@ -45,7 +45,7 @@ export default class HomeContainer extends React.Component {
     }
 
     componentWillMount() {
-        const { navMain, bookDetails } = this.props.home
+        const { navMain, bookDetails } = this.props
         if (navMain.length === 0) {
             this.props.getNav();
         }
@@ -61,7 +61,7 @@ export default class HomeContainer extends React.Component {
     }
 
     render() {
-        const { navMain, bookDetails } = this.props.home
+        const { navMain, bookDetails } = this.props
         //还可以通过自定义样式传递给组件
         let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
         return(
@@ -114,10 +114,9 @@ export default class HomeContainer extends React.Component {
                     }
                 </div>
             </div>
-        );
+        )
     }
 }
-
 HomeContainer.propTypes = {
     navMain: PropTypes.array,
     bookDetails: PropTypes.array,
