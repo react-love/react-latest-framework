@@ -15,7 +15,7 @@ import * as global from 'actions/global'
 import asyncComponent from './AsyncComponent'
 
 import homeContainer from 'containers/Home/HomeContainer'
-
+import ReactChildrenMap from 'utils/ReactChildrenMap'
 const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./containers/Search/SearchContainer"))
 const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ "./containers/BookList/BookListContainer"))
 
@@ -44,11 +44,11 @@ export default class App extends React.Component {
                           transitionEnterTimeout={400}
                           transitionLeaveTimeout={400}
                       >
-                          <div key={location.pathname}>
+                          <ReactChildrenMap key={location.pathname}>
                               <Route location={location} exact path="/" component={homeContainer} />
                               <Route location={location} path="/search" component={Search} />
                               <Route location={location} path="/bookList/:bookId" component={BookList} />
-                          </div>
+                          </ReactChildrenMap>
                       </CSSTransitionGroup>
                   )
               }}/>
