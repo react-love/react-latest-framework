@@ -18,8 +18,7 @@ export default class ReactChildrenMap extends React.PureComponent {
     }
 }
 ReactChildrenMap.propTypes = {
-    children: PropTypes.array,
-    type: PropTypes.string //默认是map，可以设置为forEach
+    children: PropTypes.array
 }
 function warningFunc(children) {
     if (typeof children !== 'object') {
