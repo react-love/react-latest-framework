@@ -12,7 +12,6 @@ import ReactVersion from './ReactVersion';
 import findDOMNode from './findDOMNode';
 // 导出ReactMount的renderSubtreeIntoContainer方法
 import renderSubtreeIntoContainer from './renderSubtreeIntoContainer';
-
 //执行注入函数
 ReactDefaultInjection.inject();
 const ReactDOM = {
