@@ -158,10 +158,35 @@ class A extends React.Component {
 
 ```
 
+#### 项目结构
+
+```text
+├── doc 相关的教程文档
+├── public readMe的一些图片资源，可以删掉该文件夹
+├── src 项目的主目录
+│   ├── actions 管理你的action文件
+│   ├── components 管理二级以及更低级别的组件、包括公共组件
+│   │   ├── Commons
+│   │   ├── Home Home页面对应的子组件
+│   │   │   └── files
+│   │   └── Search Search页面对应的子组件
+│   │       └── files
+│   ├── containers 管理顶级组件，通常是页面
+│   │   ├── BookList
+│   │   ├── Home 首页
+│   │   │   ├── files
+│   │   │   └── styles 
+│   │   └── Search 搜索页
+│   │       └── styles
+│   ├── reducers 管理store
+│   └── utils 一些公共的方法和组件可以放这里
+└── test 测试脚本
+    └── __snapshots__
+
+```
+
 #### 加入我们的组织
 **微信群已超过100人，如果你需要加群，请私聊我。**
-
-![image](https://segmentfault.com/img/bVQYb6?w=564&h=786)
 
 #### 参与开源项目的方法（详情可以网上搜索教程）
 
