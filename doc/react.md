@@ -2,40 +2,55 @@
 
 #### 1、认识本项目的结构
 
-我采用的是react、redux、webpack2、react-router4的基本架构，属于经典主流类型。
+采用的是react、redux、webpack3、react-router4的基本架构，属于主流类型。
 
 **文件夹介绍**
 
+```text
+├── doc 相关的教程文档
+├── public readMe的一些图片资源，可以删掉该文件夹
+├── src 项目的主目录
+│   ├── actions 管理你的action文件
+│   ├── components 管理二级以及更低级别的组件、包括公共组件
+│   │   ├── Commons
+│   │   ├── Home Home页面对应的子组件
+│   │   │   └── files
+│   │   └── Search Search页面对应的子组件
+│   │       └── files
+│   ├── containers 管理顶级组件，通常是页面
+│   │   ├── BookList
+│   │   ├── Home 首页
+│   │   │   ├── files
+│   │   │   └── styles 
+│   │   └── Search 搜索页
+│   │       └── styles
+│   ├── reducers 管理store
+│   └── utils 一些公共的方法和组件可以放这里
+└── test 测试脚本
+    └── __snapshots__
 ```
-doc：项目文档  
 
-mock：静态数据
-
-public：静态图片
-
-src：前端主目录
-
-test：基本测试代码
-
-根目录下面的 server.js和webpack.config.js需要多关注一下。
-```
+虽然react-router4没有了页面路由的概念，但是从项目管理来看，我们还是需要按照页面来管理组件比较合适，这并不冲突。
 
 ### 2、修改前端服务器端口号
 
-在server.js中
+在webapckServerConfig.js中
 ```javascript
-var port = 3011; //修改成你需要的端口
+module.exports = {
+    host: 'localhost',
+    port: 3011 //修改成你需要的端口
+}
 ```
 
 ### 3、开启代理服务器
 
 我们有时候会遇到跨域访问数据的问题，这时候你可以选择开启 server.js 中的代理服务器。
 ```javascript
-//现在你只需要执行这一行代码，当你访问需要跨域的api资源时，就可以成功访问到了。
-// app.use('/api/*', proxy({
-//     target: 'http://www.baidu.com',
-//     changeOrigin: true
-// }))
+//你可以修改target，使其指向你的目标服务器。
+app.use('/book/*', proxy({
+    target: 'https://www.easy-mock.com/mock/593611b991470c0ac101d474',
+    secure: false
+}))
 ```
 
 ### 4、webpack.config.js的作用
@@ -57,13 +72,13 @@ reducers：这里是redux的数据管理中心，reducer是纯函数，你不能
 
 utils：一些工具js的管理。
 
-app.css：基本的css配置，你也可以把reset.css或者其他初始化样式的css写入app.css中。
+app.less：基本的css配置，你也可以把reset.css或者其他初始化样式的css写入app.less中。
 
 App.js：我们叫他根组件，在SPA应用中，通常只有一个根组件。
 
 AsyncComponent.js：react-router4中使用的懒加载代码，目前我已经注释掉，有需求的可以自己尝试使用。
 
-index.js：webpack中entry使用的入口js文件，包括store的管理，根组件的渲染都在该文件中。
+entry.js：webpack中entry使用的入口js文件，包括store的管理，根组件的渲染都在该文件中。
 
 ```
 
@@ -71,65 +86,77 @@ index.js：webpack中entry使用的入口js文件，包括store的管理，根�
 
 有了这样一个搭建好的框架，你如果是个初学者，是不是很想快点用它做出自己的网站，下面我就将首页的实现过程大概梳理一下，之后你可以尝试写一个属于自己的页面。
 
-**第一步**：想要用react写一个网页，你的第一个想法便是去container目录新建一个文件夹，比如Home，表示当前首页的路由组件homeContainer.js，文件名我通常开头不大写，但是在class HomeContainer中就需要开头大写了。
+**第一步**：想要用react写一个网页，你的第一个想法便是去container目录新建一个文件夹，比如Home，表示当前首页的路由组件HomeContainer.js。
 此外，还需要在Home文件夹下面新建files和styles，分别用来存放当前组件的图片等资源和样式。
 
 **第二步**：你可以开始写homeContainer组件的代码了，通常一个基本的路由组件是下面这种结构。
 ```javascript
-import React, { Component } from 'react'; //react必须导入
-import { bindActionCreators } from 'redux'; //bindActionCreators用来绑定你的action到该组件上
-import { connect } from 'react-redux'; //connect()是个函数，顾名思义是把react和redux连接起来。
-import PropTypes from 'prop-types'; //PropTypes原来是在React中使用，现在被官方拆分出来单独管理。
+import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import Header from 'components/Home/header'; //导入子组件，子组件写在components文件夹。
+/*actions*/
+import * as home from 'actions/home'
+import * as global from 'actions/global'
 
-require(`./styles/home.less`); //导入首页样式
+/*component*/
+import Header from 'components/Home/Header'
 
-//请注意@connect()必须写在组件的上面，而且紧挨着组件，不要拆散他们俩。
+import 'containers/Home/styles/home.less'
+
 @connect(
-    state => state
+    state => {return {...state.home}},
+    dispatch => bindActionCreators({...home, ...global}, dispatch)
 )
 export default class HomeContainer extends React.Component {
+
     render() {
-        return (
+        return(
             <div>
-                <Header title="" imgUrl="" linkTo="" bgColor="" match=""/>
+                <Header />               
             </div>
         )
     }
 }
+HomeContainer.propTypes = {
+}
 
 ```
 **第三步**：去components文件夹下面，新建一个Home文件夹，于containers下面的Home文件夹一一对应，这样做的好处是父子组件既能分开管理，也能快速找到。
-接着在Home下面新建header.js文件。子组件可以是函数，也可以是react类型的组件。我在这里定义的是一个react子组件。
-```
-import React, { Component } from 'react'; //无论是函数组件还是react组件，都需要导入React。
-import { Link } from 'react-router-dom'; //Link相当于a标签。
-import PropTypes from 'prop-types'; 
-//header子组件只作为数据渲染，数据从父组件传递到子组件使用props。在jsx中绑定数据使用大括号。请注意标签中的class需要改成classname，而style里面写成object的形式。
-如果你不喜欢字符串之间的参数用加号拼接，那么可以使用`${value}`的方式。
-export class Header extends React.Component {
-    render() {
-        const {title, imgUrl, linkTo, bgColor, match} = this.props
-        return (
-            <header className='header' style={bgColor}>
-                {title}
-                <Link to={`${match.url + linkTo}`} className="a_link" >
-                    <img src={imgUrl} className="a_img" />
-                </Link>
-            </header>
-        )
-    }
+接着在Home下面新建header.js文件。子组件可以是无状态，也可以是有状态组件。我在这里定义的是一个无状态组件。
+```JavaScript
+import React from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+
+const Header = (props) => {
+    const { title, imgUrl, linkTo, bgColor, handleClick } = props
+    //提供4个接口参数给container做设置，可以不传参。
+    return (
+        <header className='header' style={bgColor}>
+            {title}
+            <Link to={linkTo} className="a_link" onClick={() => handleClick('left')}>
+                <img src={imgUrl} className="a_img" />
+            </Link>
+        </header>
+    )
 }
+//严格来说，这些暴露给外部的参数都需要做验证,常用的验证类型为array，bool，func，number，object，string
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    imgUrl: PropTypes.string.isRequired,
+    linkTo: PropTypes.string.isRequired,
+    bgColor: PropTypes.object.isRequired
+}
+export default Header
 ```
 
-**第四步**：我们现在还没有用到action和reducer，别着急，看到nav.js组件没？Nav组件是一个li列表，列表的文案数据是从HomeContainer父组件传递过来的，这些菜单列表数据我用静态json文件的方式
-写在了mock文件夹下面，正常情况下，它可能在你的后端服务器，也就是说你需要请求ajax返回导航数据。
+**第四步**：我们现在还没有用到action和reducer，别着急，看到nav.js组件没？Nav组件是一个li列表，列表的文案数据是从HomeContainer父组件传递过来的，这些菜单列表数据是从easy-mock获取的，正常情况下，它可能在你的后端服务器，也就是说你需要请求ajax返回导航数据。
 
 可以思考一下，在什么时候、什么地方去请求后端的导航数据呢？
 
 我是在homeContainer组件的componentWillMount（即将渲染前，也就是还没有开始渲染）使用ajax请求接口数据。有人可能会在componentDidMount（渲染完成后）再去服务器拿数据，当然，你喜欢这样，没人拦着。
-
 
 是不是直接在componentWillMount写ajax代码就行了呢？别忘了你已经使用了redux，这时候你就需要在action中新建一个js，然后定于一个action用来发送保存从后端接收到的导航数据。
 ```
@@ -145,8 +172,8 @@ const receiveNav = (response) => ({
 ```javascript
 export const getNav = () => async (dispatch, getState) => {
     try {
-        let response = await getData(`/api/book/navigation`) //ajax请求采用axios插件
-        await dispatch(receiveNav(response)) //靠着这个神奇的dispatch()，可以直接调用action对应的函数，去更新store里面的数据。
+        let response = await instance.get(`/book/navigation`)
+        await dispatch(receiveNav(response.data))
     } catch (error) {
         console.log('error: ', error)
     }
@@ -165,7 +192,7 @@ export function nav(state = initNavList, action) {
     switch (action.type) {
         case 'RECEIVE_NAV':
             return {
-                ...state,   //三个点是展开符
+                ...state,   //三个点是展开符，浅拷贝，如果要深拷贝，可以使用lodash的_.cloneDeep
                 navMain: action.navMain
             }
 
@@ -174,17 +201,17 @@ export function nav(state = initNavList, action) {
     }
 }
 
-我们看看第一个case里面return出来的是什么东西
+//我们看看第一个case里面return出来的是什么东西
 
 {
     navMain: [data]
 }
-原来navMain是一个空数组，当有数据返回的时候，整个initNavList就会拷贝一个新的对象出来，注意这个initNavList仅仅是整颗store状态树的一部分节点。
+//原来navMain是一个空数组，当有数据返回的时候，整个initNavList就会拷贝一个新的对象出来，注意这个initNavList仅仅是整颗store状态树的一部分节点。
 ```
 
 **第六步**：你是不是有点好奇，为什么action和reducer不需要import或者require文件，数据就会那么听话的流过来呢？
 
-答案就在reducers文件夹下面的index.js文件中。你如果在reducer文件夹下面新建了js文件，需要在该文件夹下的index.js中注册你的reducer。
+因为使用到了react-router-redux。
 
 ```javascript
 //关键的2个插件
@@ -193,26 +220,28 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux'
 ```
 
-**第七步**：reducer写好了，那么数据下一步就要流向container组件了。来吧，宝贝。
+**第七步**：reducer写好了，那么数据下一步就要流向container组件了。
 在路由组件（或者叫做父组件）中，关联state和action是其中非常重要的一环，不然你是无法读取state和action的。
 
 ```javascript
-import * as navActions from 'actions/nav'; //导入nav文件下面的所有函数，不管是action函数ajax方法
+import * as navActions from 'actions/nav'; //导入nav文件下面的所有函数，不管是action函数ajax方法，你有可以选择性的只导入你需要的action
 
 @connect(
-    state => state,
-    dispatch => bindActionCreators({...navActions}, dispatch)
+    state => {return {...state.home}},
+    dispatch => bindActionCreators({...home, ...global}, dispatch)
 )
 
 ```
 接着你就可以在组件中通过props的方式去调用action里面的方法了。
 ```javascript
 componentWillMount() {
-        const { navMain } = this.props.home //读取reducer中的nav。
-
-        //如果state中的navMain为空，那么就执行getNav()函数去请求后端导航数据。
+        const { navMain, bookDetails } = this.props
         if (navMain.length === 0) {
             this.props.getNav();
+        }
+
+        if (bookDetails.length === 0) {
+            this.props.getBook()
         }
     }
 ```

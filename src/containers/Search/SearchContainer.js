@@ -36,7 +36,7 @@ export default class SearchContainer extends React.Component {
         this.setState({currentHot: value})
     }
     hotClick(text) {
-        this.setState({currentHot: text})
+        this.setState(() => { return {currentHot: text} })
     }
     render() {
         const { hotData } = this.props
