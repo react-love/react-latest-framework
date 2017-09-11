@@ -91,9 +91,11 @@ react-transition-group目前有V1和V2，本项目使用的是V1，如果没有�
 
 ```
 
-#### 加入我们的组织
-**微信群已超过100人，如果你需要加群，请私聊我。**
+#### echarts 使用方案
+想要在react恰当的使用echarts，可以查看 [react中使用echarts的最优方案][1]
 
 #### 参与开源项目的方法（详情可以网上搜索教程）
 
 **如果你对该项目感兴趣，想共享一份你的力量，请大胆pull PR！**
+
+[1]: https://github.com/hyy1115/react-echarts-modules
