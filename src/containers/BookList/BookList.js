@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-export default class BookListContainer extends React.Component {
+export default class BookList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,6 +22,6 @@ export default class BookListContainer extends React.Component {
     }
 }
 
-BookListContainer.propTypes = {
+BookList.propTypes = {
     match: PropTypes.object
 }
