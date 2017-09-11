@@ -13,15 +13,15 @@ import * as home from 'actions/home'
 import * as global from 'actions/global'
 
 /*component*/
-import Header from 'components/Home/Header'
-import Nav from 'components/Home/Nav'
-import Special from 'components/Home/Special'
-import BookList from 'components/Home/BookList'
+import Header from './components/Header'
+import Nav from './components/Nav'
+import Special from './components/Special'
+import BookList from './components/BookList'
 
 /*files*/
 const search = require('./files/search.svg')
 
-import 'containers/Home/styles/home.less'
+import './styles/home.less'
 
 /**
  * connect中间件
@@ -31,7 +31,7 @@ import 'containers/Home/styles/home.less'
  */
 
 @connect(
-    state => {return {...state.home}},
+    state => ({...state.home}),
     dispatch => bindActionCreators({...home, ...global}, dispatch)
 )
 export default class HomeContainer extends React.Component {
