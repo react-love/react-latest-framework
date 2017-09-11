@@ -34,7 +34,7 @@ import './styles/home.less'
     state => ({...state.home}),
     dispatch => bindActionCreators({...home, ...global}, dispatch)
 )
-export default class HomeContainer extends React.Component {
+export default class Home extends React.Component {
 
     constructor(props) {
         super(props);
@@ -117,7 +117,7 @@ export default class HomeContainer extends React.Component {
         )
     }
 }
-HomeContainer.propTypes = {
+Home.propTypes = {
     navMain: PropTypes.array,
     bookDetails: PropTypes.array,
     match: PropTypes.object.isRequired,

@@ -10,16 +10,16 @@ import PropTypes from 'prop-types'
 import * as search from 'actions/search'
 import * as global from 'actions/global'
 
-import Header from 'components/Search/Header'
-import HotSearch from 'components/Search/HotSearch'
+import Header from './components/Header'
+import HotSearch from './components/HotSearch'
 
-import 'containers/Search/styles/search.less'
+import './styles/search.less'
 
 @connect(
     state => {return {...state.search}},
     dispatch => bindActionCreators({...search, ...global}, dispatch)
 )
-export default class SearchContainer extends React.Component {
+export default class Search extends React.Component {
     constructor(props) {
         super(props)
         this.hotClick = this.hotClick.bind(this)
@@ -73,6 +73,6 @@ export default class SearchContainer extends React.Component {
         )
     }
 }
-SearchContainer.propTypes = {
+Search.propTypes = {
     hotData: PropTypes.array
 }

@@ -16,7 +16,7 @@ import asyncComponent from './AsyncComponent'
 
 import Home from 'containers/Home/Home'
 import ReactChildrenMap from 'utils/ReactChildrenMap'
-const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./containers/Search/SearchContainer"))
+const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./containers/Search/Search"))
 const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ "./containers/BookList/BookListContainer"))
 
 @connect (
