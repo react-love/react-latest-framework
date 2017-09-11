@@ -5,7 +5,9 @@
 采用的是react、redux、webpack3、react-router4的基本架构，属于主流类型。
 
 **文件夹介绍**
+这里我对文件夹结构做了调整，旧版结构是我以前经常使用的，但是当项目越来越大，组件越来越难维护，所以我就升级到新版的结构。
 
+旧版的结构
 ```text
 ├── doc 相关的教程文档
 ├── public readMe的一些图片资源，可以删掉该文件夹
@@ -28,6 +30,39 @@
 │   └── utils 一些公共的方法和组件可以放这里
 └── test 测试脚本
     └── __snapshots__
+```
+
+新版的结构：
+```text
+├── doc //各种与该项目或者react有关的开发文档供你参考
+├── index.html //单页应用的html
+├── package.json //node相关环境的配置文件
+├── server.js //前端服务器
+├── src //项目的主要目录
+│   ├── App.js //根react组件
+│   ├── AsyncComponent.js //异步react组件HOC
+│   ├── actions //action控制中心
+│   ├── app.less //公共样式
+│   ├── containers //按页面划分组件，每个页面内部的组件在该目录下面管理，公共组件提取到Commons
+│   │   ├── BookList
+│   │   │   └── BookList.js
+│   │   ├── Commons
+│   │   ├── Home
+│   │   │   ├── Home.js
+│   │   │   ├── components
+│   │   │   ├── files
+│   │   │   └── styles
+│   │   └── Search
+│   │       ├── Search.js
+│   │       ├── components
+│   │       └── styles
+│   ├── entry.js //webpack打包入口
+│   ├── reducers //存放state
+│   └── utils //提供一些小工具
+├── test //jest测试集
+│   ├── __snapshots__
+├── webpack.config.js //webpack配置文件
+└── webpackServerConfig.js //webpack公共对象
 ```
 
 虽然react-router4没有了页面路由的概念，但是从项目管理来看，我们还是需要按照页面来管理组件比较合适，这并不冲突。
