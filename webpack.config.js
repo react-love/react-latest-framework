@@ -13,11 +13,7 @@ console.log("当前运行环境：", isPro ? 'production' : 'development')
 
 var plugins = [
     new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: function (module) {
-            // 该配置假定你引入的 vendor 存在于 node_modules 目录中
-            return module.context && module.context.indexOf('node_modules') !== -1;
-        }
+        name: 'vendor'
     }),
     new webpack.DefinePlugin({
         // 定义全局变量
@@ -55,6 +51,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     devtool: isPro ? 'source-map' : 'inline-source-map',
     entry: {
+        vendor: ['react', 'react-dom'],
         app: app
     },
     output: {

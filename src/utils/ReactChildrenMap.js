@@ -8,6 +8,7 @@ import warning from 'fbjs/lib/warning'
 * 使用React.Children.map渲染列表，适用于多个子元素的情况
 * <ReactChildrenMap>
 *   <div>渲染内容</div>
+*   <div>渲染内容</div>
 * </ReactChildrenMap>
 * */
 export default class ReactChildrenMap extends React.PureComponent {
