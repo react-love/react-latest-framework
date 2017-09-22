@@ -1,11 +1,8 @@
 
-### 热更新、ES6/7、LESS、Router4、redux、webpack3、async／await、前端node服务器，按需加载...
-<hr />
+# 热更新、ES6/7、LESS、Router4、redux、webpack3、async／await、前端node服务器，按需加载...
 
 [![Build Status](https://travis-ci.org/hyy1115/react-redux-webpack2.svg?branch=master)](https://travis-ci.org/hyy1115/react-redux-webpack2)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)  
-
-**声明：react开源协议对非美国上市的公司没有影响，国内公司仍旧可以使用。知乎上很多人没理解协议，发布了胡言乱语的言论，这里有一份FB官方对于为什么使用这份协议的声明：https://code.facebook.com/posts/112130496157735/explaining-react-s-license/**
 
 适用人群：该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要一个比较干净、简洁的框架从事实践项目的开发者。（doc文件夹附有教程文档）
 
