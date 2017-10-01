@@ -16,7 +16,7 @@ import HotSearch from './components/HotSearch'
 import './styles/search.less'
 
 @connect(
-    state => {return {...state.search}},
+    state => ({...state.search}),
     dispatch => bindActionCreators({...search, ...global}, dispatch)
 )
 export default class Search extends React.Component {
@@ -39,7 +39,7 @@ export default class Search extends React.Component {
         this.setState(() => { return {currentHot: text} })
     }
     render() {
-        const { hotData } = this.props
+        const { hotData=[] } = this.props
         const { currentHot } = this.state
         return (
             <div style={{height: '100vh'}}>
@@ -54,17 +54,14 @@ export default class Search extends React.Component {
                     </p>
                     <p className="style_div_p">
                         {
-                            hotData.length > 0 &&
-                            hotData.map((elem, index) => {
-                                return (
-                                    <HotSearch
-                                        key={index}
-                                        hotText={elem.text}
-                                        hotClick={() => this.hotClick(elem.text)}
-                                        currentHot={currentHot}
-                                    />
-                                )
-                            })
+                            hotData.map((elem, index) =>
+                                <HotSearch
+                                    key={index}
+                                    hotText={elem.text}
+                                    hotClick={() => this.hotClick(elem.text)}
+                                    currentHot={currentHot}
+                                />
+                            )
                         }
                     </p>
                 </div>
