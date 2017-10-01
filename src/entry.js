@@ -1,3 +1,6 @@
+import 'core-js/es6/map' //支持Map
+import 'core-js/es6/set' //支持Set
+import 'core-js/es6/string' //支持includes()
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, combineReducers } from 'redux'

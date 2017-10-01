@@ -58,7 +58,6 @@ export default class Search extends React.Component {
                             hotData.map((elem, index) => {
                                 return (
                                     <HotSearch
-                                        ref={hotSearch => this.hotSearch = hotSearch}
                                         key={index}
                                         hotText={elem.text}
                                         hotClick={() => this.hotClick(elem.text)}

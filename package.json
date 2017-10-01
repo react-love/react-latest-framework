@@ -59,6 +59,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-runtime": "^6.26.0",
+    "core-js": "^2.5.1",
     "fastclick": "^1.0.6",
     "history": "^4.6.1",
     "http-proxy-middleware": "^0.17.4",
