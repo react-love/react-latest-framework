@@ -65,7 +65,7 @@ export default class Home extends React.Component {
         //还可以通过自定义样式传递给组件
         let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
         return(
-            <div key={this.props.location.pathname}>
+            <div>
                 <Header
                     title="react-redux架构"
                     imgUrl={search}
