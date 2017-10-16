@@ -4,9 +4,19 @@
 [![Build Status](https://travis-ci.org/hyy1115/react-redux-webpack2.svg?branch=master)](https://travis-ci.org/hyy1115/react-redux-webpack2)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)  
 
-**重磅消息：React16已经发布，本项目升级到react最新版，测试一切正常，快来体验吧！**
+**本项目升级到react最新版，测试通过，快来体验吧！**
 
 适用人群：该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要一个比较干净、简洁的框架从事实践项目的开发者。（doc文件夹附有教程文档）
+
+#### 客户端渲染
+
+本项目是客户端渲染版本
+
+#### 服务端渲染
+
+新发布了基于本框架的服务端渲染版本：https://github.com/hyy1115/react-next
+
+#### 版本更新内容
 
 1、React和React-Dom打包压缩后的总体积由147KB => 116KB
 
