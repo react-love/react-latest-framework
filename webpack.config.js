@@ -74,7 +74,9 @@ module.exports = {
             "components": path.resolve(__dirname, "src/components"),
             "containers": path.resolve(__dirname, "src/containers"),
             "reducers": path.resolve(__dirname, "src/reducers"),
-            "utils": path.resolve(__dirname, "src/utils")
+            "utils": path.resolve(__dirname, "src/utils"),
+            'react': isPro ? 'preact-compat/dist/preact-compat' : 'react', //如果你不想要preact，可以删除这一行
+            'react-dom': isPro ? 'preact-compat/dist/preact-compat' : 'react-dom' //如果你不想要preact，可以删除这一行
         }
     },
 
