@@ -22,6 +22,14 @@
 
 2、React16更新变化请看官方文档：https://facebook.github.io/react/blog/2017/09/26/react-v16.0.html
 
+3、新增preact支持，如果你觉得preact和react的兼容性不好，可以切换回react，只需要删除webpack.config的alias的几行配置。
+
+```JavaScript
+ 'react': isPro ? 'preact-compat/dist/preact-compat' : 'react', //如果你不想要preact，可以删除这一行
+'react-dom': isPro ? 'preact-compat/dist/preact-compat' : 'react-dom', //如果你不想要preact，可以删除这一行
+'create-react-class': 'preact-compat/lib/create-react-class' //如果你不想要preact，可以删除这一行
+```
+
 ```text
 官方推荐：
 
