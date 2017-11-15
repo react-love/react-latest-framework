@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-webpack3",
+  "name": "react-latest-framework",
   "version": "3.2.1",
   "description": "",
   "scripts": {
@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyy1115/react-redux-webpack3.git"
+    "url": "https://github.com/hyy1115/react-latest-framework.git"
   },
-  "author": "huangyongyue",
+  "author": "hyy",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
