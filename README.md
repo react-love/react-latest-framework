@@ -1,10 +1,9 @@
-
-# 热更新、ES6/7、LESS、Router4、redux、webpack3、async／await、前端node服务器，按需加载...
+# React技术栈长期开源项目
 
 [![Build Status](https://travis-ci.org/hyy1115/react-redux-webpack2.svg?branch=master)](https://travis-ci.org/hyy1115/react-redux-webpack2)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
 
-适用人群：该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要一个比较干净、简洁的框架从事实践项目的开发者。（doc文件夹附有教程文档）
+**适用人群：该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要一个比较干净、简洁的框架从事前端项目的开发者。（doc文件夹附有教程文档）**
 
 #### 客户端渲染
 
@@ -12,20 +11,8 @@
 
 #### 服务端渲染
 
-新发布了基于本框架的服务端渲染版本：https://github.com/hyy1115/react-next
-
-
-```text
-官方推荐：
-
-对于 HTTP/1.1 客户端，由 webpack 打包你的应用程序会尤其强大，因为在浏览器发起一个新请求时，
-它能够减少应用程序必须等待的时间。对于 HTTP/2，你还可以使用代码拆分(Code Splitting)以及通过 
-webpack 打包来实现最佳优化。
-```
-我自己也是基于这套框架做开发，所以我会长期维护该项目，跟随相关插件的升级而升级优化。
-
-==========================
-
+关注SEO的开发者推荐使用基于本框架的服务端渲染版本：https://github.com/hyy1115/react-next
+#
 #### Installation 教程
 
 fork到你的账号，简单省事，或者 download 项目到本地
@@ -56,7 +43,7 @@ windows
 npm run build-win
 ```
 
-===========================================
+#
 
 #### 关于DOC文档教程的解释
 
