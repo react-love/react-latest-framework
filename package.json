@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "node server.js",
+    "watch": "webpack --watch",
     "lint": "eslint src",
     "build-mac": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.config.js",
     "build-win": "set NODE_ENV=production&& webpack --progress --hide-modules --config webpack.config.js",
