@@ -11,12 +11,7 @@ const search = require('./files/search_1.png')
 //该组件没有做无状态优化处理，根据其他几个组件的优化方式，可以自行思考
 export default class Header extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleChange(event) {
+    handleChange = (event) => {
         this.props.upDateValue(event.target.value);
     }
 

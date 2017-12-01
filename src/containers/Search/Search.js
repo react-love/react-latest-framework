@@ -22,8 +22,6 @@ import './styles/search.less'
 export default class Search extends React.Component {
     constructor(props) {
         super(props)
-        this.hotClick = this.hotClick.bind(this)
-        this.upDateValue = this.upDateValue.bind(this)
         this.state = {
             currentHot: ''
         }
@@ -32,10 +30,10 @@ export default class Search extends React.Component {
         console.log('进入搜索页面')
         this.props.receiveHotSearch()
     }
-    upDateValue(value) {
+    upDateValue = (value) => {
         this.setState({currentHot: value})
     }
-    hotClick(text) {
+    hotClick = (text) => {
         this.setState(() => { return {currentHot: text} })
     }
     render() {

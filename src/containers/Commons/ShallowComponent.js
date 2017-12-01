@@ -2,9 +2,6 @@ import React from 'react'
 import isEqual from 'lodash/isEqual'
 const ShallowComponent = (component) => {
     class Shallow extends React.Component {
-        constructor(props) {
-            super(props)
-        }
         shouldComponentUpdate(nextProps, nextState) {
             if (!isEqual(this.props, nextProps) || !isEqual(this.state, nextState)) {
                 return true
@@ -13,7 +10,7 @@ const ShallowComponent = (component) => {
             }
         }
         render() {
-            return <component />
+            return <component {...this.props} />
         }
     }
 }
