@@ -1,4 +1,5 @@
 <p align="center"><img width="100" src="https://segmentfault.com/img/bVZwRf?w=516&h=457" /></p>
+
 # React技术栈长期开源项目
 
 [![Build Status](https://travis-ci.org/hyy1115/react-redux-webpack2.svg?branch=master)](https://travis-ci.org/hyy1115/react-redux-webpack2)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
