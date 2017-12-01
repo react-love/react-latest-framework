@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "node server.js",
+    "watch": "webpack --watch",
     "lint": "eslint src",
     "build-mac": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.config.js",
     "build-win": "set NODE_ENV=production&& webpack --progress --hide-modules --config webpack.config.js",
@@ -54,6 +55,7 @@
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.6",
     "webpack": "^3.8.1",
+    "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
