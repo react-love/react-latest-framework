@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const argv = require('yargs').argv
 const webpackServerConfig = require('./webpackServerConfig')
 
@@ -73,11 +73,11 @@ module.exports = {
             path.join(__dirname, './src')
         ],
         alias: {
-            "actions": path.resolve(__dirname, "src/actions"),
-            "components": path.resolve(__dirname, "src/components"),
-            "containers": path.resolve(__dirname, "src/containers"),
-            "reducers": path.resolve(__dirname, "src/reducers"),
-            "utils": path.resolve(__dirname, "src/utils"),
+            'actions': path.resolve(__dirname, 'src/actions'),
+            'components': path.resolve(__dirname, 'src/components'),
+            'containers': path.resolve(__dirname, 'src/containers'),
+            'reducers': path.resolve(__dirname, 'src/reducers'),
+            'utils': path.resolve(__dirname, 'src/utils'),
             'react': isPro ? 'preact-compat/dist/preact-compat' : 'react', //如果你不想要preact，可以删除这一行
             'react-dom': isPro ? 'preact-compat/dist/preact-compat' : 'react-dom', //如果你不想要preact，可以删除这一行
             'create-react-class': 'preact-compat/lib/create-react-class' //如果你不想要preact，可以删除这一行
@@ -93,11 +93,11 @@ module.exports = {
             test: /\.(less|css)$/,
             use: isPro ? ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ["css-loader", "less-loader"]
-                }) : ["style-loader", "css-loader", "less-loader"]
+                    use: ['css-loader', 'less-loader']
+                }) : ['style-loader', 'css-loader', 'less-loader']
         }, {
             test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
             use: ['file-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]']
         }]
     }
-};
+}

@@ -30,7 +30,7 @@ module.exports = {
         ]
     },
     "rules": {
-        "indent": [2, "tab"],
+        "indent": [1, "tab"],
         "quotes": [2, "single"],
         "linebreak-style": [2, "unix"],
         "semi": [2, "never"],
