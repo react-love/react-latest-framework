@@ -1,12 +1,12 @@
 /**
  * Created by yongyuehuang on 2017/8/22.
  */
-var webpack = require('webpack')
-var WebpackDevServer = require('webpack-dev-server')
-var config = require('./webpack.config')
+const webpack = require('webpack')
+const WebpackDevServer = require('webpack-dev-server')
+const config = require('./webpack.config')
 const errorOverlayMiddleware = require('react-error-overlay/middleware')
 const webpackServerConfig = require('./webpackServerConfig')
-var proxy = require('http-proxy-middleware')
+const proxy = require('http-proxy-middleware')
 
 new WebpackDevServer(webpack(config), {
     hot: true,
@@ -14,7 +14,7 @@ new WebpackDevServer(webpack(config), {
     historyApiFallback: true,
     publicPath: '/build/',
     watchOptions: {
-        ignored: /node_modules/,
+        ignored: /node_modules/
     },
     stats: {
         modules: false,
@@ -29,10 +29,9 @@ new WebpackDevServer(webpack(config), {
             }))
         }
     }
-}).listen(webpackServerConfig.port, webpackServerConfig.host, function (err, result) {
+}).listen(webpackServerConfig.port, webpackServerConfig.host, function (err) {
     if (err) {
         return console.log(err);
     }
-    
     console.log(`Listening at http://${webpackServerConfig.host}:${webpackServerConfig.port}/`);
 });

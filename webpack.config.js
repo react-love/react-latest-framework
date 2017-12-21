@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const argv = require('yargs').argv
 const webpackServerConfig = require('./webpackServerConfig')
 
 //判断当前运行环境是开发模式还是生产模式
