@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/7/1.
  */
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'react-router-dom/Link'
 import PropTypes from 'prop-types'
 
 const Header = (props) => {

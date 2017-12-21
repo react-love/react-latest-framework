@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import Link from 'react-router-dom/Link'
 
 const back = require('./files/back_search.png')
 const search = require('./files/search_1.png')

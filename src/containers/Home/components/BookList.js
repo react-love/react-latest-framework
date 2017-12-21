@@ -2,7 +2,7 @@
  * Created by yongyuehuang on 2016/12/15.
  */
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'react-router-dom/Link'
 import PropTypes from 'prop-types'
 
 const BookList = (props) => {
