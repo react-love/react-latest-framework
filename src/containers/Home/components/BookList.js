@@ -8,10 +8,18 @@ import PropTypes from 'prop-types'
 const BookList = (props) => {
     const {_id, title, author, press, publishedDate, currentPrice, originalPrice, index} = props
     return (
-        <Link to={`/bookList/${_id}`} data-id={_id} className="home-book-list">
+        <Link
+            className="home-book-list"
+            data-id={_id}
+            to={`/bookList/${_id}`}
+        >
             <div className="book-img">
                 <span className="book-index">{index}</span>
-                <img className="" src="" alt="图片" />
+                <img
+                    alt="图片"
+                    className=""
+                    src=""
+                />
             </div>
             <div className="book-contain">
                 <p className="book-title textOverflow-hidden">{title}</p>

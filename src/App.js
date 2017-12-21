@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux'
 import { Route, Router } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import createHistory from 'history/createHashHistory'
@@ -16,43 +16,55 @@ import asyncComponent from './AsyncComponent'
 
 import Home from 'containers/Home/Home'
 import ReactChildrenMap from './containers/Commons/ReactChildrenMap'
-const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ "./containers/Search/Search"))
-const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ "./containers/BookList/BookList"))
+const Search = asyncComponent(() => import(/* webpackChunkName: "search" */ './containers/Search/Search'))
+const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ './containers/BookList/BookList'))
 
-@connect (
+@connect(
     state => {return {...state.global}},
     dispatch => bindActionCreators(global, dispatch)
 )
 export default class App extends React.Component {
-
     componentDidMount() {
         window.addEventListener('hashchange', () => {
-           this.props.currentAnimate('normal')
+            this.props.currentAnimate('normal')
         })
     }
-    
-  render() {
-      const { animateCls } = this.props
-      return (
-          <Router history={history}>
-              <Route render={({ location }) => {
-                  return(
-                      <CSSTransitionGroup
-                          transitionName={animateCls}
-                          transitionEnter={true}
-                          transitionLeave={true}
-                          transitionEnterTimeout={400}
-                          transitionLeaveTimeout={400}
-                      >
-                          <ReactChildrenMap key={location.pathname}>
-                              <Route location={location} exact path="/" component={Home} />
-                              <Route location={location} path="/search" component={Search} />
-                              <Route location={location} path="/bookList/:bookId" component={BookList} />
-                          </ReactChildrenMap>
-                      </CSSTransitionGroup>
-                  )
-              }}/>
-          </Router>
-    );
-  }
+    render() {
+        const { animateCls } = this.props
+        return (
+            <Router history={history}>
+                <Route render={({ location }) => {
+                    return(
+                        <CSSTransitionGroup
+                            transitionEnter
+                            transitionEnterTimeout={400}
+                            transitionLeave
+                            transitionLeaveTimeout={400}
+                            transitionName={animateCls}
+                        >
+                            <ReactChildrenMap key={location.pathname}>
+                                <Route
+                                    component={Home}
+                                    exact
+                                    location={location}
+                                    path="/"
+                                />
+                                <Route
+                                    component={Search}
+                                    location={location}
+                                    path="/search"
+                                />
+                                <Route
+                                    component={BookList}
+                                    location={location}
+                                    path="/bookList/:bookId"
+                                />
+                            </ReactChildrenMap>
+                        </CSSTransitionGroup>
+                    )
+                }}
+                />
+            </Router>
+        )
+    }
 }

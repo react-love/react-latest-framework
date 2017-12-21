@@ -12,10 +12,16 @@ const Special = () => {
         <div className="style_main">
             <div className="style_div">
                 <div className="style_left">
-                    <img src={zht_1} className="style_img" />
+                    <img
+                        className="style_img"
+                        src={zht_1}
+                    />
                 </div>
                 <div className="style_right">
-                    <img src={zht_2} className="style_img" />
+                    <img
+                        className="style_img"
+                        src={zht_2}
+                    />
                 </div>
             </div>
         </div>

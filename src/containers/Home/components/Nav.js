@@ -24,8 +24,14 @@ const Nav = (props) => {
     // 如果是服务器传递过来的图标，就用img参数，否则就用自定义参数
     //这个组件只有一个li标签包裹，通过container页面调用来实现组件的复用
     return (
-        <li className="style_li" onClick={handleClick}>
-            <img src={navImage[index+1]} className="style_img" />
+        <li
+            className="style_li"
+            onClick={handleClick}
+        >
+            <img
+                className="style_img"
+                src={navImage[index+1]}
+            />
             <span className="style_span">{title}</span>
         </li>
     )

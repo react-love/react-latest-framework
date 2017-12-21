@@ -12,17 +12,6 @@ import rootReducer from './reducers/index'
 
 const FastClick = require('fastclick')
 
-//按模块导入lodash，可以有效减小vendor.js的大小
-import isEmpty from 'lodash/isEmpty'
-import isEqual from 'lodash/isEqual'
-import debounce from 'lodash/debounce'
-import isArray from 'lodash/isArray'
-
-window.isEmpty = isEmpty
-window.isEqual = isEqual
-window.debounce = debounce
-window.isArray = isArray
-
 const history = createHistory()
 const middleware = routerMiddleware(history)
 

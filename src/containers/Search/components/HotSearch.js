@@ -7,9 +7,10 @@ import PropTypes from 'prop-types'
 const HotSearch = (props) => {
     const { hotText, hotClick, currentHot } = props
     return (
-        <a className="style_span"
-           onClick={hotClick}
-           style={{color: currentHot === hotText ? '#398cee' : ''}}
+        <a
+            className="style_span"
+            onClick={hotClick}
+            style={{color: currentHot === hotText ? '#398cee' : ''}}
         >
             {hotText}
         </a>

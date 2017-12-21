@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react'
 import isEqual from 'lodash/isEqual'
 const ShallowComponent = (component) => {

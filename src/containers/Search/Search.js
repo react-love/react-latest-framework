@@ -41,23 +41,24 @@ export default class Search extends React.Component {
         const { currentHot } = this.state
         return (
             <div style={{height: '100vh'}}>
-                <Header handleClick={this.props.currentAnimate}
-                        currentHot={currentHot}
-                        upDateValue={this.upDateValue}
+                <Header
+                    currentHot={currentHot}
+                    handleClick={this.props.currentAnimate}
+                    upDateValue={this.upDateValue}
                 />
                 <div>
                     <p className="search-hot-title">
-                        <i className="fa fa-fire"></i>
+                        <i className="fa fa-fire" />
                         <span>热门搜索</span>
                     </p>
                     <p className="style_div_p">
                         {
                             hotData.map((elem, index) =>
                                 <HotSearch
-                                    key={index}
-                                    hotText={elem.text}
-                                    hotClick={() => this.hotClick(elem.text)}
                                     currentHot={currentHot}
+                                    hotClick={() => this.hotClick(elem.text)}
+                                    hotText={elem.text}
+                                    key={index}
                                 />
                             )
                         }

@@ -9,10 +9,20 @@ const Header = (props) => {
     const { title, imgUrl, linkTo, bgColor, handleClick } = props
     //提供4个接口参数给container做设置，可以不传参。
     return (
-        <header className='header' style={bgColor}>
+        <header
+            className="header"
+            style={bgColor}
+        >
             {title}
-            <Link to={linkTo} className="a_link" onClick={() => handleClick('left')}>
-                <img src={imgUrl} className="a_img" />
+            <Link
+                className="a_link"
+                onClick={() => handleClick('left')}
+                to={linkTo}
+            >
+                <img
+                    className="a_img"
+                    src={imgUrl}
+                />
             </Link>
         </header>
     )
