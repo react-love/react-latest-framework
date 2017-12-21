@@ -17,12 +17,17 @@
 
 2、服务端部署开启gzip
 
-极致压缩的效果，首屏只需要app.js和vendor.js，共56.39kb：
+极致压缩的效果，首屏只需要app.js和vendor.js，共36.89kb（比起服务端渲染，或许你会更喜欢客户端渲染）：
 ```text
-app.js (48.03 KB)
-vendor.js (8.36 KB)
-search.js (2.28 KB)
-bookList.js (725 B)
+//首屏
+app.js (28.54 KB)
+vendor.js (8.35 KB)
+
+//搜索页
+search.js (2.31 KB)
+
+//书籍列表页
+bookList.js (717 B)
 ```
 
 #### 服务端渲染

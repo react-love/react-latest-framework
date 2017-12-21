@@ -1,6 +1,6 @@
 {
   "name": "react-latest-framework",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "description": "",
   "scripts": {
     "start": "node server.js",
@@ -71,7 +71,7 @@
     "history": "^4.7.2",
     "http-proxy-middleware": "^0.17.4",
     "jroll": "^2.5.0",
-    "preact": "^8.2.6",
+    "preact": "^8.2.7",
     "preact-compat": "^3.17.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
