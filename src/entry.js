@@ -4,20 +4,16 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import { routerReducer, routerMiddleware } from 'react-router-redux'
-import { AppContainer } from 'react-hot-loader'
+import { routerReducer } from 'react-router-redux/lib/reducer'
+import AppContainer from 'react-hot-loader/lib/AppContainer'
 import App from './App'
-import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers/index'
 
 const FastClick = require('fastclick')
 
-const history = createHistory()
-const middleware = routerMiddleware(history)
-
 //解决移动端300毫秒延迟
 FastClick.attach(document.body)
-const middlewares = [thunk, middleware]
+const middlewares = [thunk]
 
 const store = createStore(
     combineReducers({routing: routerReducer, ...rootReducer}),
@@ -39,6 +35,7 @@ render(App)
 if(module.hot) {
     module.hot.accept('./App', () => {
         const NextRootContainer = require('./App').default
+        console.log(NextRootContainer)
         render(NextRootContainer)
     })
 }
