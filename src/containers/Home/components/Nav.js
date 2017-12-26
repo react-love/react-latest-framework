@@ -26,7 +26,7 @@ const Nav = (props) => {
     return (
         <li
             className="style_li"
-            onClick={handleClick}
+            onClick={() => handleClick(title)}
         >
             <img
                 className="style_img"
@@ -39,7 +39,6 @@ const Nav = (props) => {
 Nav.propTypes = {
     title: PropTypes.string.isRequired,
     img: PropTypes.string,
-    index: PropTypes.number.isRequired,
-    handleClick: PropTypes.func.isRequired
+    index: PropTypes.number.isRequired
 }
 export default Nav

@@ -4,6 +4,7 @@
 import React from 'react'
 import Link from 'react-router-dom/Link'
 import PropTypes from 'prop-types'
+import isEmpty from 'utils/isEmpty'
 
 const BookList = (props) => {
     const {_id, title, author, press, publishedDate, currentPrice, originalPrice, index} = props
@@ -26,7 +27,8 @@ const BookList = (props) => {
                 <p className="book-author textOverflow-hidden">作者：{author}</p>
                 <p className="book-author textOverflow-hidden">出版社：{press}</p>
                 {
-                    publishedDate !== '' ?  <p className="book-author textOverflow-hidden">出版时间：{publishedDate}</p> : ''
+                    !isEmpty(publishedDate) &&
+                    <p className="book-author textOverflow-hidden">出版时间：{publishedDate}</p>
                 }
                 <p className="textOverflow-hidden">
                     <span className="now-price">￥{currentPrice}</span>

@@ -14,13 +14,12 @@ export default class Header extends React.Component {
         this.props.upDateValue(event.target.value);
     }
     render() {
-        const { handleClick, currentHot } = this.props
+        const { currentHot } = this.props
         return (
             <div className="style_body">
                 <div className="style_main">
                     <Link
                         className="style_a"
-                        onClick={() => handleClick('right')}
                         to="/"
                     >
                         <img
@@ -51,7 +50,6 @@ export default class Header extends React.Component {
     }
 }
 Header.propTypes = {
-    handleClick: PropTypes.func.isRequired,
     currentHot: PropTypes.string.isRequired,
     upDateValue: PropTypes.func.isRequired
 }

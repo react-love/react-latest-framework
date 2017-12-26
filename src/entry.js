@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
+import HashRouter from 'react-router-dom/HashRouter'
 import { routerReducer } from 'react-router-redux/lib/reducer'
 import AppContainer from 'react-hot-loader/lib/AppContainer'
 import App from './App'
@@ -24,7 +25,9 @@ const render = Component =>
     ReactDOM.render(
         <AppContainer>
             <Provider store={store}>
-                <Component />
+                <HashRouter>
+                    <Component />
+                </HashRouter>
             </Provider>
         </AppContainer>,
         document.getElementById('root')
@@ -35,7 +38,6 @@ render(App)
 if(module.hot) {
     module.hot.accept('./App', () => {
         const NextRootContainer = require('./App').default
-        console.log(NextRootContainer)
         render(NextRootContainer)
     })
 }

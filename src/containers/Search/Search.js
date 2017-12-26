@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import * as search from 'actions/search'
 import * as global from 'actions/global'
 
+import withSetTitle from '../Commons/withSetTitle'
 import Header from './components/Header'
 import HotSearch from './components/HotSearch'
 
@@ -19,7 +20,7 @@ import './styles/search.less'
     state => ({...state.search}),
     dispatch => bindActionCreators({...search, ...global}, dispatch)
 )
-export default class Search extends React.Component {
+class Search extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -43,7 +44,6 @@ export default class Search extends React.Component {
             <div style={{height: '100vh'}}>
                 <Header
                     currentHot={currentHot}
-                    handleClick={this.props.currentAnimate}
                     upDateValue={this.upDateValue}
                 />
                 <div>
@@ -71,3 +71,4 @@ export default class Search extends React.Component {
 Search.propTypes = {
     hotData: PropTypes.array
 }
+export default withSetTitle(Search, '搜索')

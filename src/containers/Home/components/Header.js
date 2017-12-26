@@ -6,7 +6,7 @@ import Link from 'react-router-dom/Link'
 import PropTypes from 'prop-types'
 
 const Header = (props) => {
-    const { title, imgUrl, linkTo, bgColor, handleClick } = props
+    const { title, imgUrl, linkTo, bgColor } = props
     //提供4个接口参数给container做设置，可以不传参。
     return (
         <header
@@ -16,7 +16,6 @@ const Header = (props) => {
             {title}
             <Link
                 className="a_link"
-                onClick={() => handleClick('left')}
                 to={linkTo}
             >
                 <img

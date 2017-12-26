@@ -5,6 +5,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import isEmpty from 'utils/isEmpty'
 
 //关于import什么时候用{}，什么时候不用大括号，通过那个插件或者组件是否包含default来判断，如果包含，则不需要{}
 
@@ -13,6 +14,7 @@ import * as home from 'actions/home'
 import * as global from 'actions/global'
 
 /*component*/
+import withSetTitle from '../Commons/withSetTitle'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import Special from './components/Special'
@@ -34,19 +36,19 @@ import './styles/home.less'
     state => ({...state.home}),
     dispatch => bindActionCreators({...home, ...global}, dispatch)
 )
-export default class Home extends React.Component {
+class Home extends React.Component {
     componentWillMount() {
         const { navMain, bookDetails } = this.props
-        if (navMain.length === 0) {
-            this.props.getNav();
+        if (isEmpty(navMain)) {
+            this.props.getNav()
         }
-        if (bookDetails.length === 0) {
+        if (isEmpty(bookDetails)) {
             this.props.getBook()
         }
     }
-    handleClick = () => {
+    handleClick = (title) => {
         //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
+        this.props.history.push(`/${title}`)
     }
     render() {
         const { navMain, bookDetails } = this.props
@@ -56,7 +58,6 @@ export default class Home extends React.Component {
             <div>
                 <Header
                     bgColor={bgClass}
-                    handleClick={this.props.currentAnimate}
                     imgUrl={search}
                     linkTo="search"
                     title="react-redux架构"
@@ -64,16 +65,14 @@ export default class Home extends React.Component {
                 <div className="style_div">
                     <ul className="style_ul">
                         {
-                            navMain.map((elem, index) => {
-                                return (
-                                    <Nav
-                                        handleClick={() => this.handleClick()}
-                                        index={index}
-                                        key={index}
-                                        title={elem.text}
-                                    />
-                                )
-                            })
+                            navMain.map((elem, index) =>
+                                <Nav
+                                    handleClick={this.handleClick}
+                                    index={index}
+                                    key={index}
+                                    title={elem.text}
+                                />
+                            )
                         }
                     </ul>
                 </div>
@@ -84,21 +83,19 @@ export default class Home extends React.Component {
                 <div>
                     <p className="style_p">书籍列表</p>
                     {
-                        bookDetails.map((ele, index) => {
-                            return (
-                                <BookList
-                                    _id={ele._id}
-                                    author={ele.author}
-                                    currentPrice={ele.currentPrice}
-                                    index={index + 1}
-                                    key={index}
-                                    originalPrice={ele.originalPrice}
-                                    press={ele.press}
-                                    publishedDate={ele.publishedDate}
-                                    title={ele.title}
-                                />
-                            )
-                        })
+                        bookDetails.map((ele, index) =>
+                            <BookList
+                                _id={ele._id}
+                                author={ele.author}
+                                currentPrice={ele.currentPrice}
+                                index={index + 1}
+                                key={index}
+                                originalPrice={ele.originalPrice}
+                                press={ele.press}
+                                publishedDate={ele.publishedDate}
+                                title={ele.title}
+                            />
+                        )
                     }
                 </div>
             </div>
@@ -111,3 +108,4 @@ Home.propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired
 }
+export default withSetTitle(Home, '首页')
