@@ -18,6 +18,7 @@ import Header from './components/Header'
 import Nav from './components/Nav'
 import Special from './components/Special'
 import BookList from './components/BookList'
+import CreatePortal from '../Commons/CreatePortal'
 
 /*files*/
 const search = require('./files/search.svg')
@@ -29,6 +30,12 @@ import './styles/home.less'
     dispatch => bindActionCreators({getBook, getNav}, dispatch)
 )
 class Home extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isClickNav: false
+        }
+    }
     componentWillMount() {
         const { navMain, bookDetails } = this.props
         if (isEmpty(navMain)) {
@@ -40,10 +47,21 @@ class Home extends React.Component {
     }
     handleClick = (title) => {
         //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        this.props.history.push(`/${title}`)
+        if (!!title) {
+            this.setState(() => ({isClickNav: true}))
+        }
     }
     render() {
         const { navMain, bookDetails } = this.props
+        const { isClickNav } = this.state
+        let portalStyle = {
+            width: '100%',
+            height: '100%',
+            background: '#fff',
+            position: 'fixed',
+            left: 0,
+            top: 0
+        }
         //还可以通过自定义样式传递给组件
         let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
         return(
@@ -90,6 +108,20 @@ class Home extends React.Component {
                         )
                     }
                 </div>
+                {
+                    isClickNav &&
+                    <CreatePortal
+                        id={'test'}
+                        style={portalStyle}
+                    >
+                        <div
+                            onClick={() => this.setState({isClickNav: false})}
+                            style={{width: '100%', height: '100%'}}
+                        >
+                            你点击了导航，激活弹框，点击任意地方关闭弹框
+                        </div>
+                    </CreatePortal>
+                }
             </div>
         )
     }
