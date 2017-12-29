@@ -7,8 +7,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 /*actions*/
-import * as search from 'actions/search'
-import * as global from 'actions/global'
+import { receiveHotSearch } from 'actions/search'
 
 import withSetTitle from '../Commons/withSetTitle'
 import Header from './components/Header'
@@ -18,7 +17,7 @@ import './styles/search.less'
 
 @connect(
     state => ({...state.search}),
-    dispatch => bindActionCreators({...search, ...global}, dispatch)
+    dispatch => bindActionCreators({receiveHotSearch}, dispatch)
 )
 class Search extends React.Component {
     constructor(props) {

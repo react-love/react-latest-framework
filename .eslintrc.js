@@ -1,30 +1,27 @@
-{
-    "extends": [
-        "eslint:recommended"
-    ],
-    "plugins": [
-        "react"
-    ],
+module.exports = {
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
     "globals": {
-        "$": true
+        "$": true,
+        "process": true,
+        "__dirname": true
     },
     "parser": "babel-eslint",
     "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module",
+        "ecmaVersion": 7
     },
-    "env": {
-        "es6": true,
-        "browser": true,
-        "node": true,
-        "jquery": true,
-        "mocha": true
-    },
-    "settings": {
-        "import/ignore": [
-            "node_modules"
-        ]
-    },
+    "plugins": [
+        "react"
+    ],
     "rules": {
         "quotes": [2, "single"], //单引号
         "no-console": 0, //不禁用console
@@ -93,5 +90,10 @@
         "prefer-arrow-callback": 0, //比较喜欢箭头回调
         "arrow-parens": 0, //箭头函数用小括号括起来
         "arrow-spacing": 0 //=>的前/后括号
+    },
+    "settings": {
+        "import/ignore": [
+            "node_modules"
+        ]
     }
-}
+};

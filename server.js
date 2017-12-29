@@ -3,7 +3,7 @@
  */
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
-const config = require('./webpack.config')
+const config = require('./webpack.dev')
 const errorOverlayMiddleware = require('react-error-overlay/middleware')
 const webpackServerConfig = require('./webpackServerConfig')
 const proxy = require('http-proxy-middleware')
@@ -18,7 +18,8 @@ new WebpackDevServer(webpack(config), {
     },
     stats: {
         modules: false,
-        chunks: false
+        chunks: false,
+        colors: true
     },
     setup(app) {
         app.use(errorOverlayMiddleware())

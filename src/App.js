@@ -15,29 +15,21 @@ const BookList = asyncComponent(() => import(/* webpackChunkName: "bookList" */ 
 
 const App= () => {
     return (
-        <Route render={({ location }) => {
-            return(
-                <ReactChildrenMap key={location.pathname}>
-                    <Route
-                        component={Home}
-                        exact
-                        location={location}
-                        path="/"
-                    />
-                    <Route
-                        component={Search}
-                        location={location}
-                        path="/search"
-                    />
-                    <Route
-                        component={BookList}
-                        location={location}
-                        path="/bookList/:bookId"
-                    />
-                </ReactChildrenMap>
-            )
-        }}
-        />
+        <ReactChildrenMap>
+            <Route
+                component={Home}
+                exact
+                path="/"
+            />
+            <Route
+                component={Search}
+                path="/search"
+            />
+            <Route
+                component={BookList}
+                path="/bookList/:bookId"
+            />
+        </ReactChildrenMap>
     )
 }
 export default App
