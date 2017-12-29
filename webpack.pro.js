@@ -30,13 +30,14 @@ module.exports = merge(common, {
             ie8: true
         })
     ],
-    resolve: {
-        alias: {
-            'react':'preact-compat/dist/preact-compat', //如果你不想要preact，可以删除这一行
-            'react-dom': 'preact-compat/dist/preact-compat', //如果你不想要preact，可以删除这一行
-            'create-react-class': 'preact-compat/lib/create-react-class' //如果你不想要preact，可以删除这一行
-        }
-    },
+    //如果你想要preact，可以取消注释
+    //resolve: {
+    //    alias: {
+    //        'react':'preact-compat/dist/preact-compat',
+    //        'react-dom': 'preact-compat/dist/preact-compat',
+    //        'create-react-class': 'preact-compat/lib/create-react-class'
+    //    }
+    //},
     module: {
         rules: [{
             test: /\.\/entry.js$/,
