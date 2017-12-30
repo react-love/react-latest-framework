@@ -21,7 +21,7 @@ function warningFunc(children) {
 export default class ReactChildrenMap extends React.PureComponent {
     render() {
         if (warningFunc(this.props.children)) {
-            return <div>{React.Children.map(this.props.children, children => children)}</div>
+            return React.Children.map(this.props.children, children => children)
         }
     }
 }
