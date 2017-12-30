@@ -13,6 +13,7 @@ import isEmpty from 'utils/isEmpty'
 import { getBook, getNav } from 'actions/home'
 
 /*component*/
+import ErrorBoundary from 'containers/Commons/ErrorBoundary'
 import withSetTitle from '../Commons/withSetTitle'
 import Header from './components/Header'
 import Nav from './components/Nav'
@@ -66,12 +67,14 @@ class Home extends React.Component {
         let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
         return(
             <div>
-                <Header
-                    bgColor={bgClass}
-                    imgUrl={search}
-                    linkTo="search"
-                    title="react-redux架构"
-                />
+                <ErrorBoundary>
+                    <Header
+                        bgColor={bgClass}
+                        imgUrl={search}
+                        linkTo="search"
+                        title="react-redux架构"
+                    />
+                </ErrorBoundary>
                 <div className="style_div">
                     <ul className="style_ul">
                         {
