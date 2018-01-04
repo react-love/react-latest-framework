@@ -74,7 +74,6 @@
     "fastclick": "^1.0.6",
     "history": "^4.7.2",
     "http-proxy-middleware": "^0.17.4",
-    "jroll": "^2.5.0",
     "lazy-load-component": "^1.1.2",
     "preact": "^8.2.7",
     "preact-compat": "^3.17.0",
