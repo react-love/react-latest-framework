@@ -19,7 +19,7 @@ import Header from './components/Header'
 import Nav from './components/Nav'
 import Special from './components/Special'
 import BookList from './components/BookList'
-import CreatePortal from '../Commons/CreatePortal'
+import CreatePortal from 'create-portal'
 
 /*files*/
 const search = require('./files/search.svg')
@@ -37,7 +37,7 @@ class Home extends React.Component {
             isClickNav: false
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         const { navMain, bookDetails } = this.props
         if (isEmpty(navMain)) {
             this.props.getNav()

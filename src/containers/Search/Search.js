@@ -26,8 +26,7 @@ class Search extends React.Component {
             currentHot: ''
         }
     }
-    componentWillMount() {
-        console.log('进入搜索页面')
+    componentDidMount() {
         this.props.receiveHotSearch()
     }
     upDateValue = (value) => {
