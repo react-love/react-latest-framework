@@ -5,10 +5,11 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-
+import getClientHeight from 'utils/getClientHeight'
 /*actions*/
 import { receiveHotSearch } from 'actions/search'
 
+import MyJRoll from 'react-roll-container'
 import withSetTitle from '../Commons/withSetTitle'
 import Header from './components/Header'
 import HotSearch from './components/HotSearch'
@@ -23,11 +24,18 @@ class Search extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentHot: ''
+            currentHot: '',
+            height: getClientHeight
         }
     }
     componentDidMount() {
         this.props.receiveHotSearch()
+        this.getScrollHeight()
+    }
+    getScrollHeight = () => {
+        const header = document.querySelector('.style_body')
+        const height = getClientHeight - header.offsetHeight
+        this.setState(() => ({height}))
     }
     upDateValue = (value) => {
         this.setState({currentHot: value})
@@ -37,14 +45,17 @@ class Search extends React.Component {
     }
     render() {
         const { hotData=[] } = this.props
-        const { currentHot } = this.state
+        const { currentHot, height } = this.state
         return (
             <div style={{height: '100vh'}}>
                 <Header
                     currentHot={currentHot}
                     upDateValue={this.upDateValue}
                 />
-                <div>
+                <MyJRoll
+                    bgColor={'#fff'}
+                    height={height + 'px'}
+                >
                     <p className="search-hot-title">
                         <i className="fa fa-fire" />
                         <span>热门搜索</span>
@@ -61,7 +72,7 @@ class Search extends React.Component {
                             )
                         }
                     </p>
-                </div>
+                </MyJRoll>
             </div>
         )
     }

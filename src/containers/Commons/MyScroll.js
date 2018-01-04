@@ -23,7 +23,14 @@ export default class MyJRoll extends React.Component {
         })
     }
     componentDidUpdate() {
-        setTimeout(() =>  this.jroll.refresh(), 400)
+        setTimeout(() =>  {
+            if (!!this.jroll) {
+                this.jroll.refresh()
+            }
+        }, 400)
+    }
+    componentWillUnmount() {
+        this.jroll.destroy()
     }
     render() {
         const { height, maxHeight, bgColor } = this.props
