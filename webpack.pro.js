@@ -3,7 +3,26 @@ const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const rollupCommonjsPlugin = require('rollup-plugin-commonjs')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const argv = require('yargs').argv
+
+let plugins =  [
+    new ExtractTextPlugin({
+        filename: 'styles.css'
+    }),
+    new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+    }),
+    new UglifyJSPlugin()
+]
+if (!!argv.json) {
+    plugins.push(
+        new BundleAnalyzerPlugin({
+            generateStatsFile: true
+        })
+    )
+}
 
 module.exports = merge(common, {
     devtool: 'source-map',
@@ -13,23 +32,7 @@ module.exports = merge(common, {
     output: {
         publicPath: './build/'
     },
-    plugins: [
-        new BundleAnalyzerPlugin({
-            generateStatsFile: true
-        }),
-        new ExtractTextPlugin({
-            filename: 'styles.css'
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: false
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            comments: false,
-            ie8: true
-        })
-    ],
+    plugins,
     //如果你想要preact，可以取消注释
     //resolve: {
     //    alias: {
@@ -40,15 +43,6 @@ module.exports = merge(common, {
     //},
     module: {
         rules: [{
-            test: /\.\/entry.js$/,
-            use: [{
-                loader: 'webpack-rollup-loader',
-                options: {
-                    plugins: [rollupCommonjsPlugin()],
-                    external: ['moment']
-                }
-            }]
-        }, {
             test: /\.(less|css)$/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',

@@ -1,29 +1,17 @@
 //babel配置文件，不需要做修改，因为都配置好了
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "browsers": ["last 2 versions", "safari >= 7"]
-      }
-    }],
-    ["es2015", {"modules": false}],
+    "env",
     "react",
-    "stage-0",
-    "stage-1",
-    "stage-2",
-    "stage-3"
+    "stage-0"
   ],
   "plugins": [
     ["transform-runtime", {
       "helpers": false,
       "polyfill": false,
-      "regenerator": true,
-      "moduleName": "babel-runtime"
+      "regenerator": true
     }],
     "react-hot-loader/babel",
-    "transform-decorators-legacy",
-    "transform-async-to-generator",
-    "transform-do-expressions",
-    "syntax-do-expressions"
+    "transform-decorators-legacy"
   ]
 }
