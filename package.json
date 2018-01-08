@@ -7,7 +7,7 @@
     "lint": "eslint src",
     "build-mac": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.pro.js",
     "build-win": "set NODE_ENV=production&& webpack --progress --hide-modules --config  webpack.pro.js",
-    "build-analyzer": "export NODE_ENV=production && webpack --progress --hide-modules webpack.config.js --json"
+    "build-analyzer": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.pro.js --json"
   },
   "pre-commit": [
     "lint"
