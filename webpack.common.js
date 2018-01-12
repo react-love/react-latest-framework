@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 //判断当前运行环境是开发模式还是生产模式
 const nodeEnv = process.env.NODE_ENV || 'development'
@@ -13,9 +14,10 @@ module.exports = {
         vendor: ['react', 'react-dom']
     },
     output: {
-        filename: '[name].js',
         path: path.join(__dirname, 'build'),
-        chunkFilename: '[name].js'
+        publicPath: './', //填写服务器绝对路径
+        filename: 'js/[name].js',
+        chunkFilename: 'js/[name].js'
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
@@ -25,6 +27,16 @@ module.exports = {
             // 定义全局变量
             'process.env': {
                 'NODE_ENV': JSON.stringify(nodeEnv)
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: './index.html',
+            template: '../index.html',
+            hash: true,
+            chunks: ['vendor', 'app'],
+            minify: {
+                removeComments: true,
+                collapseWhitespace: false
             }
         })
     ],
@@ -47,8 +59,11 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             use: 'babel-loader'
+        },  {
+            test: /\.html$/,
+            use: 'html-loader?attrs=img:src img:data-src'
         }, {
-            test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+            test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
             use: ['file-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]']
         }]
     }

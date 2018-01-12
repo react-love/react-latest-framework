@@ -13,5 +13,12 @@
     }],
     "react-hot-loader/babel",
     "transform-decorators-legacy"
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    }
+  }
 }

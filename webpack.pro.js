@@ -8,7 +8,7 @@ const argv = require('yargs').argv
 
 let plugins =  [
     new ExtractTextPlugin({
-        filename: 'styles.css'
+        filename: 'styles/[name].css'
     }),
     new webpack.LoaderOptionsPlugin({
         minimize: true,
@@ -28,9 +28,6 @@ module.exports = merge(common, {
     devtool: 'source-map',
     entry: {
         app: ['./entry']
-    },
-    output: {
-        publicPath: './build/'
     },
     plugins,
     //如果你想要preact，可以取消注释

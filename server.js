@@ -9,10 +9,10 @@ const webpackServerConfig = require('./webpack/webpackServerConfig')
 const proxy = require('http-proxy-middleware')
 
 new WebpackDevServer(webpack(config), {
+    contentBase: './',
     hot: true,
-    compress: true,
+    compress: false,
     historyApiFallback: true,
-    publicPath: '/build/',
     watchOptions: {
         ignored: /node_modules/
     },

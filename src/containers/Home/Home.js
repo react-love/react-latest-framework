@@ -72,7 +72,7 @@ class Home extends React.Component {
                         bgColor={bgClass}
                         imgUrl={search}
                         linkTo="search"
-                        title="react-redux架构"
+                        title="图书商城"
                     />
                 </ErrorBoundary>
                 <div className="style_div">

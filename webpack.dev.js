@@ -13,9 +13,6 @@ module.exports = merge(common, {
             './entry'
         ]
     },
-    output: {
-        publicPath: '/build/'
-    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
