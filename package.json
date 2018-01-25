@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "create-portal": "^1.0.0",
+    "create-portal": "^1.2.0",
     "fastclick": "^1.0.6",
     "history": "^4.7.2",
     "http-proxy-middleware": "^0.17.4",
