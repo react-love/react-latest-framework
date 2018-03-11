@@ -1,25 +1,22 @@
-/**
- * Created by Administrator on 2016/7/2.
- */
 import React from 'react'
-
+import styles from './styles/special.less'
 /*files*/
 const zht_1 = require('./files/zht1.jpg')
 const zht_2 = require('./files/zht2.jpg')
 
 const Special = () => {
     return (
-        <div className="style_main">
-            <div className="style_div">
-                <div className="style_left">
+        <div className={styles.style_main}>
+            <div className={styles.style_div}>
+                <div className={styles.style_left}>
                     <img
-                        className="style_img"
+                        className={styles.style_img}
                         src={zht_1}
                     />
                 </div>
-                <div className="style_right">
+                <div className={styles.style_right}>
                     <img
-                        className="style_img"
+                        className={styles.style_img}
                         src={zht_2}
                     />
                 </div>

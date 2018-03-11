@@ -43,7 +43,7 @@ module.exports = merge(common, {
             test: /\.(less|css)$/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
-                use: ['css-loader', 'less-loader']
+                use: ['css-loader?modules&localIdentName=[name]__[local]--[hash:base64:5]', 'less-loader']
             })
         }]
     }

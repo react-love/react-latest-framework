@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/7/1.
- */
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -19,26 +16,33 @@ const navImage = {
     [con.NAV_IMAGE_8]: require('./files/nydjk.png'),
     [con.NAV_IMAGE_9]: require('./files/nother.png')
 }
+import styles from './styles/nav.less'
+
 const Nav = (props) => {
-    const { title, img, index, handleClick } = props
-    // 如果是服务器传递过来的图标，就用img参数，否则就用自定义参数
-    //这个组件只有一个li标签包裹，通过container页面调用来实现组件的复用
+    const { data=[], handleClick } = props
     return (
-        <li
-            className="style_li"
-            onClick={() => handleClick(title)}
-        >
-            <img
-                className="style_img"
-                src={navImage[index+1]}
-            />
-            <span className="style_span">{title}</span>
-        </li>
+        <ul className={styles.style_ul}>
+            {
+                data.map((v, key) => {
+                    return (
+                        <li
+                            className={styles.style_li}
+                            key={key}
+                            onClick={() => handleClick(v.text)}
+                        >
+                            <img
+                                className={styles.style_img}
+                                src={navImage[key+1]}
+                            />
+                            <span className={styles.style_span}>{v.text}</span>
+                        </li>
+                    )
+                })
+            }
+        </ul>
     )
 }
 Nav.propTypes = {
-    title: PropTypes.string.isRequired,
-    img: PropTypes.string,
-    index: PropTypes.number.isRequired
+    data: PropTypes.array.isRequired
 }
 export default Nav

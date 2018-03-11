@@ -14,7 +14,7 @@ import withSetTitle from '../Commons/withSetTitle'
 import Header from './components/Header'
 import HotSearch from './components/HotSearch'
 
-import './styles/search.less'
+import styles from './styles/search.less'
 
 @connect(
     state => ({...state.search}),
@@ -33,7 +33,7 @@ class Search extends React.Component {
         this.getScrollHeight()
     }
     getScrollHeight = () => {
-        const header = document.querySelector('.style_body')
+        const header = document.querySelector('#styleBody')
         const height = getClientHeight - header.offsetHeight
         this.setState(() => ({height}))
     }
@@ -56,11 +56,11 @@ class Search extends React.Component {
                     bgColor={'#fff'}
                     height={height + 'px'}
                 >
-                    <p className="search-hot-title">
+                    <p className={styles.search_hot_title}>
                         <i className="fa fa-fire" />
                         <span>热门搜索</span>
                     </p>
-                    <p className="style_div_p">
+                    <p className={styles.style_div_p}>
                         {
                             hotData.map((elem, index) =>
                                 <HotSearch

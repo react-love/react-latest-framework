@@ -4,6 +4,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'react-router-dom/Link'
+import styles from './styles/header.less'
 
 const back = require('./files/back_search.png')
 const search = require('./files/search_1.png')
@@ -16,24 +17,27 @@ export default class Header extends React.Component {
     render() {
         const { currentHot } = this.props
         return (
-            <div className="style_body">
-                <div className="style_main">
+            <div
+                className={styles.style_body}
+                id="styleBody"
+            >
+                <div className={styles.style_main}>
                     <Link
-                        className="style_a"
+                        className={styles.style_a}
                         to="/"
                     >
                         <img
-                            className="style_a_img"
+                            className={styles.style_a_img}
                             src={back}
                         />
                     </Link>
-                    <div className="style_div_content">
+                    <div className={styles.style_div_content}>
                         <img
-                            className="style_div_img"
+                            className={styles.style_div_img}
                             src={search}
                         />
                         <input
-                            className="style_div_input"
+                            className={styles.style_div_input}
                             onChange={this.handleChange}
                             placeholder="搜索书名"
                             type="text"
@@ -41,7 +45,7 @@ export default class Header extends React.Component {
                         />
                     </div>
                     <Link
-                        className="style_right_a"
+                        className={styles.style_right_a}
                         to="/search"
                     >搜索</Link>
                 </div>

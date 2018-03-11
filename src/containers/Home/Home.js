@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/7/1.
- */
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import connect from 'react-redux/es/connect/connect'
@@ -24,18 +21,15 @@ import CreatePortal from 'create-portal'
 /*files*/
 const search = require('./files/search.svg')
 
-import './styles/home.less'
+import styles from './styles/home.less'
 
 @connect(
     state => ({...state.home}),
     dispatch => bindActionCreators({getBook, getNav}, dispatch)
 )
 class Home extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isClickNav: false
-        }
+    state = {
+        isClickNav: false
     }
     componentDidMount() {
         const { navMain, bookDetails } = this.props
@@ -75,26 +69,18 @@ class Home extends React.Component {
                         title="图书商城"
                     />
                 </ErrorBoundary>
-                <div className="style_div">
-                    <ul className="style_ul">
-                        {
-                            navMain.map((elem, index) =>
-                                <Nav
-                                    handleClick={this.handleClick}
-                                    index={index}
-                                    key={index}
-                                    title={elem.text}
-                                />
-                            )
-                        }
-                    </ul>
+                <div className={styles.style_div}>
+                    <Nav
+                        data={navMain}
+                        handleClick={this.handleClick}
+                    />
                 </div>
                 <div>
-                    <p className="style_p">专题</p>
+                    <p className={styles.style_p}>专题</p>
                     <Special />
                 </div>
                 <div>
-                    <p className="style_p">书籍列表</p>
+                    <p className={styles.style_p}>书籍列表</p>
                     {
                         bookDetails.map((ele, index) =>
                             <BookList

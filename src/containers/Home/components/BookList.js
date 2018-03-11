@@ -5,34 +5,36 @@ import React from 'react'
 import Link from 'react-router-dom/Link'
 import PropTypes from 'prop-types'
 import isEmpty from 'utils/isEmpty'
+import styles from './styles/bookList.less'
+import commonStyles from '../../../app.less'
 
 const BookList = (props) => {
     const {_id, title, author, press, publishedDate, currentPrice, originalPrice, index} = props
     return (
         <Link
-            className="home-book-list"
+            className={styles.home_book_list}
             data-id={_id}
             to={`/bookList/${_id}`}
         >
-            <div className="book-img">
-                <span className="book-index">{index}</span>
+            <div className={styles.book_img}>
+                <span className={styles.book_index}>{index}</span>
                 <img
                     alt="图片"
                     className=""
                     src=""
                 />
             </div>
-            <div className="book-contain">
-                <p className="book-title textOverflow-hidden">{title}</p>
-                <p className="book-author textOverflow-hidden">作者：{author}</p>
-                <p className="book-author textOverflow-hidden">出版社：{press}</p>
+            <div className={styles.book_contain}>
+                <p className={`${styles.book_title} ${commonStyles.textOverflow_hidden}`}>{title}</p>
+                <p className={`${styles.book_author} ${commonStyles.textOverflow_hidden}`}>作者：{author}</p>
+                <p className={`${styles.book_author} ${commonStyles.textOverflow_hidden}`}>出版社：{press}</p>
                 {
                     !isEmpty(publishedDate) &&
-                    <p className="book-author textOverflow-hidden">出版时间：{publishedDate}</p>
+                    <p className={`${styles.book_author} ${commonStyles.textOverflow_hidden}`}>出版时间：{publishedDate}</p>
                 }
-                <p className="textOverflow-hidden">
-                    <span className="now-price">￥{currentPrice}</span>
-                    <span className="old-price">￥{originalPrice}</span>
+                <p className={commonStyles.textOverflow_hidden}>
+                    <span className={styles.now_price}>￥{currentPrice}</span>
+                    <span className={styles.old_price}>￥{originalPrice}</span>
                 </p>
             </div>
         </Link>

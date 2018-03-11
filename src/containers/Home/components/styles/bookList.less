@@ -1,0 +1,40 @@
+.home_book_list {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.75rem solid #eee;
+  padding: 0.833rem 0;
+  .book_img {
+    position: relative;
+    width: 33.33%;
+    .book_index {
+      background: rgb(255,68,51);
+      color: rgb(255,255,255);
+      font-size: 1.2rem;
+      padding: 0 0.5rem;
+      line-height: 1.4rem;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    img {
+      max-width: 75%;
+      max-height: 5.55rem;
+      padding: 0.75rem 11.5% 0.75rem 13.5%;
+    }
+  }
+  .book_contain {
+    width: 66.66%;
+    display: inline-flex;
+    flex-direction: column;
+    .book_title {
+      color: #3f3f3f;
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+    }
+    .book_author {
+      color: #a0a0a0;
+      font-size: 1.1rem;
+      line-height: 1.6rem;
+    }
+  }
+}
