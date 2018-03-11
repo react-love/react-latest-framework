@@ -11,7 +11,7 @@ let plugins =  [
         filename: 'styles/[name].css'
     }),
     new webpack.LoaderOptionsPlugin({
-        minimize: true,
+        minimize: false, //开启loader压缩会导致px自动转rem失效，慎重考虑
         debug: false
     }),
     new UglifyJSPlugin()
@@ -44,7 +44,7 @@ module.exports = merge(common, {
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 use: [
-                    'css-loader?modules&localIdentName=[name]__[local]--[hash:base64:5]',
+                    'css-loader?modules&localIdentName=[local]--[hash:base64:5]',
                     'postcss-loader',
                     'less-loader'
                 ]
