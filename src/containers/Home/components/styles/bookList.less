@@ -1,20 +1,20 @@
 .home_book_list {
   display: flex;
   flex-direction: row;
-  border-bottom: 0.75rem solid #eee;
-  padding: 0.833rem 0;
+  border-bottom: 20px solid #eee;/*rem*/
+  padding: 20px 0;/*rem*/
   .book_img {
     position: relative;
     width: 33.33%;
     .book_index {
       background: rgb(255,68,51);
       color: rgb(255,255,255);
-      font-size: 1.2rem;
-      padding: 0 0.5rem;
-      line-height: 1.4rem;
+      font-size: 24px;/*rem*/
+      padding: 0 12px;/*rem*/
+      line-height: 37px;/*rem*/
       position: absolute;
-      top: 0px;
-      left: 0px;
+      top: 0;
+      left: 0;
     }
     img {
       max-width: 75%;
@@ -28,13 +28,25 @@
     flex-direction: column;
     .book_title {
       color: #3f3f3f;
-      font-size: 1.2rem;
-      line-height: 1.8rem;
+      font-size: 28px;/*rem*/
+      line-height: 37px;/*rem*/
     }
     .book_author {
       color: #a0a0a0;
-      font-size: 1.1rem;
-      line-height: 1.6rem;
+      font-size: 24px;/*rem*/
+      line-height: 37px;/*rem*/
+    }
+    p {
+      span, del {
+        font-size: 24px;/*rem*/
+      }
+      span {
+        color: #666;
+      }
+      del {
+        margin-left: 10px;/*rem*/
+        color: #ff4433;
+      }
     }
   }
 }

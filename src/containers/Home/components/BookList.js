@@ -34,7 +34,7 @@ const BookList = (props) => {
                 }
                 <p className={commonStyles.textOverflow_hidden}>
                     <span className={styles.now_price}>￥{currentPrice}</span>
-                    <span className={styles.old_price}>￥{originalPrice}</span>
+                    <del className={styles.old_price}>￥{originalPrice}</del>
                 </p>
             </div>
         </Link>

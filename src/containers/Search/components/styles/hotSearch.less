@@ -1,8 +1,16 @@
 .style_span {
-  display: inline-block;
   background: #f4f4f4;
-  padding: 0.41667rem 0.833rem;
-  margin-right: 1rem;
-  margin-bottom: 0.833rem;
+  padding: 10px 20px;/*rem*/
+  margin-bottom: 20px;/*rem*/
   color: #444;
+  font-size: 22px;/*rem*/
+  animation: rightToLeft .3s ease-in;
+}
+@keyframes rightToLeft {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

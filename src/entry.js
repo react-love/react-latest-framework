@@ -9,6 +9,7 @@ import { routerReducer } from 'react-router-redux/lib/reducer'
 import AppContainer from 'react-hot-loader/lib/AppContainer'
 import App from './App'
 import rootReducer from './reducers/index'
+import 'utils/flexible'
 
 const FastClick = require('fastclick')
 
