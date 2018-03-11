@@ -13,30 +13,32 @@ const navImage = {
     [con.NAV_IMAGE_5]: require('./files/nxxjs.png'),
     [con.NAV_IMAGE_6]: require('./files/nyssj.png'),
     [con.NAV_IMAGE_7]: require('./files/nyyjs.png'),
-    [con.NAV_IMAGE_8]: require('./files/nydjk.png'),
-    [con.NAV_IMAGE_9]: require('./files/nother.png')
+    [con.NAV_IMAGE_8]: require('./files/nydjk.png')
 }
 import styles from './styles/nav.less'
 
 const Nav = (props) => {
-    const { data=[], handleClick } = props
+    const { data=[], handleClick, col=4 } = props
     return (
         <ul className={styles.style_ul}>
             {
                 data.map((v, key) => {
-                    return (
-                        <li
-                            className={styles.style_li}
-                            key={key}
-                            onClick={() => handleClick(v.text)}
-                        >
-                            <img
-                                className={styles.style_img}
-                                src={navImage[key+1]}
-                            />
-                            <span className={styles.style_span}>{v.text}</span>
-                        </li>
-                    )
+                    if (key < 8) {
+                        return (
+                            <li
+                                className={styles.style_li}
+                                key={key}
+                                onClick={() => handleClick(v.text)}
+                                style={{width: 100/col + '%'}}
+                            >
+                                <img
+                                    className={styles.style_img}
+                                    src={navImage[key+1]}
+                                />
+                                <span className={styles.style_span}>{v.text}</span>
+                            </li>
+                        )
+                    }
                 })
             }
         </ul>
