@@ -4,7 +4,8 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import Provider from 'react-redux/es/components/Provider'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import HashRouter from 'react-router-dom/HashRouter'
+// import HashRouter from 'react-router-dom/HashRouter'
+import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { routerReducer } from 'react-router-redux/lib/reducer'
 import AppContainer from 'react-hot-loader/lib/AppContainer'
 import App from './App'
@@ -26,9 +27,9 @@ const render = Component =>
     ReactDOM.render(
         <AppContainer>
             <Provider store={store}>
-                <HashRouter>
+                <BrowserRouter>
                     <Component />
-                </HashRouter>
+                </BrowserRouter>
             </Provider>
         </AppContainer>,
         document.getElementById('root')
