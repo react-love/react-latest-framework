@@ -66,7 +66,7 @@ fork到你的账号，简单省事，或者 download 项目到本地
 
 1、 安装依赖包，已经解决了一些依赖包安装最新版可能出现的bug，如果还有问题，可以看相关社区的issue。
 ```
-npm install 或者cnpm install
+npm install 或cnpm install 或 yarn
 ```
 
 2、运行demo。
@@ -88,6 +88,12 @@ npm run build-mac
 
 windows
 npm run build-win
+```
+
+5、你可以尝试serve来启动服务器。
+
+```nodemon
+npm run serve
 ```
 
 #
