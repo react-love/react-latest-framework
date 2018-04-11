@@ -3,7 +3,7 @@
   "version": "3.4.0",
   "description": "",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js & npm run prettier-watch",
     "lint": "eslint src",
     "build-mac": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.pro.js",
     "build-win": "set NODE_ENV=production&& webpack --progress --hide-modules --config  webpack.pro.js",
