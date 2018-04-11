@@ -1,4 +1,4 @@
-<p align="center"><img width="100" src="https://sfault-image.b0.upaiyun.com/326/633/3266334656-5a20ec7869df2_articlex"></p>
+<p align="center"><img width="100" src="https://segmentfault.com/img/bVZwRf?w=516&h=457"<p align="center"><img width="100" src="https://sfault-image.b0.upaiyun.com/326/633/3266334656-5a20ec7869df2_articlex"></p>
 
 # React技术栈长期开源项目
 
