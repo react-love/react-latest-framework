@@ -13,23 +13,23 @@ import React from 'react'
 *
 * */
 class ErrorBoundary extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { error: null, errorInfo: null }
+  constructor(props) {
+    super(props)
+    this.state = { error: null, errorInfo: null }
+  }
+  componentDidCatch(error, errorInfo) {
+    this.setState(() => ({
+      error: error,
+      errorInfo: errorInfo
+    }))
+  }
+  render() {
+    const { errorInfo } = this.state
+    if (errorInfo) {
+      return <h3 style={{ color: 'red', background: '#eab3b3' }}>error</h3>
+    } else {
+      return this.props.children
     }
-    componentDidCatch(error, errorInfo) {
-        this.setState(() => ({
-            error: error,
-            errorInfo: errorInfo
-        }))
-    }
-    render() {
-        const { errorInfo } = this.state
-        if (errorInfo) {
-            return <h3 style={{color: 'red', background: '#eab3b3'}}>error</h3>
-        } else {
-            return this.props.children
-        }
-    }
+  }
 }
 export default ErrorBoundary

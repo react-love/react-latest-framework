@@ -5,23 +5,21 @@ const zht_1 = require('./files/zht1.jpg')
 const zht_2 = require('./files/zht2.jpg')
 
 const Special = () => {
-    return (
-        <div className={styles.style_main}>
-            <div className={styles.style_div}>
-                <div className={styles.style_left}>
-                    <img
-                        className={styles.style_img}
-                        src={zht_1}
-                    />
-                </div>
-                <div className={styles.style_right}>
-                    <img
-                        className={styles.style_img}
-                        src={zht_2}
-                    />
-                </div>
-            </div>
+  return (
+    <div className={styles.style_main}>
+      <div className={styles.style_div}>
+        <div className={styles.style_left}>
+          <img className={styles.style_img}
+              src={zht_1}
+          />
         </div>
-    )
+        <div className={styles.style_right}>
+          <img className={styles.style_img}
+              src={zht_2}
+          />
+        </div>
+      </div>
+    </div>
+  )
 }
 export default Special

@@ -5,27 +5,27 @@ import PropTypes from 'prop-types'
 import { storeShape, subscriptionShape } from 'utils/PropTypes'
 
 export function createProvider(storeKey = 'store', subKey) {
-    const subscriptionKey = subKey || `${storeKey}Subscription`
-    class Provider extends Component {
-        constructor(props, context) {
-            super(props, context)
-            this[storeKey] = props.store;
-        }
-        getChildContext() {
-            return { [storeKey]: this[storeKey], [subscriptionKey]: null }
-        }
-        render() {
-            return Children.only(this.props.children)
-        }
+  const subscriptionKey = subKey || `${storeKey}Subscription`
+  class Provider extends Component {
+    constructor(props, context) {
+      super(props, context)
+      this[storeKey] = props.store
     }
-    Provider.propTypes = {
-        store: storeShape.isRequired,
-        children: PropTypes.element.isRequired
+    getChildContext() {
+      return { [storeKey]: this[storeKey], [subscriptionKey]: null }
     }
-    Provider.childContextTypes = {
-        [storeKey]: storeShape.isRequired,
-        [subscriptionKey]: subscriptionShape
+    render() {
+      return Children.only(this.props.children)
     }
-    return Provider
+  }
+  Provider.propTypes = {
+    store: storeShape.isRequired,
+    children: PropTypes.element.isRequired
+  }
+  Provider.childContextTypes = {
+    [storeKey]: storeShape.isRequired,
+    [subscriptionKey]: subscriptionShape
+  }
+  return Provider
 }
 export default createProvider()

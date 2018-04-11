@@ -3,15 +3,17 @@
   "version": "3.4.0",
   "description": "",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js & npm run prettier-watch",
     "lint": "eslint src",
     "build-mac": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.pro.js",
     "build-win": "set NODE_ENV=production&& webpack --progress --hide-modules --config  webpack.pro.js",
     "build-analyzer": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.pro.js --json",
-    "serve": "serve -s build"
+    "serve": "serve -s build",
+    "format": "prettier-eslint --single-quote --no-semi --write '**/*.js'",
+    "prettier-watch": "onchange '**/*.js' -- prettier-eslint --single-quote --no-semi --write {{changed}}"
   },
   "pre-commit": [
-    "lint"
+    "format"
   ],
   "repository": {
     "type": "git",
@@ -46,6 +48,7 @@
     "postcss-loader": "^2.1.1",
     "pre-commit": "^1.2.2",
     "precss": "^3.1.2",
+    "prettier-eslint-cli": "^4.7.1",
     "react-error-overlay": "^1.0.9",
     "react-transition-group": "^1.1.1",
     "redux-thunk": "^2.2.0",
@@ -65,6 +68,7 @@
     "history": "^4.7.2",
     "http-proxy-middleware": "^0.17.4",
     "lazy-load-component": "^1.1.2",
+    "onchange": "^3.3.0",
     "postcss-adaptive": "^0.5.0",
     "preact": "^8.2.7",
     "preact-compat": "^3.17.0",
@@ -78,6 +82,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
-    "redux-devtools-extension": "^2.13.0"
+    "redux-devtools-extension": "^2.13.0",
+    "serve": "^6.5.4"
   }
 }

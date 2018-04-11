@@ -24,101 +24,96 @@ const search = require('./files/search.svg')
 import styles from './styles/home.less'
 
 @connect(
-    state => ({...state.home}),
-    dispatch => bindActionCreators({getBook, getNav}, dispatch)
+  state => ({ ...state.home }),
+  dispatch => bindActionCreators({ getBook, getNav }, dispatch)
 )
 class Home extends React.Component {
-    state = {
-        isClickNav: false
+  state = {
+    isClickNav: false
+  }
+  componentDidMount() {
+    const { navMain, bookDetails } = this.props
+    if (isEmpty(navMain)) {
+      this.props.getNav()
     }
-    componentDidMount() {
-        const { navMain, bookDetails } = this.props
-        if (isEmpty(navMain)) {
-            this.props.getNav()
-        }
-        if (isEmpty(bookDetails)) {
-            this.props.getBook()
-        }
+    if (isEmpty(bookDetails)) {
+      this.props.getBook()
     }
-    handleClick = (title) => {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        if (!!title) {
-            this.setState(() => ({isClickNav: true}))
-        }
+  }
+  handleClick = title => {
+    //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
+    if (!!title) {
+      this.setState(() => ({ isClickNav: true }))
     }
-    render() {
-        const { navMain, bookDetails } = this.props
-        const { isClickNav } = this.state
-        let portalStyle = {
-            width: '100%',
-            height: '100%',
-            background: '#fff',
-            position: 'fixed',
-            left: 0,
-            top: 0
-        }
-        //还可以通过自定义样式传递给组件
-        let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
-        return(
-            <div>
-                <ErrorBoundary>
-                    <Header
-                        bgColor={bgClass}
-                        imgUrl={search}
-                        linkTo="search"
-                        title="图书商城"
-                    />
-                </ErrorBoundary>
-                <div className={styles.style_div}>
-                    <Nav
-                        data={navMain}
-                        handleClick={this.handleClick}
-                    />
-                </div>
-                <div>
-                    <p className={styles.style_p}>专题</p>
-                    <Special />
-                </div>
-                <div>
-                    <p className={styles.style_p}>书籍列表</p>
-                    {
-                        bookDetails.map((ele, index) =>
-                            <BookList
-                                _id={ele._id}
-                                author={ele.author}
-                                currentPrice={ele.currentPrice}
-                                index={index + 1}
-                                key={index}
-                                originalPrice={ele.originalPrice}
-                                press={ele.press}
-                                publishedDate={ele.publishedDate}
-                                title={ele.title}
-                            />
-                        )
-                    }
-                </div>
-                {
-                    isClickNav &&
-                    <CreatePortal
-                        id={'test'}
-                        style={portalStyle}
-                    >
-                        <div
-                            onClick={() => this.setState({isClickNav: false})}
-                            style={{width: '100%', height: '100%'}}
-                        >
-                            你点击了导航，激活弹框，点击任意地方关闭弹框
-                        </div>
-                    </CreatePortal>
-                }
+  }
+  render() {
+    const { navMain, bookDetails } = this.props
+    const { isClickNav } = this.state
+    let portalStyle = {
+      width: '100%',
+      height: '100%',
+      background: '#fff',
+      position: 'fixed',
+      left: 0,
+      top: 0
+    }
+    //还可以通过自定义样式传递给组件
+    let bgClass = { background: '#00bb9c' } //定义一个背景色的变量
+    return (
+      <div>
+        <ErrorBoundary>
+          <Header
+              bgColor={bgClass}
+              imgUrl={search}
+              linkTo="search"
+              title="图书商城"
+          />
+        </ErrorBoundary>
+        <div className={styles.style_div}>
+          <Nav data={navMain}
+              handleClick={this.handleClick}
+          />
+        </div>
+        <div>
+          <p className={styles.style_p}>专题</p>
+          <Special />
+        </div>
+        <div>
+          <p className={styles.style_p}>书籍列表</p>
+          {bookDetails.map((ele, index) => (
+            <BookList
+                _id={ele._id}
+                author={ele.author}
+                currentPrice={ele.currentPrice}
+                index={index + 1}
+                key={index}
+                originalPrice={ele.originalPrice}
+                press={ele.press}
+                publishedDate={ele.publishedDate}
+                title={ele.title}
+            />
+          ))}
+        </div>
+        {isClickNav && (
+          <CreatePortal id={'test'}
+              style={portalStyle}
+          >
+            <div
+                onClick={() => this.setState({ isClickNav: false })}
+                style={{ width: '100%', height: '100%' }}
+            >
+              你点击了导航，激活弹框，点击任意地方关闭弹框
             </div>
-        )
-    }
+          </CreatePortal>
+        )}
+      </div>
+    )
+  }
 }
 Home.propTypes = {
-    navMain: PropTypes.array,
-    bookDetails: PropTypes.array,
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired
+  navMain: PropTypes.array,
+  bookDetails: PropTypes.array,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 }
 export default withSetTitle(Home, '首页')

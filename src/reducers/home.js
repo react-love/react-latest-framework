@@ -3,23 +3,23 @@
  */
 // 初始化状态
 let initNavList = {
-    navMain: [],
-    bookDetails: []
+  navMain: [],
+  bookDetails: []
 }
 
 export function home(state = initNavList, action) {
-    switch (action.type) {
-        case 'RECEIVE_NAV':
-            return {
-                ...state,   //三个点是展开符
-                navMain: action.navMain
-            }
-        case 'RECEIVE_BOOK':
-            return {
-                ...state,
-                bookDetails: action.bookDetails
-            }
-        default:
-            return {...state};
-    }
+  switch (action.type) {
+    case 'RECEIVE_NAV':
+      return {
+        ...state, //三个点是展开符
+        navMain: action.navMain
+      }
+    case 'RECEIVE_BOOK':
+      return {
+        ...state,
+        bookDetails: action.bookDetails
+      }
+    default:
+      return state
+  }
 }
