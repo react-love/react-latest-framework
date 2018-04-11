@@ -18,8 +18,9 @@ new WebpackDevServer(webpack(config), {
   },
   stats: {
     modules: false,
-    chunks: false,
-    colors: true
+    colors: true,
+    depth: true,
+    entrypoints: true
   },
   setup(app) {
     app.use(errorOverlayMiddleware())
