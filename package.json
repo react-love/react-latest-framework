@@ -3,11 +3,10 @@
   "version": "3.4.0",
   "description": "",
   "scripts": {
-    "start": "node server.js & npm run prettier-watch",
+    "start": "node server/server.js",
     "lint": "eslint src",
-    "build-mac": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.pro.js",
-    "build-win": "set NODE_ENV=production&& webpack --progress --hide-modules --config  webpack.pro.js",
-    "build-analyzer": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack.pro.js --json",
+    "build": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack/webpack.pro.js",
+    "build-analyzer": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack/webpack.pro.js --json",
     "serve": "serve -s build",
     "format": "prettier-eslint --single-quote --no-semi --write '**/*.js'",
     "prettier-watch": "onchange '**/*.js' -- prettier-eslint --single-quote --no-semi --write {{changed}}"
@@ -63,6 +62,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
     "create-portal": "^1.2.0",
     "fastclick": "^1.0.6",
     "history": "^4.7.2",

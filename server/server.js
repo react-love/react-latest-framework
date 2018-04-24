@@ -3,13 +3,14 @@
  */
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
-const config = require('./webpack.dev')
+const config = require('../webpack/webpack.dev')
 const errorOverlayMiddleware = require('react-error-overlay/middleware')
-const webpackServerConfig = require('./webpack/webpackServerConfig')
+const webpackConfig = require('../webpack/config')
 const proxy = require('http-proxy-middleware')
+const path = require('path')
 
 new WebpackDevServer(webpack(config), {
-  contentBase: './',
+  contentBase: path.join(__dirname, 'public'),
   hot: true,
   compress: false,
   historyApiFallback: true,
@@ -34,13 +35,13 @@ new WebpackDevServer(webpack(config), {
       )
     }
   }
-}).listen(webpackServerConfig.port, webpackServerConfig.host, function(err) {
+}).listen(webpackConfig.port, webpackConfig.host, function(err) {
   if (err) {
     return console.log(err)
   }
   console.log(
-    `Listening at http://${webpackServerConfig.host}:${
-      webpackServerConfig.port
+    `Listening at http://${webpackConfig.host}:${
+        webpackConfig.port
     }/`
   )
 })

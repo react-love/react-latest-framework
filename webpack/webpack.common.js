@@ -9,12 +9,11 @@ const isPro = nodeEnv === 'production'
 console.log('当前运行环境：', isPro ? 'production' : 'development')
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
   entry: {
     vendor: ['react', 'react-dom']
   },
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, '../build'),
     publicPath: './', //填写服务器绝对路径
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].js'
@@ -30,8 +29,8 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      filename: './index.html',
-      template: '../index.html',
+      filename: 'index.html',
+      template: path.join(__dirname, '../public/index.html'),
       hash: true,
       chunks: ['vendor', 'app'],
       minify: {
@@ -43,16 +42,13 @@ module.exports = {
   // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
   resolve: {
     extensions: ['.js', '.jsx', '.less', '.scss', '.css'],
-    modules: [
-      path.resolve(__dirname, 'node_modules'),
-      path.join(__dirname, './src')
-    ],
+    modules: [path.resolve(__dirname, "../src"), "node_modules"],
     alias: {
-      actions: path.resolve(__dirname, 'src/actions'),
-      components: path.resolve(__dirname, 'src/components'),
-      containers: path.resolve(__dirname, 'src/containers'),
-      reducers: path.resolve(__dirname, 'src/reducers'),
-      utils: path.resolve(__dirname, 'src/utils')
+      actions: path.resolve(__dirname, '../src/actions'),
+      components: path.resolve(__dirname, '../src/components'),
+      containers: path.resolve(__dirname, '../src/containers'),
+      reducers: path.resolve(__dirname, '../src/reducers'),
+      utils: path.resolve(__dirname, '../src/utils')
     }
   },
   module: {

@@ -12,7 +12,8 @@
       "regenerator": true
     }],
     "react-hot-loader/babel",
-    "transform-decorators-legacy"
+    "transform-decorators-legacy",
+    "dynamic-import-node"
   ],
   "env": {
     "development": {

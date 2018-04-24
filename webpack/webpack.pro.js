@@ -6,6 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const argv = require('yargs').argv
+const path = require('path')
 
 let plugins = [
   new ExtractTextPlugin({
@@ -28,7 +29,7 @@ if (!!argv.json) {
 module.exports = merge(common, {
   devtool: 'source-map',
   entry: {
-    app: ['./entry']
+    app: [path.join(__dirname, '../src/entry')]
   },
   plugins,
   //如果你想要preact，可以取消注释
