@@ -27,7 +27,6 @@ if (!!argv.json) {
 }
 
 module.exports = merge(common, {
-  devtool: 'source-map',
   entry: {
     app: [path.join(__dirname, '../src/entry')]
   },

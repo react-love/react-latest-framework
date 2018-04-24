@@ -42,7 +42,7 @@ module.exports = {
   // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
   resolve: {
     extensions: ['.js', '.jsx', '.less', '.scss', '.css'],
-    modules: [path.resolve(__dirname, "../src"), "node_modules"],
+    modules: [path.resolve(__dirname, '../src'), 'node_modules'],
     alias: {
       actions: path.resolve(__dirname, '../src/actions'),
       components: path.resolve(__dirname, '../src/components'),

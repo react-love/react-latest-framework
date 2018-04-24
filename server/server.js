@@ -40,8 +40,6 @@ new WebpackDevServer(webpack(config), {
     return console.log(err)
   }
   console.log(
-    `Listening at http://${webpackConfig.host}:${
-        webpackConfig.port
-    }/`
+    `Listening at http://${webpackConfig.host}:${webpackConfig.port}/`
   )
 })
