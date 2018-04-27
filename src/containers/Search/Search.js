@@ -1,13 +1,12 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
-import connect from 'react-redux/es/connect/connect'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import getClientHeight from 'utils/getClientHeight'
 /*actions*/
 import { receiveHotSearch } from 'actions/search'
 
 import MyJRoll from 'react-roll-container'
-import withSetTitle from '../Commons/withSetTitle'
 import Header from './components/Header'
 import HotSearch from './components/HotSearch'
 
@@ -75,4 +74,4 @@ class Search extends React.Component {
 Search.propTypes = {
   hotData: PropTypes.array
 }
-export default withSetTitle(Search, '搜索')
+export default Search

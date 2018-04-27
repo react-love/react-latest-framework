@@ -1,6 +1,6 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
-import connect from 'react-redux/es/connect/connect'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import isEmpty from 'utils/isEmpty'
 
@@ -11,7 +11,6 @@ import { getBook, getNav } from 'actions/home'
 
 /*component*/
 import ErrorBoundary from 'containers/Commons/ErrorBoundary'
-import withSetTitle from '../Commons/withSetTitle'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import Special from './components/Special'
@@ -116,4 +115,4 @@ Home.propTypes = {
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 }
-export default withSetTitle(Home, '首页')
+export default Home
