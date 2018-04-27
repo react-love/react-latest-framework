@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/7/2.
- */
 // 初始化状态
 let initNavList = {
   navMain: [],

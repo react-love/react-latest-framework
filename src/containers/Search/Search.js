@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/7/2.
- */
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import connect from 'react-redux/es/connect/connect'

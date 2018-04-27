@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/7/2.
- */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'react-router-dom/Link'

@@ -1,6 +1,3 @@
-/**
- * Created by yongyuehuang on 2017/9/2.
- */
 import React from 'react'
 import PropTypes from 'prop-types'
 import warning from 'fbjs/lib/warning'

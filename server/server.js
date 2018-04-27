@@ -1,6 +1,3 @@
-/**
- * Created by yongyuehuang on 2017/8/22.
- */
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const config = require('../webpack/webpack.dev')

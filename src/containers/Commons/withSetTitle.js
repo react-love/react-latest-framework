@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2017/12/27.
- */
 import React from 'react'
 
 function withSetTitle(WrapperComponent, title) {

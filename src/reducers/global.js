@@ -1,6 +1,3 @@
-/**
- * Created by yongyuehuang on 2017/6/7.
- */
 const initState = {
   animateCls: 'normal' //过渡动画样式
 }

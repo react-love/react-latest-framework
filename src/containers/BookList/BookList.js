@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/7/1.
- */
 import React from 'react'
 import PropTypes from 'prop-types'
 import withSetTitle from '../Commons/withSetTitle'
