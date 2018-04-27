@@ -2,15 +2,15 @@ let initData = {
   hotData: [
     {
       id: 1,
-      text: '会计从业'
+      text: 'The accountant from'
     },
     {
       id: 2,
-      text: 'c语言程序设计'
+      text: 'C language programming'
     },
     {
       id: 3,
-      text: '高等数学'
+      text: 'Higher mathematics'
     },
     {
       id: 4,
@@ -18,7 +18,7 @@ let initData = {
     },
     {
       id: 5,
-      text: '网页设计'
+      text: 'Web design'
     },
     {
       id: 6,
@@ -26,15 +26,15 @@ let initData = {
     },
     {
       id: 7,
-      text: '英语四级'
+      text: 'English cet 4'
     },
     {
       id: 8,
-      text: '线性代数'
+      text: 'Linear algebra'
     },
     {
       id: 9,
-      text: '公务员考试'
+      text: 'Civil service exam'
     }
   ]
 }

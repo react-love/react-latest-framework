@@ -32,7 +32,7 @@ export default class Header extends React.Component {
             <input
                 className={styles.style_div_input}
                 onChange={this.handleChange}
-                placeholder="搜索书名"
+                placeholder="Search the title"
                 type="text"
                 value={currentHot}
             />
@@ -40,7 +40,7 @@ export default class Header extends React.Component {
           <Link className={styles.style_right_a}
               to="/search"
           >
-            搜索
+            search
           </Link>
         </div>
       </div>

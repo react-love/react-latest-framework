@@ -65,7 +65,7 @@ class Home extends React.Component {
               bgColor={bgClass}
               imgUrl={search}
               linkTo="search"
-              title="图书商城"
+              title="The book store"
           />
         </ErrorBoundary>
         <div className={styles.style_div}>
@@ -74,11 +74,11 @@ class Home extends React.Component {
           />
         </div>
         <div>
-          <p className={styles.style_p}>专题</p>
+          <p className={styles.style_p}>project</p>
           <Special />
         </div>
         <div>
-          <p className={styles.style_p}>书籍列表</p>
+          <p className={styles.style_p}>List of books</p>
           {bookDetails.map((ele, index) => (
             <BookList
                 _id={ele._id}
@@ -101,7 +101,7 @@ class Home extends React.Component {
                 onClick={() => this.setState({ isClickNav: false })}
                 style={{ width: '100%', height: '100%' }}
             >
-              你点击了导航，激活弹框，点击任意地方关闭弹框
+              You click on the navigation, the activation play box, click anywhere close bounced
             </div>
           </CreatePortal>
         )}

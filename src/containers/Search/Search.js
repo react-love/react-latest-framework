@@ -54,7 +54,7 @@ class Search extends React.Component {
         >
           <p className={styles.search_hot_title}>
             <i className="fa fa-fire" />
-            <span>热门搜索</span>
+            <span>Top search</span>
           </p>
           <p className={styles.style_div_p}>
             {hotData.map((elem, index) => (

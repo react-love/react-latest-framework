@@ -24,8 +24,7 @@ const BookList = props => {
     >
       <div className={styles.book_img}>
         <span className={styles.book_index}>{index}</span>
-        <img alt="图片"
-            className=""
+        <img className=""
             src=""
         />
       </div>
@@ -40,14 +39,14 @@ const BookList = props => {
             commonStyles.textOverflow_hidden
           }`}
         >
-          作者：{author}
+          The author：{author}
         </p>
         <p
             className={`${styles.book_author} ${
             commonStyles.textOverflow_hidden
           }`}
         >
-          出版社：{press}
+          Press.：{press}
         </p>
         {!isEmpty(publishedDate) && (
           <p
@@ -55,7 +54,7 @@ const BookList = props => {
               commonStyles.textOverflow_hidden
             }`}
           >
-            出版时间：{publishedDate}
+            Publication date：{publishedDate}
           </p>
         )}
         <p className={commonStyles.textOverflow_hidden}>
