@@ -1,87 +1,116 @@
 {
-  "name": "react-latest-framework",
-  "version": "3.4.0",
-  "description": "",
+  "name": "react-redux-webpack",
+  "version": "4.0.0",
   "scripts": {
-    "start": "node server/server.js",
-    "lint": "eslint src",
-    "build": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack/webpack.pro.js",
-    "build-analyzer": "export NODE_ENV=production && webpack --progress --hide-modules --config webpack/webpack.pro.js --json",
-    "serve": "serve -s build",
-    "format": "prettier-eslint --single-quote --no-semi --write '**/*.js'",
-    "prettier-watch": "onchange '**/*.js' -- prettier-eslint --single-quote --no-semi --write {{changed}}"
-  },
-  "pre-commit": [
-    "format"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hyy1115/react-latest-framework.git"
-  },
-  "author": "hyy",
-  "license": "MIT",
-  "devDependencies": {
-    "autoprefixer": "^8.3.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-runtime": "^6.26.0",
-    "compression": "^1.6.2",
-    "css-loader": "^0.28.10",
-    "eslint": "^4.13.1",
-    "eslint-plugin-react": "^7.5.1",
-    "express": "^4.16.3",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.11",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "image-webpack-loader": "^4.2.0",
-    "less": "^3.0.2",
-    "less-loader": "^4.1.0",
-    "postcss-loader": "^2.1.4",
-    "pre-commit": "^1.2.2",
-    "precss": "^3.1.2",
-    "prettier-eslint-cli": "^4.7.1",
-    "react-error-overlay": "^1.0.9",
-    "react-transition-group": "^1.1.1",
-    "redux-thunk": "^2.2.0",
-    "style-loader": "^0.21.0",
-    "uglifyjs-webpack-plugin": "^1.2.5",
-    "url-loader": "^1.0.1",
-    "webpack": "^3.10.0",
-    "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-dev-server": "^2.11.2",
-    "webpack-merge": "^4.1.1",
-    "yargs": "^10.0.3"
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "serve": "serve -s build"
   },
   "dependencies": {
+    "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
-    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-jest": "20.0.3",
+    "babel-loader": "7.1.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-react-app": "^3.1.1",
+    "babel-runtime": "6.26.0",
+    "case-sensitive-paths-webpack-plugin": "2.1.1",
+    "chalk": "1.1.3",
     "create-portal": "^1.2.0",
-    "fastclick": "^1.0.6",
-    "history": "^4.7.2",
-    "http-proxy-middleware": "^0.17.4",
-    "lazy-load-component": "^1.1.2",
-    "onchange": "^3.3.0",
-    "postcss-adaptive": "^0.5.0",
-    "preact": "^8.2.7",
-    "preact-compat": "^3.18.0",
-    "prop-types": "^15.6.1",
+    "css-loader": "0.28.7",
+    "dotenv": "4.0.0",
+    "dotenv-expand": "4.2.0",
+    "eslint": "4.10.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.4.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "1.1.5",
+    "fs-extra": "3.0.1",
+    "html-webpack-plugin": "2.29.0",
+    "http-proxy-middleware": "^0.18.0",
+    "jest": "20.0.4",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "object-assign": "4.1.1",
+    "postcss-flexbugs-fixes": "3.2.0",
+    "postcss-loader": "2.0.8",
+    "postcss-pxtorem": "^4.0.1",
+    "precss": "^3.1.2",
+    "promise": "8.0.1",
+    "raf": "3.4.0",
     "react": "^16.3.2",
+    "react-dev-utils": "^5.0.1",
     "react-dom": "^16.3.2",
-    "react-hot-loader": "^3.1.2",
-    "react-redux": "^5.0.6",
-    "react-roll-container": "^1.0.0",
+    "react-fastclick": "^3.0.2",
+    "react-loadable": "^5.4.0",
+    "react-redux": "^5.0.7",
+    "react-roll-container": "^1.0.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
-    "redux": "^3.7.2",
+    "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.2",
-    "serve": "^6.5.4"
+    "redux-thunk": "^2.2.0",
+    "resolve": "1.6.0",
+    "serve": "^6.5.6",
+    "style-loader": "0.19.0",
+    "sw-precache-webpack-plugin": "0.11.4",
+    "url-loader": "0.6.2",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.9.4",
+    "webpack-manifest-plugin": "1.3.2",
+    "whatwg-fetch": "2.0.3"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node",
+      "mjs"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      "transform-decorators-legacy"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
