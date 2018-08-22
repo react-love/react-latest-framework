@@ -57,6 +57,7 @@
     "react-router-redux": "^4.0.8",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.2",
+    "redux-localstorage": "^0.4.1",
     "redux-thunk": "^2.2.0",
     "resolve": "1.6.0",
     "serve": "^6.5.6",

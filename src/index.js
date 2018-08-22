@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import { Provider } from 'react-redux'
+import persistState from 'redux-localstorage'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 // import BaseRouter from 'react-router-dom/HashRouter'
@@ -18,9 +19,13 @@ initReactFastclick()
 
 const middlewares = [thunk]
 
+const enhancer = compose(
+  persistState(/*paths, config*/)
+)
+
 const store = createStore(
   combineReducers({ routing: routerReducer, ...rootReducer }),
-  composeWithDevTools(applyMiddleware(...middlewares))
+  composeWithDevTools(applyMiddleware(...middlewares), enhancer)
 )
 
 const render = Component =>
