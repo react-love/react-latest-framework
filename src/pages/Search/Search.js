@@ -13,7 +13,7 @@ import HotSearch from './components/HotSearch'
 import styles from './styles/search.less'
 
 @connect(
-  state => ({ ...state.search }),
+  state => state.getIn(['search']),
   dispatch => bindActionCreators({ receiveHotSearch }, dispatch)
 )
 class Search extends React.Component {

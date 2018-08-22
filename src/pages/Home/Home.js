@@ -23,7 +23,7 @@ const search = require('./files/search.svg')
 
 
 @connect(
-  state => ({ ...state.home }),
+  state => state.getIn(['home']),
   dispatch => bindActionCreators({ getBook, getNav }, dispatch)
 )
 class Home extends React.Component {
