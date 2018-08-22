@@ -7,7 +7,6 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 // import BaseRouter from 'react-router-dom/HashRouter'
 import BaseRouter from 'react-router-dom/BrowserRouter'
-import { routerReducer } from 'react-router-redux'
 import App from './App'
 import rootReducer from './reducers/index'
 import initReactFastclick from 'react-fastclick'
@@ -24,7 +23,7 @@ const enhancer = compose(
 )
 
 const store = createStore(
-  combineReducers({ routing: routerReducer, ...rootReducer }),
+  combineReducers({ ...rootReducer }),
   composeWithDevTools(applyMiddleware(...middlewares), enhancer)
 )
 
