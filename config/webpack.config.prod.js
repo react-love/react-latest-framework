@@ -12,6 +12,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const HappyPack = require('happypack');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const publicPath = paths.servedPath;
 const publicUrl = publicPath.slice(0, -1);
@@ -200,6 +201,7 @@ module.exports = {
       }],
       threads: 2
     }),
+    new ProgressBarPlugin(),
     new webpack.DefinePlugin(env.stringified),
     new MiniCssExtractPlugin({
       filename: 'static/css/[contenthash].css',
