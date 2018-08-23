@@ -11,6 +11,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const HappyPack = require('happypack');
 
 const publicPath = paths.servedPath;
 const publicUrl = publicPath.slice(0, -1);
@@ -83,7 +84,7 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.appSrc,
-            loader: require.resolve('babel-loader'),
+            loader: 'happypack/loader',
             options: {
               compact: true,
             },
@@ -179,6 +180,25 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true,
       },
+    }),
+    new HappyPack({
+      use: [{
+        path: 'babel-loader',
+        query: {
+          plugins: [
+            require.resolve('@babel/plugin-transform-runtime'),
+            ["@babel/plugin-proposal-decorators", { "legacy": true }],
+            require.resolve('@babel/plugin-syntax-dynamic-import'),
+            require.resolve('@babel/plugin-proposal-class-properties')
+          ],
+          presets: [
+            require.resolve('@babel/preset-env'),
+            require.resolve('@babel/preset-react')
+          ],
+          cacheDirectory: false
+        }
+      }],
+      threads: 2
     }),
     new webpack.DefinePlugin(env.stringified),
     new MiniCssExtractPlugin({
