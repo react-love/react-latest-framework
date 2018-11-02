@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-snapshot'
 import { createBrowserHistory } from 'history'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
@@ -11,6 +11,7 @@ import App from './App'
 import rootReducer from './reducers/index'
 import initReactFastclick from 'react-fastclick'
 import 'utils/flexible'
+import 'antd/dist/antd.css'
 import './app.less'
 
 //解决移动端300毫秒延迟
@@ -32,14 +33,13 @@ const store = createStore(
   )
 )
 
-const render = Component =>
-  ReactDOM.render(
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Component />
-        </ConnectedRouter>
-      </Provider>,
-    document.getElementById('root')
+const wrraper = Component =>
+  render(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <Component />
+      </ConnectedRouter>
+    </Provider>, document.getElementById('root')
   )
 
-render(App)
+wrraper(App)

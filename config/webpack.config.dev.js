@@ -42,7 +42,7 @@ module.exports = {
         'pages': path.resolve(__dirname, '../src/pages'),
         'reducers': path.resolve(__dirname, '../src/reducers'),
         'utils': path.resolve(__dirname, '../src/utils'),
-        'routers': path.resolve(__dirname, '../src/routers')
+        'routes': path.resolve(__dirname, '../src/routes')
     },
     plugins: [
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
@@ -85,14 +85,14 @@ module.exports = {
             },
           },
           {
-            test: /\.(less|css)$/,
+            test: /\.css$/,
             use: [
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
-                    modules: true,
+                    //modules: true,
                     localIdentName: '[local]--[hash:base64:5]'
                 },
               },
@@ -118,8 +118,48 @@ module.exports = {
                       require('precss')
                   ],
                 },
+              }
+            ],
+          },
+          {
+            test: /\.less$/,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  //modules: true,
+                  localIdentName: '[local]--[hash:base64:5]'
+                },
               },
-                require.resolve('less-loader')
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9', // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009',
+                    }),
+                    require('postcss-pxtorem')({
+                      rootValue: 75,
+                      propList: ['*']
+                    }),
+                    require('precss')
+                  ],
+                },
+              },
+              {
+                loader: require.resolve('less-loader'),
+                options: { javascriptEnabled: true }
+              }
             ],
           },
           {
@@ -136,7 +176,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-        hash: true,
+      hash: true,
       template: paths.appHtml,
     }),
     new HappyPack({
@@ -147,7 +187,8 @@ module.exports = {
             require.resolve('@babel/plugin-transform-runtime'),
             ["@babel/plugin-proposal-decorators", { "legacy": true }],
             require.resolve('@babel/plugin-syntax-dynamic-import'),
-            require.resolve('@babel/plugin-proposal-class-properties')
+            require.resolve('@babel/plugin-proposal-class-properties'),
+            ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }]
           ],
           presets: [
             require.resolve('@babel/preset-env'),
