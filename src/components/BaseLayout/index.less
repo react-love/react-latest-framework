@@ -15,3 +15,25 @@
   background: rgba(255,255,255,.2);
   margin: 16px;
 }
+.base-layout {
+  height: 100vh;
+  .base-header {
+    background: #fff;
+    height: 66px;
+  }
+  .base-content {
+    margin: 24px 0;
+    padding: 24px;
+    background: #fff;
+    height: calc(100vh - 114px);
+  }
+  .ant-menu-inline-collapsed {
+    width: 100%;
+  }
+  .ant-layout-sider-children {
+    .ant-menu-item {
+      padding: 0 !important;
+      text-align: center;
+    }
+  }
+}

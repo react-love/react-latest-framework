@@ -1,25 +1,18 @@
 import React from 'react'
-import { Layout, Menu, Icon } from 'antd'
+import { Layout, Menu, Icon, Row, Col } from 'antd'
+import UserList from 'components/UserList'
 import './index.less'
 
 const { Header, Sider, Content } = Layout
 
 class BaseLayout extends React.Component {
-  state = {
-    collapsed: false
-  }
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    })
-  }
+  state = {}
   render () {
     return (
-      <Layout>
+      <Layout className="base-layout">
         <Sider
           trigger={ null }
-          collapsible
-          collapsed={ this.state.collapsed }
+          defaultCollapsed={true}
         >
           <div className="logo"/>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={ ['1'] }>
@@ -38,19 +31,26 @@ class BaseLayout extends React.Component {
           </Menu>
         </Sider>
         <Layout>
-          <Header style={ { background: '#fff', padding: 0 } }>
-            <Icon
-              className="trigger"
-              type={ this.state.collapsed ? 'menu-unfold' : 'menu-fold' }
-              onClick={ this.toggle }
-            />
-          </Header>
-          <Content style={ { margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 } }>
-            {this.props.children}
-          </Content>
+          <Row gutter={ 12 }>
+            <Col span={ 6 }>
+              <UserList/>
+            </Col>
+            <Col span={ 18 }>
+      
+              <Layout>
+                <Header className="base-header">
+                </Header>
+                <Content className="base-content">
+                  { this.props.children }
+                </Content>
+              </Layout>
+            </Col>
+  
+          </Row>
         </Layout>
       </Layout>
     )
   }
 }
+
 export default BaseLayout

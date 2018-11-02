@@ -10,17 +10,8 @@ import { getBook, getNav } from 'actions/home'
 
 /*component*/
 import Layout from 'components/BaseLayout'
-import ErrorBoundary from 'pages/Commons/ErrorBoundary'
-import Header from './components/Header'
-import Nav from './components/Nav'
-import Special from './components/Special'
-import BookList from './components/BookList'
-import CreatePortal from 'create-portal'
-import styles from './styles/home.less'
 
 /*files*/
-const search = require('./files/search.svg')
-
 
 @connect(
   state => state.getIn(['home']),
@@ -43,7 +34,7 @@ class Home extends React.Component {
     return (
       <Layout>
         <div>
-        
+          内容区域
         </div>
       </Layout>
     )

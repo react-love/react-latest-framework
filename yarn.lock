@@ -6184,6 +6184,13 @@ react-fastclick@^3.0.2:
   version "3.0.2"
   resolved "http://r.cnpmjs.org/react-fastclick/download/react-fastclick-3.0.2.tgz#2994c60088cda90b0b2cbfac4b6e7c6bc73d6a3a"
 
+react-infinite-scroller@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.2.2.tgz#1d13b8167476dfe64c401983293dabc6a8a8ecf3"
+  integrity sha512-YshEvalWsC/vTWwA2t5rc+ku8JSXTIe/gzNuyA7rkdJZfs+7LfOz/HpOI3g/VqPCZIxikXBJDlSWltVZN4KyVQ==
+  dependencies:
+    prop-types "^15.5.8"
+
 react-lazy-load@^3.0.13:
   version "3.0.13"
   resolved "https://registry.yarnpkg.com/react-lazy-load/-/react-lazy-load-3.0.13.tgz#3b0a92d336d43d3f0d73cbe6f35b17050b08b824"

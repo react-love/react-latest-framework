@@ -31,6 +31,7 @@
     "react-dev-utils": "^5.0.1",
     "react-dom": "16.4.2",
     "react-fastclick": "^3.0.2",
+    "react-infinite-scroller": "^1.2.2",
     "react-loadable": "^5.4.0",
     "react-redux": "^5.0.7",
     "react-roll-container": "^1.0.1",
