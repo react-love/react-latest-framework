@@ -1,80 +1,44 @@
-<p align="center"><img width="100" src="https://segmentfault.com/img/bVZwRf?w=516&h=457" /></p>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# React技术栈长期开源项目
+## Available Scripts
 
-[![Build Status](https://travis-ci.org/hyy1115/react-latest-framework.svg?branch=master)](https://travis-ci.org/hyy1115/react-latest-framework.svg?branch=master)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
+In the project directory, you can run:
 
-**适用人群：该框架集成了react开发常用技术栈，适用于想要学习单向数据流框架搭建的新手、以及想要一个比较干净、简洁的框架从事前端项目的开发者。**
+### `npm start`
 
-### 4.1.0版本更新说明
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-> webpack升级到4.17.1，并且对各个插件进行了兼容
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-> 该框架基于 [create-react-app][4] 进行改造，增加了redux、移动端适配等功能，与此同时，增加了路由配置文件
+### `npm test`
 
-> 脚手架的配置你可以直接参考create-react-app的官方文档
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-> babel最新配置
+### `npm run build`
 
-> 使用happypack优化打包速度
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-#### 客户端渲染
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-本项目是客户端渲染版本
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-#### 服务端渲染
+### `npm run eject`
 
-虽然客户端渲染可以实现首屏请求最少的js资源，但是服务端渲染也是有他的优势所在，
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-关注SEO的开发者推荐使用基于本框架的服务端渲染版本：https://github.com/hyy1115/react-next
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-# 
-### Installation 教程
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-fork到你的账号，简单省事，或者 download 项目到本地
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-**1、 安装依赖包，已经解决了一些依赖包安装最新版可能出现的bug，如果还有问题，可以看相关社区的issue。**
-```
-npm install 或cnpm install 或 yarn
-```
+## Learn More
 
-**2、运行demo。**
- ```nodemon
- npm start
- ```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-**4、打包发布 ** 
-
-```nodemon
-npm run build
-```
-
-**5、你可以尝试serve来启动服务器。**
-
-```nodemon
-npm run serve
-```
-
-#
-
-#### 关于DOC文档教程的解释
-
-非常抱歉的是由于各个插件版本升级太快，一些文档教程没有实时跟上维护修改。
-
-#### echarts 使用方案
-想要在react恰当的使用echarts，可以查看 [react中使用echarts的最优方案][1]
-
-#### 学习ES6语法
-React项目中，使用了大量的ES6语法，如果你还没有学习过ES6，那么推荐你看 [深入理解ES6笔记][2]
-
-#### 更多React教程
-这里积累了react博客+react官方文档的中文翻译
-[React系列教程][3]
-
-**如果你对该项目感兴趣，想共享一份你的力量，请大胆pull PR！**
-
-[1]: https://github.com/hyy1115/react-echarts-modules
-[2]: https://github.com/hyy1115/ES6-learning
-[3]: https://github.com/hyy1115/Front-end-course/tree/master/React%E7%B3%BB%E5%88%97
-[4]: https://github.com/facebook/create-react-app
+To learn React, check out the [React documentation](https://reactjs.org/).
