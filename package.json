@@ -3,7 +3,7 @@
   "version": "4.2.0",
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && react-snapshot",
+    "build": "rm -rf build && node scripts/build.js && react-snapshot",
     "test": "node scripts/test.js --env=jsdom",
     "serve": "serve -s build"
   },

@@ -7,12 +7,6 @@ import isEmpty from 'utils/isEmpty'
 
 /*actions*/
 import { getBook, getNav } from 'actions/home'
-
-/*component*/
-import Layout from 'components/BaseLayout'
-
-/*files*/
-
 @connect(
   state => state.getIn(['home']),
   dispatch => bindActionCreators({ getBook, getNav }, dispatch)
@@ -32,11 +26,9 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <Layout>
         <div>
-          内容区域
+          首页内容区域
         </div>
-      </Layout>
     )
   }
 }

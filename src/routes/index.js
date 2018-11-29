@@ -1,32 +1,21 @@
 import React from 'react'
 import Loadable from "react-loadable"
+import Layout from 'components/BaseLayout'
+import layout from './layout'
 
 let config = [
   {
-    name: 'home',
     path: '/',
     exact: true,
-    component: Loadable({
-      loader: () => import('pages/Home/Home'),
-      loading: () => <div />
-    })
+    component: Layout
   },
+  layout,
   {
-    name: 'search',
-    path: '/search',
+    path: '/test',
     component: Loadable({
-      loader: () => import('pages/Search/Search'),
-      loading: () => <div />
-    })
-  },
-  {
-    name: 'login',
-    path: '/login',
-    component: Loadable({
-      loader: () => import('pages/Login/Login'),
+      loader: () => import('pages/Test'),
       loading: () => <div />
     })
   }
 ]
-
 export default config
