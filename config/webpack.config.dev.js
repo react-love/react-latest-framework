@@ -1,6 +1,5 @@
-'use strict';
 
-const autoprefixer = require('autoprefixer');
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,6 +9,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({size: 5});
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const publicPath = '/';
 const publicUrl = '';
@@ -79,88 +79,15 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.appSrc,
-            loader: 'happypack/loader',
-            options: {
-              cacheDirectory: true,
-            },
+            loader: 'happypack/loader?id=1'
           },
           {
-            test: /\.css$/,
-            use: [
-              require.resolve('style-loader'),
-              {
-                loader: require.resolve('css-loader'),
-                options: {
-                  importLoaders: 1,
-                    //modules: true,
-                    localIdentName: '[local]--[hash:base64:5]'
-                },
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
-                      require('postcss-pxtorem')({
-                          rootValue: 75,
-                          propList: ['*']
-                      }),
-                      require('precss')
-                  ],
-                },
-              }
-            ],
+            test: /\.(css)$/,
+            loader: 'happypack/loader?id=2'
           },
           {
-            test: /\.less$/,
-            use: [
-              require.resolve('style-loader'),
-              {
-                loader: require.resolve('css-loader'),
-                options: {
-                  importLoaders: 1,
-                  //modules: true,
-                  localIdentName: '[local]--[hash:base64:5]'
-                },
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
-                    require('postcss-pxtorem')({
-                      rootValue: 75,
-                      propList: ['*']
-                    }),
-                    require('precss')
-                  ],
-                },
-              },
-              {
-                loader: require.resolve('less-loader'),
-                options: { javascriptEnabled: true }
-              }
-            ],
+            test: /\.(less)$/,
+            loader: 'happypack/loader?id=3'
           },
           {
             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
@@ -174,31 +101,46 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      inject: true,
-      hash: true,
-      template: paths.appHtml,
+    new HappyPack({
+      id: '1',
+      threadPool : happyThreadPool,
+      threads : 4,
+      loaders: ['babel-loader']
     }),
     new HappyPack({
-      use: [{
-        path: 'babel-loader',
-        query: {
-          plugins: [
-            require.resolve('@babel/plugin-transform-runtime'),
-            ["@babel/plugin-proposal-decorators", { "legacy": true }],
-            require.resolve('@babel/plugin-syntax-dynamic-import'),
-            require.resolve('@babel/plugin-proposal-class-properties'),
-            ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }]
-          ],
-          presets: [
-            require.resolve('@babel/preset-env'),
-            require.resolve('@babel/preset-react')
-          ],
-          cacheDirectory: false
-        }
-      }],
-      threads: 2
+      id: '2',
+      threadPool : happyThreadPool,
+      threads : 4,
+      loaders : [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            localIdentName: '[local]--[hash:base64:5]'
+          }
+        },
+        'postcss-loader'
+      ]
     }),
+    new HappyPack({
+      id: '3',
+      threadPool: happyThreadPool,
+      threads: 4,
+      loaders: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            localIdentName: '[local]--[hash:base64:5]'
+          }
+        },
+        'postcss-loader',
+        'less-loader'
+      ]
+    }),
+    new HtmlWebpackPlugin({inject: true, hash: true, template: paths.appHtml}),
     new ProgressBarPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin(env.stringified),

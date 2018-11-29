@@ -1,17 +1,16 @@
-'use strict';
 
-const autoprefixer = require('autoprefixer');
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const publicPath = paths.servedPath;
@@ -43,12 +42,12 @@ module.exports = {
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
       'react-native': 'react-native-web',
-        'actions': path.resolve(__dirname, '../src/actions'),
-        'components': path.resolve(__dirname, '../src/components'),
-        'pages': path.resolve(__dirname, '../src/pages'),
-        'reducers': path.resolve(__dirname, '../src/reducers'),
-        'utils': path.resolve(__dirname, '../src/utils'),
-        'routes': path.resolve(__dirname, '../src/routes')
+      'actions': path.resolve(__dirname, '../src/actions'),
+      'components': path.resolve(__dirname, '../src/components'),
+      'pages': path.resolve(__dirname, '../src/pages'),
+      'reducers': path.resolve(__dirname, '../src/reducers'),
+      'utils': path.resolve(__dirname, '../src/utils'),
+      'routes': path.resolve(__dirname, '../src/routes')
     },
     plugins: [
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
@@ -57,21 +56,6 @@ module.exports = {
   module: {
     strictExportPresence: true,
     rules: [
-      {
-        test: /\.(js|jsx|mjs)$/,
-        enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
-              
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-        include: paths.appSrc,
-      },
       {
         oneOf: [
           {
@@ -85,90 +69,24 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.appSrc,
-            loader: 'happypack/loader',
+            loader: 'happypack/loader?id=1',
             options: {
               compact: true,
             },
           },
           {
-            test: /\.css$/,
-            use: [
+            test: /\.(css)$/,
+            loader: [
               MiniCssExtractPlugin.loader,
-              {
-                loader: require.resolve ('css-loader'),
-                options: {
-                  importLoaders: 1,
-                  minimize: true,
-                  sourceMap: true,
-                  //modules: true,
-                  localIdentName: '[local]--[hash:base64:5]'
-                }
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
-                    require('postcss-pxtorem')({
-                      rootValue: 75,
-                      propList: ['*']
-                    }),
-                    require('precss')
-                  ],
-                },
-              }
+              'happypack/loader?id=2'
             ]
           },
           {
-            test: /\.less$/,
-            use: [
-              require.resolve('style-loader'),
-              {
-                loader: require.resolve('css-loader'),
-                options: {
-                  importLoaders: 1,
-                  //modules: true,
-                  localIdentName: '[local]--[hash:base64:5]'
-                },
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
-                    require('postcss-pxtorem')({
-                      rootValue: 75,
-                      propList: ['*']
-                    }),
-                    require('precss')
-                  ],
-                },
-              },
-              {
-                loader: require.resolve('less-loader'),
-                options: { javascriptEnabled: true }
-              }
-            ],
+            test: /\.(less)$/,
+            loader: [
+              MiniCssExtractPlugin.loader,
+              'happypack/loader?id=3'
+            ]
           },
           {
             loader: require.resolve('file-loader'),
@@ -222,31 +140,48 @@ module.exports = {
         minifyURLs: true,
       },
     }),
+    new MiniCssExtractPlugin({
+      filename: 'static/css/[contenthash].css'
+    }),
     new HappyPack({
-      use: [{
-        path: 'babel-loader',
-        query: {
-          plugins: [
-            require.resolve('@babel/plugin-transform-runtime'),
-            ["@babel/plugin-proposal-decorators", { "legacy": true }],
-            require.resolve('@babel/plugin-syntax-dynamic-import'),
-            require.resolve('@babel/plugin-proposal-class-properties'),
-            ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }]
-          ],
-          presets: [
-            require.resolve('@babel/preset-env'),
-            require.resolve('@babel/preset-react')
-          ],
-          cacheDirectory: false
-        }
-      }],
-      threads: 2
+      id: '1',
+      threadPool : happyThreadPool,
+      use: ['babel-loader'],
+      threads: 4
+    }),
+    new HappyPack({
+      id: '2',
+      threadPool: happyThreadPool,
+      threads: 4,
+      loaders: [
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            localIdentName: '[local]--[hash:base64:5]'
+          }
+        },
+        'postcss-loader'
+      ]
+    }),
+    new HappyPack({
+      id: '3',
+      threadPool: happyThreadPool,
+      threads: 4,
+      loaders: [
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            localIdentName: '[local]--[hash:base64:5]'
+          }
+        },
+        'postcss-loader',
+        'less-loader'
+      ]
     }),
     new ProgressBarPlugin(),
     new webpack.DefinePlugin(env.stringified),
-    new MiniCssExtractPlugin({
-      filename: 'static/css/[contenthash].css',
-    }),
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
     }),

@@ -17,7 +17,6 @@ class Login extends React.Component {
   }
   componentDidMount() {}
   render() {
-    const { currentHot } = this.state
     return (
      <div>
        <Button type="primary">登录</Button>
