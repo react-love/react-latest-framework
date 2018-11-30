@@ -11,7 +11,8 @@ module.exports = {
 			flexbox: 'no-2009'
 		},
 		'postcss-pxtorem': {
-			rootValue: 75,
+			rootValue: 192,
+			unitPrecision: 10,
 			propList: ['*']
 		},
 		'precss' : {}
