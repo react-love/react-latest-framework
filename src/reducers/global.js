@@ -1,13 +1,20 @@
 const initState = {
-  animateCls: 'normal' //过渡动画样式
+  globalLoading: false, // 全局loading
+  isLogin: !!sessionStorage.getItem('isLogin') // 登录状态
 }
 
 export const global = (state = initState, action) => {
   switch (action.type) {
-    case 'CURRENT_ANIMATE':
+    case 'SET_GLOBAL_LOADING':
       return {
         ...state,
-        animateCls: action.cls
+        globalLoading: action.globalLoading
+      }
+    case "CHECK_IS_LOGIN":
+      sessionStorage.setItem('isLogin', action.isLogin)
+      return {
+        ...state,
+        isLogin: action.isLogin
       }
     default:
       return state

@@ -23,15 +23,12 @@
 
 #### 客户端渲染
 
-本项目是客户端渲染版本
+本项目是客户端渲染版本，登录账号 admin ， 密码 12345 
 
-#### 服务端渲染
+![clipboard.png](https://segmentfault.com/img/bVbkqk8)
 
-虽然客户端渲染可以实现首屏请求最少的js资源，但是服务端渲染也是有他的优势所在，
+![clipboard.png](https://segmentfault.com/img/bVbkqla)
 
-关注SEO的开发者推荐使用基于本框架的服务端渲染版本：https://github.com/hyy1115/react-next
-
-# 
 ### Installation 教程
 
 fork到你的账号，简单省事，或者 download 项目到本地
@@ -58,17 +55,11 @@ npm run build
 npm run serve
 ```
 
-#
-
-### echarts 使用方案
-想要在react恰当的使用echarts，可以查看 [react中使用echarts的最优方案][1]
 
 ### 学习ES6语法
 React项目中，使用了大量的ES6语法，如果你还没有学习过ES6，那么推荐你看 [深入理解ES6笔记][2]
 
 **如果你对该项目感兴趣，想共享一份你的力量，请大胆pull PR！**
 
-[1]: https://github.com/hyy1115/react-echarts-modules
 [2]: https://github.com/hyy1115/ES6-learning
-[3]: https://github.com/hyy1115/Front-end-course/tree/master/React%E7%B3%BB%E5%88%97
 [4]: https://github.com/facebook/create-react-app

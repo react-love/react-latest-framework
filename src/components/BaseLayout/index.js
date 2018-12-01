@@ -3,10 +3,18 @@ import { NavLink, Route } from 'react-router-dom'
 import { formatFirstMenu, formatSecondMenu } from 'utils/tool'
 import { Layout, Menu, Icon, Row, Col, Avatar } from 'antd'
 import './index.less'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import {setGlobalLoading} from 'actions/global'
 
 const SubMenu = Menu.SubMenu
 const { Header, Sider, Content } = Layout
 
+
+@connect(
+  state => state.getIn(['global']),
+  dispatch => bindActionCreators({ setGlobalLoading }, dispatch)
+)
 class BaseLayout extends React.Component {
   state = {
     currentMenu: formatSecondMenu(this.props.location.pathname),
@@ -361,6 +369,19 @@ class BaseLayout extends React.Component {
     this.setState(() => ({
       currentMenu: formatSecondMenu(item)
     }))
+  }
+  redirectRoute = () => {
+    const { isLogin } = this.props
+    console.log(isLogin)
+    if (isLogin) {
+      this.props.history.push('/admin')
+    } else {
+      this.props.history.push('/login')
+    }
+  }
+  componentDidMount () {
+    this.redirectRoute()    
+    this.props.setGlobalLoading(true)
   }
   render () {
     const { routes = [] } = this.props

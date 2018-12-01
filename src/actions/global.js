@@ -1,4 +1,9 @@
-export const currentAnimate = cls => ({
-  type: 'CURRENT_ANIMATE',
-  cls
+export const setGlobalLoading = globalLoading => ({
+  type: 'SET_GLOBAL_LOADING',
+  globalLoading
+})
+
+export const checkIsLogin = isLogin => ({
+  type: 'CHECK_IS_LOGIN',
+  isLogin
 })

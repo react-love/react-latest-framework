@@ -1,8 +1,15 @@
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox, Card, message} from 'antd'
 import './login.less'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { setGlobalLoading, checkIsLogin } from 'actions/global'
 const FormItem = Form.Item
 
+@connect(
+	state => ({}),
+	dispatch => bindActionCreators({ setGlobalLoading, checkIsLogin }, dispatch)
+)
 class Login extends React.Component {
 	handleSubmit = (e) => {
     e.preventDefault()
@@ -13,6 +20,7 @@ class Login extends React.Component {
 				if (isAllow) {
 					message.success('登录成功，正在跳转中~')
 					.then(() => {
+						this.props.checkIsLogin(true)
 						setTimeout(() => {
 							this.props.history.push('/admin')							
 						}, 500);
@@ -30,6 +38,9 @@ class Login extends React.Component {
 		} else {
 			return false
 		}
+	}
+	componentDidMount () {
+		this.props.setGlobalLoading(true)
 	}
 	render() {
 		const { getFieldDecorator } = this.props.form
