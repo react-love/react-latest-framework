@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Route } from 'react-router-dom'
 import { formatFirstMenu, formatSecondMenu } from 'utils/tool'
-import { Layout, Menu, Icon, Row, Col } from 'antd'
+import { Layout, Menu, Icon, Row, Col, Avatar } from 'antd'
 import './index.less'
 
 const SubMenu = Menu.SubMenu
@@ -370,10 +370,9 @@ class BaseLayout extends React.Component {
     return (
       <Layout className="base-layout">
         <Sider>
-          <div className="logo"/>
           <Menu 
-            theme={menuData.theme} 
-            mode={menuData.mode} 
+            theme={menuData.theme}
+            mode={menuData.mode}
             defaultOpenKeys={[menuData.defaultOpenKeys]}
             defaultSelectedKeys={[menuData.defaultSelectedKeys] }
           >
@@ -407,7 +406,8 @@ class BaseLayout extends React.Component {
       
               <Layout>
                 <Header className="base-header">
-                  算法 / {currentMenu}
+                  <span className="header-tag">{currentMenu && `算法 /`} {currentMenu}</span>
+                  <NavLink to="/login"><Avatar size="large" icon="user" /></NavLink>
                 </Header>
                 <Content className="base-content">
                   {

@@ -2,6 +2,8 @@ import React from 'react'
 import Loadable from "react-loadable"
 import Layout from 'components/BaseLayout'
 import layout from './layout'
+// default
+const defaultLoad = () => <div />
 
 let config = [
   {
@@ -11,10 +13,10 @@ let config = [
   },
   layout,
   {
-    path: '/test',
+    path: '/login',
     component: Loadable({
-      loader: () => import('pages/Test'),
-      loading: () => <div />
+      loader: () => import('pages/Login/Login'),
+      loading: defaultLoad
     })
   }
 ]
