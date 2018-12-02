@@ -371,12 +371,11 @@ class BaseLayout extends React.Component {
     }))
   }
   redirectRoute = () => {
-    const { isLogin } = this.props
-    console.log(isLogin)
+    const { isLogin, location, history } = this.props
     if (isLogin) {
-      this.props.history.push('/admin')
+      history.push(location.pathname)
     } else {
-      this.props.history.push('/login')
+      history.push('/login')
     }
   }
   onLogout = () => {
@@ -390,7 +389,6 @@ class BaseLayout extends React.Component {
     const { routes = [] } = this.props
     const { menuData, currentMenu } = this.state
     const list = menuData.list
-    console.log(currentMenu)
     return (
       <Layout className="base-layout">
         <Sider>

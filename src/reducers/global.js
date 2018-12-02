@@ -12,7 +12,6 @@ export const global = (state = initState, action) => {
         globalLoading: action.globalLoading
       }
     case "CHECK_IS_LOGIN":
-      console.log(11111)
       sessionStorage.setItem('isLogin', action.isLogin)
       return {
         ...state,
