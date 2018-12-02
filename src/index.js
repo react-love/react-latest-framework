@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-snapshot'
+import ReactDOM from 'react-dom'
 import { createBrowserHistory } from 'history'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
@@ -34,7 +34,7 @@ const store = createStore(
 )
 
 const wrraper = Component =>
-  render(
+  ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <Component history={history}  store={store}/>
