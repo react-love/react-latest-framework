@@ -5,7 +5,7 @@ import { Layout, Menu, Icon, Row, Col, Avatar } from 'antd'
 import './index.less'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {setGlobalLoading} from 'actions/global'
+import {setGlobalLoading, checkIsLogin} from 'actions/global'
 
 const SubMenu = Menu.SubMenu
 const { Header, Sider, Content } = Layout
@@ -13,7 +13,7 @@ const { Header, Sider, Content } = Layout
 
 @connect(
   state => state.getIn(['global']),
-  dispatch => bindActionCreators({ setGlobalLoading }, dispatch)
+  dispatch => bindActionCreators({ setGlobalLoading, checkIsLogin }, dispatch)
 )
 class BaseLayout extends React.Component {
   state = {
@@ -379,8 +379,11 @@ class BaseLayout extends React.Component {
       this.props.history.push('/login')
     }
   }
+  onLogout = () => {
+    this.props.checkIsLogin(false)
+  }
   componentDidMount () {
-    this.redirectRoute()    
+    this.redirectRoute()
     this.props.setGlobalLoading(true)
   }
   render () {
@@ -391,7 +394,7 @@ class BaseLayout extends React.Component {
     return (
       <Layout className="base-layout">
         <Sider>
-          <Menu 
+          <Menu
             theme={menuData.theme}
             mode={menuData.mode}
             defaultOpenKeys={[menuData.defaultOpenKeys]}
@@ -404,8 +407,8 @@ class BaseLayout extends React.Component {
                   {
                     item.subtitle.map(second => {
                       return (
-                        <Menu.Item 
-                          key={second.link} 
+                        <Menu.Item
+                          key={second.link}
                           onClick={this.getCurrentMenu}
                           >
                           <NavLink to={second.link}>
@@ -428,7 +431,7 @@ class BaseLayout extends React.Component {
               <Layout>
                 <Header className="base-header">
                   <span className="header-tag">{currentMenu && `算法 /`} {currentMenu}</span>
-                  <NavLink to="/login"><Avatar size="large" icon="user" /></NavLink>
+                  <NavLink to="/login" onClick={this.onLogout}><Avatar size="large" icon="user" /></NavLink>
                 </Header>
                 <Content className="base-content">
                   {

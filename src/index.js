@@ -5,7 +5,6 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router/immutable'
 import Immutable from 'immutable'
-// import persistState from 'redux-localstorage'
 import thunk from 'redux-thunk'
 import App from './App'
 import rootReducer from './reducers/index'
@@ -25,7 +24,6 @@ const store = createStore(
   connectRouter(history)(rootReducer),
   initialState,
   composeEnhancer(
-    //persistState(/*paths, config*/), //数据持久化，暂时没有调通，备用状态
     applyMiddleware(
       routerMiddleware(history),
       thunk

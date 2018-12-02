@@ -1,6 +1,7 @@
+let isLogin = sessionStorage.getItem('isLogin')
 const initState = {
   globalLoading: false, // 全局loading
-  isLogin: !!sessionStorage.getItem('isLogin') // 登录状态
+  isLogin: !!isLogin ? (isLogin === 'true' ? true : false) : false // 登录状态
 }
 
 export const global = (state = initState, action) => {
@@ -11,6 +12,7 @@ export const global = (state = initState, action) => {
         globalLoading: action.globalLoading
       }
     case "CHECK_IS_LOGIN":
+      console.log(11111)
       sessionStorage.setItem('isLogin', action.isLogin)
       return {
         ...state,
