@@ -43,7 +43,7 @@ npm install 或cnpm install 或 yarn
  npm start
  ```
 
-**4、打包发布 ** 
+**4、打包发布** 
 
 ```nodemon
 npm run build
