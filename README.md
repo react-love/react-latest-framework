@@ -1,6 +1,6 @@
 <p align="center"><img width="100" src="https://segmentfault.com/img/bVZwRf?w=516&h=457" /></p>
 
-# React技术栈脚手架
+# React技术栈脚手架（V16.8.6）
 
 [![Build Status](https://travis-ci.org/hyy1115/react-latest-framework.svg?branch=master)](https://travis-ci.org/hyy1115/react-latest-framework.svg?branch=master)  [![codebeat badge](https://codebeat.co/badges/8be7b4c1-85f3-4da9-ab23-d470624b40ad)](https://codebeat.co/projects/github-com-hyy1115-react-redux-webpack2-master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
@@ -9,7 +9,7 @@
 
 ### 框架集成的配置
 
-> webpack版本为4.26.1，并且对webpack相关的第三方插件进行了兼容处理
+> webpack版本为4.28.4，并且对webpack相关的第三方插件进行了兼容处理
 
 > 基于 [create-react-app][4] 进行改造，增加了redux、react-router、immutable等
 
@@ -20,6 +20,10 @@
 > 使用happypack优化js、css构建，速度明显提升
 
 > UI框架使用的是世界第二大UI框架 antd
+
+> （新增）你可以学习到如何在项目中使用react hooks，react-redux-hook
+
+> （新增）项目中有3个文件使用了hooks写法，分别是入口文件App.js，BaseLayout/index.js，Login.js，其余组件仍然保留class包装Connect的写法，用来做对比。
 
 #### 客户端渲染
 
