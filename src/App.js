@@ -26,15 +26,13 @@ export default function App() {
 
     const hiddenLoading = () => {
         if (globalLoading) {
-            setTimeout(() => {
-                dispatch(setGlobalLoading(false))
-            }, 0)
+            dispatch(setGlobalLoading(false))
         }
     }
 
     useEffect(() => {
         hiddenLoading()
-    }, [])
+    })
     return (
         <Router>
             <div>

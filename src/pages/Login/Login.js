@@ -42,7 +42,7 @@ function Login(props) {
 
     useEffect(() => {
         dispatch(setGlobalLoading(true))
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="page-login">

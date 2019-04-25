@@ -6,6 +6,7 @@ import { Layout, Menu, Icon, Row, Col, Avatar } from 'antd'
 import './index.less'
 import { setGlobalLoading, checkIsLogin } from 'actions/global'
 import userData from './user-data'
+import routes from 'routes'
 
 const SubMenu = Menu.SubMenu
 const { Header, Sider, Content } = Layout
@@ -29,7 +30,7 @@ export default function BaseLayout(props) {
     }
     const [state, setState] = useState(initalState)
     const { menuData, currentMenu } = state
-    const { routes, history } = props
+    const { history } = props
 
     const getCurrentMenu = (item) => {
         setState(() => ({
@@ -38,23 +39,23 @@ export default function BaseLayout(props) {
         }))
     }
 
-    const redirectRoute = () => {
+    const redirectRoute = useCallback(() => {
         if (isLogin) {
             history.push(pathname)
         } else {
             history.push('/login')
         }
-    }
+    }, [isLogin, history, pathname])
 
     const onLogout = () => {
         dispatch(checkIsLogin(false))
     }
 
     useEffect(() => {
-        console.log(props)
+        console.log(1)
         redirectRoute()
         dispatch(setGlobalLoading(true))
-    }, [])
+    }, [dispatch, redirectRoute])
 
     return (
         <Layout className="base-layout">
@@ -102,16 +103,16 @@ export default function BaseLayout(props) {
                             </Header>
                             <Content className="base-content">
                                 {
-                                    routes.map((r, key) => {
-                                        return (
-                                            <Route
-                                                component={r.component}
-                                                exact={!!r.exact}
-                                                key={r.path + key}
-                                                path={r.path}
-                                            />
-                                        )
-                                    })
+                                    // routes.map((r, key) => {
+                                    //     return (
+                                    //         <Route
+                                    //             component={r.component}
+                                    //             exact={!!r.exact}
+                                    //             key={r.path + key}
+                                    //             path={r.path}
+                                    //         />
+                                    //     )
+                                    // })
                                 }
                             </Content>
                         </Layout>

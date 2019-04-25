@@ -35,7 +35,7 @@ const store = createStore(
 const wrraper = Component =>
     ReactDOM.render(
         <StoreContext.Provider value={store}>
-            <Component history={history} store={store}/>
+            <Component />
         </StoreContext.Provider>,
         document.getElementById('root')
     )
